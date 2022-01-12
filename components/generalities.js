@@ -1,5 +1,7 @@
 import { Controller } from "react-hook-form"
-import { TextField, FormGroup, FormControlLabel, Checkbox, MenuItem, InputLabel, Select } from "@mui/material"
+import { TextField, FormControl, FormGroup, FormControlLabel, Checkbox, MenuItem, InputLabel, Select } from "@mui/material"
+import styles from './generalities.module.css'
+
 export default function Generalities({control}) {
         return (
         <>
@@ -8,10 +10,11 @@ export default function Generalities({control}) {
                 control={control}
                 defaultValue=""
                 render={({ field: { onChange, value } }) => (
-                    <TextField onChange={onChange} value={value} id="outlined-basic" label="Age" variant="outlined" />
+                    <TextField sx={{width:"100%"}} onChange={onChange} value={value} id="outlined-basic" label="Age" variant="outlined" />
                 )}
             />
-
+            <div className={styles.input}>
+            <InputLabel id="demo-simple-select-label">Your ethnicity</InputLabel>
             <FormGroup>
                 <FormControlLabel control={
                     <Controller 
@@ -70,13 +73,14 @@ export default function Generalities({control}) {
                     )}/>} label="American Indian or Alaska Native" 
                 />                                  
             </FormGroup>
-
+            </div>
+            <div className={styles.inputList}>
             <Controller
                 name="BodyType"
                 control={control}
                 defaultValue=""
                 render={({ field: { onChange, value } }) => (
-                    <>
+                    <FormControl sx={{width:"100%", marginTop:2}}>
                     <InputLabel id="demo-simple-select-label">Your body type</InputLabel>
                     <Select
                         labelId="demo-simple-select-label"
@@ -94,7 +98,7 @@ export default function Generalities({control}) {
                         <MenuItem value={"Fat"}>Fat</MenuItem>
                         <MenuItem value={"Obese"}>Obese</MenuItem>
                     </Select> 
-                    </>
+                    </FormControl>
                 )}
             />
             <Controller
@@ -102,7 +106,7 @@ export default function Generalities({control}) {
                 control={control}
                 defaultValue=""
                 render={({ field: { onChange, value } }) => (
-                    <TextField onChange={onChange} value={value} id="outlined-basic" label="Height (cm)" variant="outlined" />
+                    <TextField sx={{width:"100%", marginTop:2}} onChange={onChange} value={value} id="outlined-basic" label="Height (cm)" variant="outlined" />
                 )}
             />
 
@@ -111,7 +115,7 @@ export default function Generalities({control}) {
                 control={control}
                 defaultValue=""
                 render={({ field: { onChange, value } }) => (
-                    <>
+                    <FormControl sx={{width:"100%", marginTop:2}}>
                     <InputLabel id="demo-simple-select-label">Hair Color</InputLabel>
                     <Select
                       labelId="demo-simple-select-label"
@@ -128,7 +132,7 @@ export default function Generalities({control}) {
                         <MenuItem value={"Shaved"}>Shaved</MenuItem>
                         <MenuItem value={"Other"}>Other</MenuItem>
                     </Select> 
-                    </>
+                    </FormControl>
                 )}
             />
             <Controller
@@ -136,7 +140,7 @@ export default function Generalities({control}) {
                 control={control}
                 defaultValue=""
                 render={({ field: { onChange, value } }) => (
-                    <>
+                    <FormControl sx={{width:"100%", marginTop:2}}>
                         <InputLabel id="demo-simple-select-label">Your skin color</InputLabel>
                         <Select
                             labelId="demo-simple-select-label"
@@ -152,9 +156,10 @@ export default function Generalities({control}) {
                             <MenuItem value={"Brown, Dark Brown"}>Brown, Dark Brown</MenuItem>
                             <MenuItem value={"Black, Very Dark"}>Black, Very Dark</MenuItem>
                         </Select> 
-                    </>
+                    </FormControl>
                 )}
             />
+            </div>
         </>
     )
 }

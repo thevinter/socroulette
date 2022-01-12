@@ -1,0 +1,17 @@
+.button {
+    background-color: #363657;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    width: 60%;
+}
+
+.buttonWrapper {
+    margin: 40px;
+    text-align: center;
+}

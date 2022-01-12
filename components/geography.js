@@ -1,4 +1,4 @@
-import { InputLabel, MenuItem, Select, TextField } from "@mui/material"
+import { InputLabel, FormControl, MenuItem, Select, TextField } from "@mui/material"
 import { Controller } from "react-hook-form"
 
 export default function Geography({control}) {
@@ -10,7 +10,7 @@ export default function Geography({control}) {
                     control={control}
                     defaultValue=""
                     render={({ field: { onChange, value } }) => (
-                        <>
+                        <FormControl sx={{width:"100%", marginTop:2}}>
                             <InputLabel id="demo-simple-select-label">Current location</InputLabel>
                             <Select
                                 labelId="demo-simple-select-label"
@@ -28,7 +28,7 @@ export default function Geography({control}) {
                                 <MenuItem value={"South America"}>South America</MenuItem>
                                 <MenuItem value={"Africa"}>Africa</MenuItem>
                             </Select> 
-                        </>
+                        </FormControl>
                     )}
                 />
             </div>  
@@ -38,7 +38,7 @@ export default function Geography({control}) {
                     control={control}
                     defaultValue=""
                     render={({ field: { onChange, value } }) => (
-                        <>
+                        <FormControl sx={{width:"100%", marginTop:2}}>
                             <InputLabel id="demo-simple-select-label">Timezone</InputLabel>
                             <Select
                                 labelId="demo-simple-select-label"
@@ -85,7 +85,7 @@ export default function Geography({control}) {
                                 <MenuItem value={"UTC+13:00"}>UTC+13:00</MenuItem>
                                 <MenuItem value={"UTC+14:00"}>UTC+14:00</MenuItem>
                             </Select> 
-                        </>
+                        </FormControl>
                     )}
                 />
             </div>  
@@ -96,7 +96,7 @@ export default function Geography({control}) {
                 defaultValue=""
                 render={({ field: { onChange, value } }) => (
                     <>
-                        <TextField onChange={onChange} value={value} id="outlined-basic" label="Country/State (optional)" variant="outlined" />
+                        <TextField sx={{width:"100%", marginTop:2}} onChange={onChange} value={value} id="outlined-basic" label="Country/State (optional)" variant="outlined" />
                     </>
                 )}
             />

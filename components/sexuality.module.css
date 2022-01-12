@@ -1,0 +1,10 @@
+.inputList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.input {
+    flex: 1;
+    margin: 4px;
+}
