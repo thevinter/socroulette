@@ -108,13 +108,14 @@ export default function Home() {
       country: data.Country,
       online: data.Online,
     }
-    axios.post('/api/add-user', user).then(res => {
+    /* axios.post('/api/add-user', user).then(res => {
       router.push(`/success/${res.data}`);
-    })
+    }) */
+    console.log(user)
   }
 
   return (
-    <div className={styles.container}>
+    <div>
     <form onSubmit={handleSubmit(onSubmit)}>
         <Contacts control={control} />
         <Sex control={control} />

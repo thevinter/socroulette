@@ -70,6 +70,8 @@ export default function Sexuality({control}) {
                                 <MenuItem value={"Widowed"}>Widowed</MenuItem>
                                 <MenuItem value={"Divorced"}>Divorced</MenuItem>
                                 <MenuItem value={"Single Parent"}>Single Parent</MenuItem>
+                                <MenuItem value={"Single Parent"}>Married</MenuItem>
+                                <MenuItem value={"Single Parent"}>Engaged</MenuItem>
                             </Select> 
                         </>
                     )}

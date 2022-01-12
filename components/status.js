@@ -77,7 +77,7 @@ export default function Status({control}){
                             <MenuItem value={"Fascist"}>Fascist</MenuItem>
                             <MenuItem value={"Comunist"}>Comunist</MenuItem>
                             <MenuItem value={"Other"}>Other</MenuItem>
-                            <MenuItem value={"I don't care"}>I don't care</MenuItem>
+                            <MenuItem value={"I don't care"}>I dont care</MenuItem>
                         </Select> 
                     </>
                 )}
