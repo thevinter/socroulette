@@ -87,8 +87,6 @@
     width: 100%;
 }
 
-
-
 .upload{
     display: inline-block;
     width: 70%;
@@ -98,6 +96,8 @@
     font-family: sans-serif;
     text-decoration: none;
     color: #333;
+    margin-bottom: 5px;
+
     background-color: coral;
     box-sizing: border-box;
     border: 2px solid #333;

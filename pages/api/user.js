@@ -11,7 +11,6 @@ export async function GetUsers(id) {
     .find(
       {"_id": ObjectId(id)}
     )
-    .limit(20)
     .toArray();
   return users;
 };
