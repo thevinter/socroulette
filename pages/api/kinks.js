@@ -10,22 +10,23 @@ export async function AddUser(kink) {
 };
 
 export async function GetUsers() {
-    const client = await clientPromise;
-    const db = client.db('users')
-    const kinks = await db
-      .collection("kinks")
-      .find({})
-      .toArray();
-    return kinks;
-  };
+  const client = await clientPromise;
+  const db = client.db('users')
+  const kinks = await db
+    .collection("kinks")
+    .find({})
+    .toArray();
+  return kinks;
+};
 
-export default async function handler(req, res){
-    if (req.method === 'POST') {
-        const id = await AddKink(req.query.kink)
-        res.status(200).json(id)
-    }
-    if (req.method === 'GET') {
-        const id = await GetKinks()
-        res.status(200).json(id)
-    }
+export default async function handler(req, res) {
+  if (req.method === 'POST') {
+    const id = await AddKink(req.query.kink)
+    res.status(200).json(id)
+  }
+  if (req.method === 'GET') {
+    const id = await GetKinks()
+    res.status(200).json(id)
+  }
 }
+

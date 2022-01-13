@@ -10,11 +10,12 @@ export async function Count() {
       {}
     )
     .count();
-console.log(users)
+  console.log(users)
   return users;
 };
 
-export default async function handler(req, res){
+export default async function handler(req, res) {
   const jsonData = await Count();
   res.status(200).json(jsonData)
 }
+

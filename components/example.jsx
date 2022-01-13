@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
 import CreatableSelect from 'react-select/creatable';
-import { ActionMeta, OnChangeValue } from 'react-select';
+import {ActionMeta, OnChangeValue} from 'react-select';
 
 export default class CreatableSingle extends Component {
   handleChange = (
@@ -30,3 +30,4 @@ export default class CreatableSingle extends Component {
     );
   }
 }
+
