@@ -12,6 +12,49 @@
 }
 
 .buttonWrapper {
-    margin: 40px;
+    width: 75%;
+    margin: 20px;
     text-align: center;
+}
+
+.btn span{
+    position: relative;
+    z-index: 2;
+}
+
+.btn:after{
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: #F9DF74;
+    transition: all .35s;
+}
+
+.btn:hover{
+    color: black;
+}
+
+.btn:hover:after{
+    width: 100%;
+}
+
+.btn{
+    
+    display: inline-block;
+    width: 70%;
+    height: 70px;
+    line-height: 70px;
+    font-size: 18px;
+    font-family: sans-serif;
+    text-decoration: none;
+    color: #333;
+    box-sizing: border-box;
+    border: 2px solid #333;
+    letter-spacing: 2px;
+    text-align: center;
+    position: relative;
+    transition: all .35s;
 }
