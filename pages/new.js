@@ -88,16 +88,17 @@ export default function Home() {
         discord: data.Discord,
         snapchat: data.Snapchat,
         email: data.Email,
+        telegram: data.Telegram
       },
       sex: data.Sex,
       gender: data.Gender,
       sexuality: data.Sexuality,
       orientation: data.Orientation,
       relstatus: data.Relationship,
-      age: data.Age,
+      age: parseInt(data.Age),
       ethnicity: getEthnicity(data),
       btype: data.BodyType,
-      height: data.Height,
+      height: parseInt(data.Height),
       hair: data.Hair,
       skin: data.Skin,
       employment: data.Employment,
@@ -117,9 +118,9 @@ export default function Home() {
       nowrite: data.No,
       bio: data.Bio
     }
-    /* axios.post('/api/add-user', user).then(res => {
+    axios.post('/api/add-user', user).then(res => {
       router.push(`/success/${res.data}`);
-    }) */
+    })
     console.log(data)
     console.log(user)
   }

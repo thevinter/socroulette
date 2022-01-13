@@ -47,6 +47,7 @@ export default function General({setFilters}){
             Engaged: 0,
         }
     )
+
     const changeStatus = (idx, value) => {
         setStatus((state) => ({...state, [idx]: value%3}));
     }
@@ -85,9 +86,12 @@ export default function General({setFilters}){
         return excluded;
     }
 
-    useEffect(() => setFilters(
-        {
+    useEffect(() => setFilters((old) =>
+        ({   
+            ...old,
+            age: age,
             selected: {
+                ...old.selected,
                 sexuality: returnSelected(sexuality),
                 sex: returnSelected(sex),
                 gender: returnSelected(gender),
@@ -95,14 +99,15 @@ export default function General({setFilters}){
                 status: returnSelected(status)
             },
             excluded: {
+                ...old.excluded,
                 sexuality: returnExcluded(sexuality),
                 sex: returnExcluded(sex),
                 gender: returnExcluded(gender),
                 orientation: returnExcluded(orientation),
-                status: returnSelected(status)
+                status: returnExcluded(status)
             }
-        }
-    ), [sexuality, sex, gender, orientation, status, setFilters]);
+        })
+    ), [sexuality, age, sex, gender, orientation, status, setFilters]);
 
     return (
         <Accordion>
@@ -134,7 +139,7 @@ export default function General({setFilters}){
                     <TriCheckbox change={changeGender} name="Female"/>
                     <TriCheckbox change={changeGender} name="Other"/>
 
-                    <FormLabel component="legend">Gender they identify with</FormLabel>
+                    <FormLabel component="legend">Their orientation</FormLabel>
                     <TriCheckbox change={changeOrientation} name="Polygamous"/>
                     <TriCheckbox change={changeOrientation} name="Monogamous"/>
 

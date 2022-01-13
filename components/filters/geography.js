@@ -44,19 +44,23 @@ export default function Geography({setFilters}){
         }
         return excluded;
     }
-
-    useEffect(() => setFilters(
-        {
-            selected: {
-                location: returnSelected(location),
-            },
-            excluded: {
-                location: returnExcluded(location),
-            }
-        }
-    ), [location, setFilters]);
-
     const [time, setTime] = useState([-12, 14]);
+
+    useEffect(() => setFilters((old) => (
+        {
+        ...old,
+        time:time,
+        selected: {
+            ...old.selected,
+            location: returnSelected(location),
+        },
+        excluded: {
+            ...old.excluded,
+            location: returnExcluded(location),
+        }
+    })
+    ), [location, time, setFilters]);
+
     return (
         <Accordion>
             <AccordionSummary

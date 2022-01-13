@@ -4,6 +4,7 @@ import TriCheckbox from "../tricheckbox";
 
 export default function Physical({setFilters}){
     const [height, setHeight] = useState([100,250])
+
     const [getRace, setRace] = useState(
         {
             White: 0,
@@ -50,7 +51,6 @@ export default function Physical({setFilters}){
         setBody((state) => ({...state, [idx]: value%3}));
     }
     
-
     const [skin, setSkin] = useState(
         {
             "Light, Pale White": 0,
@@ -86,22 +86,26 @@ export default function Physical({setFilters}){
         return excluded;
     }
 
-    useEffect(() => setFilters(
-        {
+    useEffect(() => setFilters((old) =>
+        ({
+            ...old,
+            height: height,
             selected: {
+                ...old.selected,
                 skin: returnSelected(skin),
-                body: returnSelected(body),
+                btype: returnSelected(body),
                 hair: returnSelected(hair),
-                race: returnSelected(getRace)
+                ethnicity: returnSelected(getRace)
             },
             excluded: {
+                ...old.excluded,
                 skin: returnExcluded(skin),
                 hair: returnExcluded(hair),
-                body: returnExcluded(body),
-                race: returnExcluded(getRace)
+                btype: returnExcluded(body),
+                ethnicity: returnExcluded(getRace)
             }
-        }
-    ), [skin, hair, body, getRace, setFilters]);
+        })
+    ), [skin, height, hair, body, getRace, setFilters]);
 
     return (
         <Accordion>
@@ -114,7 +118,7 @@ export default function Physical({setFilters}){
             <AccordionDetails>
                 <Card>
                 <CardContent>
-                    <p>Height</p>
+                    <p>Height (cm)</p>
                     <Slider
                         getAriaLabel={() => 'Desired height'}
                         min={100}

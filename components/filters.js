@@ -19,9 +19,9 @@ export default function Filter({setFilters}){
             <Physical setFilters={setFilters}/>
             <Geography setFilters={setFilters}/>
             <Miscellaneous setFilters={setFilters}/>
-            <Illnesses/>
-            <Kinks/>
-            <Desires/>
+            <Illnesses setFilters={setFilters}/>
+            <Kinks setFilters={setFilters}/>
+            <Desires setFilters={setFilters}/>
         </div>
     )
 }

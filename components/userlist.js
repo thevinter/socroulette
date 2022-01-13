@@ -20,8 +20,8 @@ export default function UserList({filters}){
     useEffect(() => {
         console.log(newFilters(filters));
     }, [filters])
-
-    const { data, error } = useSWR(`/api/users?filter=${newFilters(filters)}`, fetcher);
+    const extraUrl = filters.age ? `&ageStart=${filters.age[0]}&ageEnd=${filters.age[1]}&heightStart=${filters.height[0]}&heightEnd=${filters.height[1]}&timeStart=${filters.time[0]}&timeEnd=${filters.time[1]}` : ""
+    const { data, error } = useSWR(`/api/users?filter=${newFilters(filters)}${extraUrl}`, fetcher);
     if (error) {
         console.log(error);
         return <div>failed to load</div>;

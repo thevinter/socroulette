@@ -7,7 +7,7 @@ import UserList from '../components/userlist';
 export default function Users(){
 
     const [filters, setFilters] = useState({selected:[], excluded: []});
-
+    console.log(filters);
     return (
         <div>
             <Filters setFilters={setFilters}/>

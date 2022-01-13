@@ -85,21 +85,24 @@ export default function Miscellaneous({setFilters}){
         return excluded;
     }
 
-    useEffect(() => setFilters(
-            {
+    useEffect(() => setFilters((old) =>
+            ({
+                ...old,
                 selected: {
+                    ...old.selected,
                     religion: returnSelected(religion),
-                    employ: returnSelected(employ),
+                    employment: returnSelected(employ),
                     politic: returnSelected(politic),
                     online: returnSelected(online)
                 },
                 excluded: {
+                    ...old.excluded,
                     religion: returnExcluded(religion),
-                    employ: returnExcluded(employ),
+                    employment: returnExcluded(employ),
                     politic: returnExcluded(politic),
                     online: returnExcluded(online)
                 }
-            }
+            })
     ), [religion, employ, politic, online, setFilters]);
         
 

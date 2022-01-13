@@ -13,9 +13,9 @@ export default function Sex({control}) {
                         <FormControl sx={{margin:1}}>
                             <FormLabel component="legend">Sex at birth</FormLabel>
                             <RadioGroup onChange={onChange} value={value} row aria-label="gender" name="row-radio-buttons-group">
-                                <FormControlLabel value="female" control={<Radio />} label="Female" />
-                                <FormControlLabel value="male" control={<Radio />} label="Male" />
-                                <FormControlLabel value="other" control={<Radio />} label="Other" />
+                                <FormControlLabel value="Female" control={<Radio />} label="Female" />
+                                <FormControlLabel value="Male" control={<Radio />} label="Male" />
+                                <FormControlLabel value="Other" control={<Radio />} label="Other" />
                             </RadioGroup>
                         </FormControl>
                     )}
@@ -30,9 +30,9 @@ export default function Sex({control}) {
                         <FormControl sx={{margin:1}}>
                             <FormLabel component="legend">Gender you identify with</FormLabel>
                             <RadioGroup onChange={onChange} value={value} row aria-label="sex" name="row-radio-buttons-group">
-                                <FormControlLabel value="female" control={<Radio />} label="Female" />
-                                <FormControlLabel value="male" control={<Radio />} label="Male" />
-                                <FormControlLabel value="other" control={<Radio />} label="Other" />
+                                <FormControlLabel value="Female" control={<Radio />} label="Female" />
+                                <FormControlLabel value="Male" control={<Radio />} label="Male" />
+                                <FormControlLabel value="Other" control={<Radio />} label="Other" />
                             </RadioGroup>
                         </FormControl>
                     )}

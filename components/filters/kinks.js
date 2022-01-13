@@ -1,8 +1,8 @@
 import { ExpandMoreIcon, Accordion, AccordionSummary, AccordionDetails, Typography } from "@mui/material"
 import TriCheckbox from "../tricheckbox"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-export default function Kinks(){
+export default function Kinks({setFilters}){
 
     const [kinks, setKinks] = useState({
         BDSM: 0,
@@ -19,9 +19,43 @@ export default function Kinks(){
         Scat: 0,
     });    
 
+    const returnSelected = (obj) => {
+        let selected = [];
+        for(let key in obj){
+            if(obj[key] === 1){
+                selected.push(key);
+            }
+        }
+        return selected;
+    }
+
+    const returnExcluded = (obj) => {
+        let excluded = [];
+        for(let key in obj){
+            if(obj[key] === 2){
+                excluded.push(key);
+            }
+        }
+        return excluded;
+    }
+
     const changeKink = (idx, value) => {
         setKinks((state) => ({...state, [idx]: value%3}));
     }
+
+    useEffect(() => setFilters((old) =>
+        ({
+            ...old,
+            selected: {
+                ...old.selected,
+                kinks: returnSelected(kinks)
+            },
+            excluded: {
+                ...old.excluded,
+                kinks: returnExcluded(kinks)
+            }
+        })
+    ), [kinks, setFilters]);
 
     const kinkList = [
         <TriCheckbox key="BDSM" change={changeKink} name="BDSM"/>,

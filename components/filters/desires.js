@@ -1,8 +1,8 @@
 import { ExpandMoreIcon, Accordion, AccordionSummary, AccordionDetails, Typography } from "@mui/material"
 import TriCheckbox from "../tricheckbox"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-export default function Desires(){
+export default function Desires({setFilters}){
 
     const [desires, setDesires] = useState({
         "Safe for work chat": 0,
@@ -20,6 +20,39 @@ export default function Desires(){
     const changeDesire = (idx, value) => {
         setDesires((state) => ({...state, [idx]: value%3}));
     }
+
+    const returnSelected = (obj) => {
+        let selected = [];
+        for(let key in obj){
+            if(obj[key] === 1){
+                selected.push(key);
+            }
+        }
+        return selected;
+    }
+
+    const returnExcluded = (obj) => {
+        let excluded = [];
+        for(let key in obj){
+            if(obj[key] === 2){
+                excluded.push(key);
+            }
+        }
+        return excluded;
+    }
+
+    useEffect(() => setFilters((old) => (
+        {   ...old,
+            selected: {
+                ...old.selected,
+                lf: returnSelected(desires)
+            },
+            excluded: {
+                ...old.excluded,
+                lf: returnExcluded(desires)
+            }
+        })
+    ), [desires, setFilters]);
 
     const desireList = [
         <TriCheckbox key="Safe for work chat" change={changeDesire} name="Safe for work chat"/>,

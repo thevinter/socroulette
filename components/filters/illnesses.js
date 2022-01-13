@@ -1,8 +1,8 @@
 import { ExpandMoreIcon, Accordion, AccordionSummary, AccordionDetails, Typography } from "@mui/material"
 import TriCheckbox from "../tricheckbox"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-export default function Illnesses(){
+export default function Illnesses({setFilters}){
 
     const [disorders, setDisorders] = useState({
         Schizofrenia: 0,
@@ -20,6 +20,40 @@ export default function Illnesses(){
     const changeDisorder = (idx, value) => {
         setDisorders((state) => ({...state, [idx]: value%3}));
     }
+
+    const returnSelected = (obj) => {
+        let selected = [];
+        for(let key in obj){
+            if(obj[key] === 1){
+                selected.push(key);
+            }
+        }
+        return selected;
+    }
+
+    const returnExcluded = (obj) => {
+        let excluded = [];
+        for(let key in obj){
+            if(obj[key] === 2){
+                excluded.push(key);
+            }
+        }
+        return excluded;
+    }
+
+    useEffect(() => setFilters((old) =>
+        ({
+            ...old,
+            selected: {
+                ...old.selected,
+                mental: returnSelected(disorders)
+            },
+            excluded: {
+                ...old.excluded,
+                mental: returnExcluded(disorders)
+            }
+        })
+    ), [disorders, setFilters]);
 
     const illnesses = [
         <TriCheckbox key="Schizofrenia" change={changeDisorder} name="Schizofrenia"/>,
