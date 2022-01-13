@@ -8,7 +8,7 @@ export async function GetUsers(query) {
 		let parsed = {};
 		for (const section of str.split(",")) {
 			const [name,list] = section.split("=");
-			parsed[name] = list.split("~");
+			parsed[name] = list.split("~").map(decodeURIComponent);
 		}
 		return parsed;
 	};
@@ -40,8 +40,15 @@ export async function GetUsers(query) {
 };
 
 export default async function handler(req, res){
-  console.log("Query: ", req.query);
-  const jsonData = await GetUsers(req.query);
+	const [_, ...q] = req.url.split("#")[0].split("?");
+	const query_string = q.join("?");
+	let query = {};
+	query_string.split("&").forEach(q => {
+		const [key, ...val] = q.split("=");
+		query[key] = val.join("=");
+	})
+  console.log("Query: ", query);
+  const jsonData = await GetUsers(query);
   res.status(200).json(jsonData)
 }
 

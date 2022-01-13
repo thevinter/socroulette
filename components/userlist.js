@@ -31,7 +31,7 @@ export default function UserList({filters}){
 function filter_query(filters) {
 	const serialize_list = ([key, value]) => {
 		if (value.length === 0) return null;
-		return `${key}=${value.join("~")}`;
+		return `${key}=${value.map(encodeURIComponent).join("~")}`;
 	};
 	const serialize_range = (key => `${key}=${filters[key][0]}~${filters[key][1]}`);
 	let query = {
@@ -39,6 +39,7 @@ function filter_query(filters) {
 		excluded: Object.entries(filters.excluded).map(serialize_list).filter(p => p !== null).join(","),
 		ranges: ["age", "height", "timezone"].map(serialize_range).filter(p => p !== null).join(","),
 	};
+	console.log(query);
 	return Object.entries(query).map(([k,v]) => `${k}=${v}`).join("&");
 
 }
