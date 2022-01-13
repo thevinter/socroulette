@@ -18,7 +18,7 @@ export default function Geography({setFilters}){
     const changeLocation = (idx, value) => {
         setLocation((state) => ({...state, [idx]: value%3}));
     }
-    
+
 
     function valueLabelFormat(value) {
         if(value > 0) value = "+" + value;
@@ -44,12 +44,12 @@ export default function Geography({setFilters}){
         }
         return excluded;
     }
-    const [time, setTime] = useState([-12, 14]);
+    const [timezone, setTimezone] = useState([-12, 14]);
 
     useEffect(() => setFilters((old) => (
         {
         ...old,
-        time:time,
+        timezone:timezone,
         selected: {
             ...old.selected,
             location: returnSelected(location),
@@ -59,7 +59,7 @@ export default function Geography({setFilters}){
             location: returnExcluded(location),
         }
     })
-    ), [location, time, setFilters]);
+    ), [location, timezone, setFilters]);
 
     return (
         <Accordion>
@@ -72,15 +72,15 @@ export default function Geography({setFilters}){
             <AccordionDetails>
                 <Card>
                 <CardContent>
-                    <p>Timezone</p>
+                    <p>Timezonezone</p>
                     <Slider
-                        getAriaLabel={() => 'Desired time'}
+                        getAriaLabel={() => 'Desired timezone'}
                         min={-12}
                         max={14}
                         step={1}
                         valueLabelFormat={valueLabelFormat}
-                        value={time}
-                        onChange={(e) => setTime(e.target.value)}
+                        value={timezone}
+                        onChange={(e) => setTimezone(e.target.value)}
                         valueLabelDisplay="auto"
                     />
 
@@ -99,3 +99,4 @@ export default function Geography({setFilters}){
             </Accordion>
     )
 }
+

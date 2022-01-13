@@ -6,7 +6,13 @@ import UserList from '../components/userlist';
 
 export default function Users(){
 
-    const [filters, setFilters] = useState({selected:[], excluded: []});
+    const [filters, setFilters] = useState({
+		selected:[],
+		excluded: [],
+		age: [],
+		height: [],
+		timezone: [],
+	});
     console.log(filters);
     return (
         <div>
@@ -15,3 +21,4 @@ export default function Users(){
         </div>
     );
 }
+
