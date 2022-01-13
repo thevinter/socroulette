@@ -16,7 +16,7 @@ export async function GetUsers([a,b], age, height, timezone) {
   tempExcluded.forEach((item) => {
     let t = item.split("-");
     excluded[t[0]] = { $nin : t.slice(1, t.length).map(name => name)};
-  });
+  });1
   console.log(age)
   const client = await clientPromise;
   const db = client.db('users')
@@ -27,9 +27,8 @@ export async function GetUsers([a,b], age, height, timezone) {
         approved, 
         excluded,
         {age: { $gte: parseInt(age[0],10), $lte: parseInt(age[1],10) }},
-        /* {height: { $gte: height[0], $lte: height[1] }},
+        {height: { $gte: height[0], $lte: height[1] }},
         {timezone: { $gte: timezone[0], $lte: timezone[1] }},
- */
       ]}
     )
     .limit(20)
