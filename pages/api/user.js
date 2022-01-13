@@ -7,11 +7,11 @@ export async function GetUsers(id) {
   const client = await clientPromise;
   const db = client.db('users')
   const users = await db
-    .collection("users")
-    .find(
-      {"_id": ObjectId(id)}
-    )
-    .toArray();
+  .collection("users")
+  .find(
+    {"_id": ObjectId(id)}
+  )
+  .toArray();
   return users;
 };
 

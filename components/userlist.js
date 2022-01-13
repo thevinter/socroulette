@@ -4,28 +4,28 @@ import SingleUser from "./single_user";
 
 
 export default function UserList({filters}){
-    useEffect(() => {
-        console.log(filters);
-        console.log(filter_query(filters));
-    }, [filters])
+  useEffect(() => {
+    console.log(filters);
+    console.log(filter_query(filters));
+  }, [filters])
 
 	const fetcher = (url) => fetch(url).then(res => res.json());
-    const { data, error } = useSWR(`/api/users?${filter_query(filters)}`, fetcher);
+  const { data, error } = useSWR(`/api/users?${filter_query(filters)}`, fetcher);
 
-    if (error) {
-        console.log(error);
-        return <div>failed to load</div>;
+  if (error) {
+    console.log(error);
+    return <div>failed to load</div>;
 
-    }
-    if (!data) return <div>loading...</div>;
+  }
+  if (!data) return <div>loading...</div>;
 
-    return (
-        <div>
-            {data.map(user => (
-                <SingleUser key={user._id} user={user} />
-            ))}
-        </div>
-    )
+  return (
+    <div>
+      {data.map(user => (
+        <SingleUser key={user._id} user={user} />
+      ))}
+    </div>
+  )
 }
 
 function filter_query(filters) {

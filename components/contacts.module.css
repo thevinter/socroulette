@@ -1,9 +1,9 @@
 .inputList {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
 .input {
-    margin: 4px;
+  margin: 4px;
 }

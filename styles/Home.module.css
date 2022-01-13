@@ -1,60 +1,60 @@
 .button {
-    background-color: #363657;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
-    width: 60%;
+  background-color: #363657;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  width: 60%;
 }
 
 .buttonWrapper {
-    width: 75%;
-    margin: 20px;
-    text-align: center;
+  width: 75%;
+  margin: 20px;
+  text-align: center;
 }
 
 .btn span{
-    position: relative;
-    z-index: 2;
+  position: relative;
+  z-index: 2;
 }
 
 .btn:after{
-    position: absolute;
-    content: "";
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 100%;
-    background: #F9DF74;
-    transition: all .35s;
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: #F9DF74;
+  transition: all .35s;
 }
 
 .btn:hover{
-    color: black;
+  color: black;
 }
 
 .btn:hover:after{
-    width: 100%;
+  width: 100%;
 }
 
 .btn{
-    
-    display: inline-block;
-    width: 70%;
-    height: 70px;
-    line-height: 70px;
-    font-size: 18px;
-    font-family: sans-serif;
-    text-decoration: none;
-    color: #333;
-    box-sizing: border-box;
-    border: 2px solid #333;
-    letter-spacing: 2px;
-    text-align: center;
-    position: relative;
-    transition: all .35s;
+  
+  display: inline-block;
+  width: 70%;
+  height: 70px;
+  line-height: 70px;
+  font-size: 18px;
+  font-family: sans-serif;
+  text-decoration: none;
+  color: #333;
+  box-sizing: border-box;
+  border: 2px solid #333;
+  letter-spacing: 2px;
+  text-align: center;
+  position: relative;
+  transition: all .35s;
 }

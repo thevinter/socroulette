@@ -32,10 +32,10 @@ export async function GetUsers(query) {
   const client = await clientPromise;
   const db = client.db('users')
   const users = await db
-    .collection("users")
-    .find(db_query)
-    .limit(20)
-    .toArray();
+  .collection("users")
+  .find(db_query)
+  .limit(20)
+  .toArray();
   return users;
 };
 
