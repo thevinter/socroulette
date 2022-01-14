@@ -19,8 +19,10 @@ fi
 
 repo_root=$(git rev-parse --show-toplevel)
 
+echo "running fixers..."
+
 # run autofixer on everything
-js_fixer=true
+js_fixer="npx -- prettier --write"
 git diff --cached --name-only --diff-filter=ACM | while read fname; do
 	case "$fname" in
 		*.js|*.jsx)
@@ -34,6 +36,8 @@ git diff --cached --name-only --diff-filter=ACM | while read fname; do
 		*);;
 	esac
 done
+
+echo "simple checks..."
 
 # prevent non-ASCII names
 if [ $(git diff --cached --name-only --diff-filter=ACR -z $against |
@@ -57,18 +61,10 @@ if ! git -c "core.whitespace=-blank-at-eof" diff-index --check --cached $against
 	die "Error: introducing diff markers or spurious whitespace."
 fi
 
+echo "running linters..."
 
 # run linter/format-checker/whatever
-js_linter
-git diff --cached --name-only --diff-filter=ACM | while read fname; do
-	case "$fname" in
-		*.c|*.h)
-				current="${repo_root}/${fname}"
-				if ! clang-format "$current" -n -Werror; then
-					die "Clang-format error; does your code compile?"
-				fi
-			;;
-		*) ;;
-	esac
-done
+if ! npx -- eslint --ext .js,.jsx --ignore-pattern 'node_modules' --ignore-pattern '.next' --cache --cache-location "${repo_root}/.eslintcache" "$repo_root" ; then
+	die "Error: the linter doesn't like what you just did"
+fi
 
