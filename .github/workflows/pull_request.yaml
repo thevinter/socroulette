@@ -1,0 +1,21 @@
+name: PullRequest
+
+on:
+  pull_request:
+    branches: [staging]
+
+jobs:
+  release:
+    name: PullRequest
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: NodeJS
+        uses: actions/setup-node@v1
+        with:
+          node-version: '16'
+      - name: Install packages
+        run: npm ci
+      - name: Build Frontend
+        run: npm run build
