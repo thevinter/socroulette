@@ -1,72 +1,74 @@
-import { RadioGroup, FormLabel, FormControlLabel, Radio, Accordion, AccordionSummary, AccordionDetails, Typography, Slider, Card, CardContent } from "@mui/material";
+import {
+  RadioGroup,
+  FormLabel,
+  FormControlLabel,
+  Radio,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  Typography,
+  Slider,
+  Card,
+  CardContent,
+} from "@mui/material";
 import { useState, useEffect } from "react";
 import TriCheckbox from "../tricheckbox";
 
-export default function General({setFilters}) {
-  const [age, setAge] = useState([18, 100])
+export default function General({ setFilters }) {
+  const [age, setAge] = useState([18, 100]);
 
-  const [sex, setSex] = useState(
-    {
-      Male: 0,
-      Female: 0,
-      Other: 0
-    }
-  )
+  const [sex, setSex] = useState({
+    Male: 0,
+    Female: 0,
+    Other: 0,
+  });
 
   const changeSex = (idx, value) => {
-    setSex((state) => ({...state, [idx]: value % 3}));
-  }
+    setSex((state) => ({ ...state, [idx]: value % 3 }));
+  };
 
-  const [gender, setGender] = useState(
-    {
-      Male: 0,
-      Female: 0,
-      Other: 0
-    }
-  )
+  const [gender, setGender] = useState({
+    Male: 0,
+    Female: 0,
+    Other: 0,
+  });
 
   const changeGender = (idx, value) => {
-    setGender((state) => ({...state, [idx]: value % 3}));
-  }
+    setGender((state) => ({ ...state, [idx]: value % 3 }));
+  };
 
-  const [orientation, setOrientation] = useState(
-    {
-      Polygamous: 0,
-      Monogamous: 0
-    }
-  )
-  
+  const [orientation, setOrientation] = useState({
+    Polygamous: 0,
+    Monogamous: 0,
+  });
+
   const changeOrientation = (idx, value) => {
-    setOrientation((state) => ({...state, [idx]: value % 3}));
-  }
+    setOrientation((state) => ({ ...state, [idx]: value % 3 }));
+  };
 
-  const [status, setStatus] = useState(
-    {
-      Single: 0,
-      Widowed: 0,
-      Divorced: 0,
-      Married: 0,
-      "Single Parent": 0,
-      Engaged: 0,
-    }
-  )
+  const [status, setStatus] = useState({
+    Single: 0,
+    Widowed: 0,
+    Divorced: 0,
+    Married: 0,
+    "Single Parent": 0,
+    Engaged: 0,
+  });
 
   const changeStatus = (idx, value) => {
-    setStatus((state) => ({...state, [idx]: value % 3}));
-  }
+    setStatus((state) => ({ ...state, [idx]: value % 3 }));
+  };
 
-  const [sexuality, setSexuality] = useState(
-    {
-      Heterosexual: 0,
-      Homosexual: 0,
-      Bisexual: 0,
-      Asexual: 0,
-      Other: 0,
-    }
-  )
+  const [sexuality, setSexuality] = useState({
+    Heterosexual: 0,
+    Homosexual: 0,
+    Bisexual: 0,
+    Asexual: 0,
+    Other: 0,
+  });
   const changeSexuality = (idx, value) => {
-    setSexuality((state) => ({...state, [idx]: value % 3}));
-  }
+    setSexuality((state) => ({ ...state, [idx]: value % 3 }));
+  };
 
   const returnSelected = (obj) => {
     let selected = [];
@@ -76,7 +78,7 @@ export default function General({setFilters}) {
       }
     }
     return selected;
-  }
+  };
 
   const returnExcluded = (obj) => {
     let excluded = [];
@@ -86,48 +88,49 @@ export default function General({setFilters}) {
       }
     }
     return excluded;
-  }
+  };
 
-  useEffect(() => setFilters((old) =>
-  ({
-    ...old,
-    age: age,
-    selected: {
-      ...old.selected,
-      sexuality: returnSelected(sexuality),
-      sex: returnSelected(sex),
-      gender: returnSelected(gender),
-      orientation: returnSelected(orientation),
-      status: returnSelected(status)
-    },
-    excluded: {
-      ...old.excluded,
-      sexuality: returnExcluded(sexuality),
-      sex: returnExcluded(sex),
-      gender: returnExcluded(gender),
-      orientation: returnExcluded(orientation),
-      status: returnExcluded(status)
-    }
-  })
-  ), [sexuality, age, sex, gender, orientation, status, setFilters]);
+  useEffect(
+    () =>
+      setFilters((old) => ({
+        ...old,
+        age: age,
+        selected: {
+          ...old.selected,
+          sexuality: returnSelected(sexuality),
+          sex: returnSelected(sex),
+          gender: returnSelected(gender),
+          orientation: returnSelected(orientation),
+          status: returnSelected(status),
+        },
+        excluded: {
+          ...old.excluded,
+          sexuality: returnExcluded(sexuality),
+          sex: returnExcluded(sex),
+          gender: returnExcluded(gender),
+          orientation: returnExcluded(orientation),
+          status: returnExcluded(status),
+        },
+      })),
+    [sexuality, age, sex, gender, orientation, status, setFilters]
+  );
 
   const [open, setOpen] = useState(false);
 
   const accordionColor = open ? "#FFCFA0" : "white";
 
   return (
-    <Accordion onChange={() => setOpen((s) => !s)} sx={{transition: "all .35s", backgroundColor: accordionColor}}>
-      <AccordionSummary
-        aria-controls="panel1a-content"
-        id="panel1a-header"
-      >
+    <Accordion
+      onChange={() => setOpen((s) => !s)}
+      sx={{ transition: "all .35s", backgroundColor: accordionColor }}
+    >
+      <AccordionSummary aria-controls="panel1a-content" id="panel1a-header">
         <Typography>General</Typography>
       </AccordionSummary>
       <AccordionDetails>
-
         <p>Age</p>
         <Slider
-          getAriaLabel={() => 'Desired range'}
+          getAriaLabel={() => "Desired range"}
           min={18}
           value={age}
           onChange={(e) => setAge(e.target.value)}
@@ -162,10 +165,7 @@ export default function General({setFilters}) {
         <TriCheckbox change={changeSexuality} name="Bisexual" />
         <TriCheckbox change={changeSexuality} name="Asexual" />
         <TriCheckbox change={changeSexuality} name="Other" />
-
       </AccordionDetails>
     </Accordion>
-
-  )
+  );
 }
-

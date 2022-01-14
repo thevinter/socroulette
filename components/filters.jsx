@@ -9,7 +9,7 @@ import Kinks from "./filters/kinks";
 import Illnesses from "./filters/illnesses";
 import Desires from "./filters/desires";
 
-export default function Filter({setFilters}) {
+export default function Filter({ setFilters }) {
   return (
     <div>
       <General setFilters={setFilters} />
@@ -20,6 +20,5 @@ export default function Filter({setFilters}) {
       <Kinks setFilters={setFilters} />
       <Desires setFilters={setFilters} />
     </div>
-  )
+  );
 }
-

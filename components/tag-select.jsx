@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
-import CreatableSelect from 'react-select/creatable';
+import CreatableSelect from "react-select/creatable";
 
-export default function TagSelect({setKinks}) {
+export default function TagSelect({ setKinks }) {
   const [value, setValue] = useState([]);
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState("");
 
   const createOption = (label) => ({
     label,
@@ -16,16 +16,16 @@ export default function TagSelect({setKinks}) {
   };
 
   useEffect(() => {
-    setKinks(value?.map((option) => option.value))
-  }, [value])
-    
+    setKinks(value?.map((option) => option.value));
+  }, [value]);
+
   const handleKeyDown = (event) => {
     if (!input) return;
     switch (event.key) {
-      case 'Enter':
-      case ',':
-        setValue(old => ([...old, createOption(input)]))
-        setInput('')
+      case "Enter":
+      case ",":
+        setValue((old) => [...old, createOption(input)]);
+        setInput("");
         event.preventDefault();
     }
   };
@@ -38,10 +38,15 @@ export default function TagSelect({setKinks}) {
       options={value}
       inputValue={input}
       menuIsOpen={false}
-      onChange={(v) => {console.log(v); setValue(v);}}
+      onChange={(v) => {
+        console.log(v);
+        setValue(v);
+      }}
       isMulti
-      onInputChange={(input) => {setInput(input)}}
+      onInputChange={(input) => {
+        setInput(input);
+      }}
       onKeyDown={handleKeyDown}
     />
-  )
+  );
 }
