@@ -1,4 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
+/* eslint-disable react-hooks/jsx-no-duplicate-props */
+
 import { FormControlLabel, Checkbox } from "@mui/material"
 import { green, red, grey} from "@mui/material/colors"
 import { useEffect, useState } from "react"
