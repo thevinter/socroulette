@@ -22,7 +22,7 @@ export default function Index(){
       <Link href='/users'><a className={styles.browse}><span>BROWSE USERS</span></a></Link>
       <h2 className={styles.about}>about socroulette.</h2>
       <p className={styles.aboutPar}>
-        Tired of searching through countless threads on 4chan's /soc/ board to try and find your account among the hundreds already there? 
+        Tired of searching through countless threads on 4chan /soc/ board to try and find your account among the hundreds already there? 
         Now with socroulette, you can just leave it all up to the crowd. Just upload your accounts, and then aggregate them, searching for the one perfect match. 
         The site is free, actively improved, and ad-free.
       </p>

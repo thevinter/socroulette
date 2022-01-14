@@ -39,7 +39,6 @@ export default function TagSelect({setKinks}){
       menuIsOpen={false}
       onChange={(v) => {console.log(v); setValue(v);}}
       isMulti
-      isClearable
       onInputChange={(input) => {setInput(input)}}
       onKeyDown={handleKeyDown}
     />

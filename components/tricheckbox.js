@@ -1,5 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-hooks/rules-of-hooks */
-/* eslint-disable react-hooks/jsx-no-duplicate-props */
 
 import { FormControlLabel, Checkbox } from "@mui/material"
 import { green, red, grey} from "@mui/material/colors"
@@ -12,9 +12,8 @@ export default function TriCheckbox({change, name}){
   }
 
   useEffect(() => {
-    console.log(checked)
     change(name, checked)
-  }, [checked, change, name])
+  }, [checked])
 
   return (
     <div>
