@@ -93,6 +93,8 @@ export default function Status({control}){
             <TextField
               placeholder="Optional bio..."
               multiline
+              onChange={onChange}
+              value={value}
               rows={4}
               maxRows={7}
             />

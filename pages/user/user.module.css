@@ -1,0 +1,17 @@
+.autoFit {
+    width: 30%;
+}
+
+.removeTop {
+    margin-top: 0px;
+}
+
+@media screen and (max-width: 800px) {
+    .autoFit {
+        width: 100%;
+    }
+
+    .removeTop {
+        margin-top: -60px;
+    }
+}

@@ -114,7 +114,7 @@ export default function Home() {
     online: data.Online,
     interests: data.Interests,
     games: data.Games,
-    flasgs: data.Flags,
+    flags: data.Flags,
     nowrite: data.No,
     bio: data.Bio
   }
