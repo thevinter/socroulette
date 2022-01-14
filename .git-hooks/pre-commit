@@ -1,0 +1,70 @@
+#!/bin/sh
+
+die() {
+	if [ $# -ge 1 ]; then
+		echo "$@" >&2
+	else
+		cat - >&2
+	fi
+	exit 1
+}
+
+if git rev-parse --verify HEAD >/dev/null 2>&1
+then
+	against=HEAD
+else
+	# Initial commit: diff against an empty tree object
+	against=$(git hash-object -t tree /dev/null)
+fi
+
+repo_root=$(git rev-parse --show-toplevel)
+
+echo "running fixers..."
+
+# run autofixer on everything
+js_fixer="npx -- prettier --write"
+git diff --cached --name-only --diff-filter=ACM | while read fname; do
+	case "$fname" in
+		*.js|*.jsx)
+				current="${repo_root}/${fname}"
+				if ! $js_fixer "$current"; then
+					die "Autofixer (${js_fixer}) error, somehow you broke it??"
+				else
+					git add "$current"
+				fi
+			;;
+		*);;
+	esac
+done
+
+echo "simple checks..."
+
+# prevent non-ASCII names
+if [ $(git diff --cached --name-only --diff-filter=ACR -z $against |
+       LC_ALL=C tr -d '[ -~]\0' |
+	   wc -c ) != 0 ]
+then
+	die <<EOF
+Error: Attempt to add a non-ASCII file name.
+
+This can cause problems if you want to work with people on other platforms.
+
+Or people with a different keyboard. Or people who don't hate themselves enough.
+
+Don't do it, c'mon.
+EOF
+fi
+
+# avoid random spaces and diff markers
+# (although the space should be taken care of by the next hook)
+if ! git -c "core.whitespace=-blank-at-eof" diff-index --check --cached $against -- ; then
+	die "Error: introducing diff markers or spurious whitespace."
+fi
+
+echo "running linters..."
+
+# run linter/format-checker/whatever
+if ! npx -- eslint --ext .js,.jsx --ignore-pattern 'node_modules' --ignore-pattern '.next' --cache --cache-location "${repo_root}/.eslintcache" "$repo_root" ; then
+	die "Error: the linter doesn't like what you just did"
+fi
+
