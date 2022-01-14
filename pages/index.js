@@ -14,7 +14,7 @@ export default function Index(){
             </div>
             <div style={{textAlign:"justify", width: "70%"}}>
                 <p className={styles.paragraph}>ACCOUNTS</p>
-                <p className={styles.paragraph}>CREATED</p>
+                <p className={styles.paragraph}>UPLOADED</p>
                 <p className={styles.accounts} style={{width:"100%", textAlign:"right"}}>{data}</p>
                 <span className={styles.decoration}></span>
             </div>

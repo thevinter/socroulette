@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styles from './single_user.module.css'
 
 export default function SingleUser({user}){
@@ -14,16 +15,18 @@ export default function SingleUser({user}){
     }
 
     return (
-        <div className={styles.userBox}>
-            <div className={styles.firstInfo}>
-                <p>Age: {user.age}</p>
-                <p>Sex: {user.sex}</p>
-                <p>Location: {user.location}</p>
+        <Link passHref href={`/user/${user._id}`}>
+            <div className={styles.userBox}>
+                <div className={styles.firstInfo}>
+                    <p>Age: {user.age}</p>
+                    <p>Sex: {user.sex}</p>
+                    <p>Location: {user.location}</p>
+                </div>
+                <div className={styles.secondInfo}>
+                    <p>Bio: N.A.</p>
+                    <p>Looking For: {determineSFW(user)}</p>
+                </div>
             </div>
-            <div className={styles.secondInfo}>
-                <p>Bio: N.A.</p>
-                <p>Looking For: {determineSFW(user)}</p>
-            </div>
-        </div>
+        </Link>
     );
 }

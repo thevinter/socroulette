@@ -9,6 +9,16 @@
     justify-content: space-evenly;
 }
 
+.userBox:hover {
+    background-color: #F9DF74;
+    color: black;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    border: 1px solid black;
+    justify-content: space-evenly;
+}
+
 .firstInfo {
     margin: 10px;
     flex-basis: 30%;
