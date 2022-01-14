@@ -4,7 +4,6 @@
 import { FormControlLabel, Checkbox } from "@mui/material"
 import { green, red, grey} from "@mui/material/colors"
 import { useEffect, useState } from "react"
-import { Controller } from "react-hook-form"
 
 export default function TriCheckbox({change, name}){
   const [checked, setChecked] = useState(0)
