@@ -66,9 +66,13 @@ export default function Desires({setFilters}){
         <TriCheckbox key="ERP" change={changeDesire} name="ERP"/>,
         <TriCheckbox key="Meeting IRL" change={changeDesire} name="Meeting IRL"/>,
     ]
+    const [open, setOpen] = useState(false);
+    
+    const accordionColor = open ? "#FFCFA0" : "white";
+
     return (
         <>
-            <Accordion>
+            <Accordion onChange={() => setOpen((s) => !s)} sx={{transition:"all .35s", backgroundColor: accordionColor}}>
             <AccordionSummary
             aria-controls="panel1a-content"
             id="panel1a-header"

@@ -66,10 +66,13 @@ export default function Illnesses({setFilters}){
         <TriCheckbox key="Borderline Personality Disorder" change={changeDisorder} name="Borderline Personality Disorder"/>,
         <TriCheckbox key="Addiction / Substance Abuse" change={changeDisorder} name="Addiction / Substance Abuse"/>
     ]
+    const [open, setOpen] = useState(false);
+
+    const accordionColor = open ? "#FFCFA0" : "white";
 
     return (
         <>
-            <Accordion>
+            <Accordion onChange={() => setOpen((s) => !s)} sx={{transition:"all .35s", backgroundColor: accordionColor}}>
             <AccordionSummary
             aria-controls="panel1a-content"
             id="panel1a-header"

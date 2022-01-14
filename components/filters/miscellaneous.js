@@ -84,6 +84,9 @@ export default function Miscellaneous({setFilters}){
         }
         return excluded;
     }
+    const [open, setOpen] = useState(false);
+    
+    const accordionColor = open ? "#FFCFA0" : "white";
 
     useEffect(() => setFilters((old) =>
             ({
@@ -107,7 +110,7 @@ export default function Miscellaneous({setFilters}){
         
 
     return (
-        <Accordion>
+        <Accordion onChange={() => setOpen((s) => !s)} sx={{transition:"all .35s", backgroundColor: accordionColor}}>
             <AccordionSummary
             aria-controls="panel1a-content"
             id="panel1a-header"
@@ -115,8 +118,7 @@ export default function Miscellaneous({setFilters}){
             <Typography>Miscellaneous</Typography>
             </AccordionSummary>
             <AccordionDetails>
-                <Card>
-                <CardContent>
+
                     <FormLabel component="legend">Employment status</FormLabel>
                     <TriCheckbox change={changeEmploy} name="Student"/>
                     <TriCheckbox change={changeEmploy} name="Part time worker"/>
@@ -150,8 +152,7 @@ export default function Miscellaneous({setFilters}){
                     <TriCheckbox change={changeOnline} name="Evening"/>
                     <TriCheckbox change={changeOnline} name="A couple of times a week"/>
                     <TriCheckbox change={changeOnline} name="Rarely"/>
-                </CardContent>
-                </Card>
+
             </AccordionDetails>
             </Accordion>
        

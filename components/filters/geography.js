@@ -61,8 +61,11 @@ export default function Geography({setFilters}){
     })
     ), [location, timezone, setFilters]);
 
+    const [open, setOpen] = useState(false);
+    const accordionColor = open ? "#FFCFA0" : "white";
+
     return (
-        <Accordion>
+        <Accordion onChange={() => setOpen((s) => !s)} sx={{transition:"all .35s", backgroundColor: accordionColor}}>
             <AccordionSummary
             aria-controls="panel1a-content"
             id="panel1a-header"
@@ -70,9 +73,7 @@ export default function Geography({setFilters}){
             <Typography>Geography</Typography>
             </AccordionSummary>
             <AccordionDetails>
-                <Card>
-                <CardContent>
-                    <p>Timezonezone</p>
+                    <p>Timezone</p>
                     <Slider
                         getAriaLabel={() => 'Desired timezone'}
                         min={-12}
@@ -93,8 +94,7 @@ export default function Geography({setFilters}){
                     <TriCheckbox change={changeLocation} name="North America"/>
                     <TriCheckbox change={changeLocation} name="South America"/>
                     <TriCheckbox change={changeLocation} name="Africa"/>
-                </CardContent>
-                </Card>
+
             </AccordionDetails>
             </Accordion>
     )

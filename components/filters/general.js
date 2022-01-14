@@ -109,17 +109,20 @@ export default function General({setFilters}){
         })
     ), [sexuality, age, sex, gender, orientation, status, setFilters]);
 
+    const [open, setOpen] = useState(false);
+
+    const accordionColor = open ? "#FFCFA0" : "white";
+
     return (
-        <Accordion>
+        <Accordion onChange={() => setOpen((s) => !s)} sx={{transition:"all .35s",  backgroundColor: accordionColor}}>
             <AccordionSummary
-            aria-controls="panel1a-content"
-            id="panel1a-header"
-            >
-            <Typography>General</Typography>
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+                >
+                <Typography>General</Typography>
             </AccordionSummary>
             <AccordionDetails>
-                <Card>
-                <CardContent>
+  
                     <p>Age</p>
                     <Slider
                         getAriaLabel={() => 'Desired range'}
@@ -157,8 +160,7 @@ export default function General({setFilters}){
                     <TriCheckbox change={changeSexuality} name="Bisexual"/>
                     <TriCheckbox change={changeSexuality} name="Asexual"/>
                     <TriCheckbox change={changeSexuality} name="Other"/>
-                </CardContent>
-                </Card>
+
             </AccordionDetails>
             </Accordion>
        

@@ -126,35 +126,37 @@ export default function Home() {
   }
 
   return (
-    <div>
-    <form onSubmit={handleSubmit(onSubmit)}>
-        <fieldset style={{margin:"3rem"}}>
+    <div >
+ 
+    <form style={{display:"flex", flexDirection:"column", alignItems:"center"}} onSubmit={handleSubmit(onSubmit)}>
+    <div style={{marginTop:"40px", width:"70%"}}><h1 style={{alignSelf:"flex-start"}}>Enter your data here:</h1></div>
+        <fieldset style={{marginTop:"3rem", width:"70%"}}>
           <legend>Contacts:</legend>
           <Contacts control={control} />
         </fieldset>
-        <fieldset style={{margin:"3rem"}}>
+        <fieldset style={{marginTop:"3rem", width:"70%"}}>
           <legend>Sexuality:</legend>
           <Sex control={control} />
           <Sexuality control={control} />
         </fieldset>
-        <fieldset style={{margin:"3rem"}}>
+        <fieldset style={{marginTop:"3rem", width:"70%"}}>
           <legend>Physical info:</legend>
           <Generalities control={control} />
         </fieldset>
-        <fieldset style={{margin:"3rem"}}>
+        <fieldset style={{marginTop:"3rem", width:"70%"}}>
           <legend>Social info:</legend>
           <Status control={control} />
         </fieldset>
-        <fieldset style={{margin:"3rem"}}>
+        <fieldset style={{marginTop:"3rem", width:"70%"}}>
           <legend>Location info:</legend>
           <Geography control={control} />
         </fieldset>
-        <fieldset style={{margin:"3rem"}}>
+        <fieldset style={{marginTop:"3rem", width:"70%"}}>
           <legend>Miscellaneous:</legend>
           <Checkboxes setKinks={setKinks} control={control} />
         </fieldset>
         <div className={styles.buttonWrapper}>
-          <input className={styles.button} type="submit" />
+          <button className={styles.btn} type="submit"><span>SUBMIT</span></button>
         </div>
         </form>
     </div>

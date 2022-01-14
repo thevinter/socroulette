@@ -106,9 +106,12 @@ export default function Physical({setFilters}){
             }
         })
     ), [skin, height, hair, body, getRace, setFilters]);
+    
+    const [open, setOpen] = useState(false);
+    const accordionColor = open ? "#FFCFA0" : "white";
 
     return (
-        <Accordion>
+        <Accordion  onChange={() => setOpen((s) => !s)} sx={{transition:"all .35s", backgroundColor: accordionColor}}>
             <AccordionSummary
             aria-controls="panel1a-content"
             id="panel1a-header"
@@ -116,8 +119,7 @@ export default function Physical({setFilters}){
             <Typography>Physical</Typography>
             </AccordionSummary>
             <AccordionDetails>
-                <Card>
-                <CardContent>
+
                     <p>Height (cm)</p>
                     <Slider
                         getAriaLabel={() => 'Desired height'}
@@ -128,7 +130,7 @@ export default function Physical({setFilters}){
                         valueLabelDisplay="auto"
                     />
 
-                    <FormLabel component="legend">Ethnicity</FormLabel>
+                    <FormLabel sx={{marginTop:"10px"}} component="legend">Ethnicity</FormLabel>
                     <TriCheckbox change={changeRace} name="White"/>
                     <TriCheckbox change={changeRace} name="Hispanic"/>
                     <TriCheckbox change={changeRace} name="West Asian"/>
@@ -137,7 +139,7 @@ export default function Physical({setFilters}){
                     <TriCheckbox change={changeRace} name="Black or African American"/>
                     <TriCheckbox change={changeRace} name="American Indian or Alaska Native"/>
 
-                    <FormLabel component="legend">Body Type</FormLabel>
+                    <FormLabel  sx={{marginTop:"30px"}}  component="legend">Body Type</FormLabel>
                     <TriCheckbox change={changeBody} name="Skinny/underweight"/>
                     <TriCheckbox change={changeBody} name="Average"/>
                     <TriCheckbox change={changeBody} name="Hourglass"/>
@@ -147,7 +149,7 @@ export default function Physical({setFilters}){
                     <TriCheckbox change={changeBody} name="Fat"/>
                     <TriCheckbox change={changeBody} name="Obese"/>
 
-                    <FormLabel component="legend">Hair Color</FormLabel>
+                    <FormLabel sx={{marginTop:"30px"}}  component="legend">Hair Color</FormLabel>
                     <TriCheckbox change={changeHair} name="Blonde"/>
                     <TriCheckbox change={changeHair} name="Brown"/>
                     <TriCheckbox change={changeHair} name="Black"/>
@@ -156,7 +158,7 @@ export default function Physical({setFilters}){
                     <TriCheckbox change={changeHair} name="Shaved"/>
                     <TriCheckbox change={changeHair} name="Other"/>
 
-                    <FormLabel component="legend">Skin Color</FormLabel>
+                    <FormLabel sx={{marginTop:"30px"}} component="legend">Skin Color</FormLabel>
                     <TriCheckbox change={changeSkin} name="Light, Pale White"/>
                     <TriCheckbox change={changeSkin} name="White"/>
                     <TriCheckbox change={changeSkin} name="Medium, White to Olive"/>
@@ -164,8 +166,6 @@ export default function Physical({setFilters}){
                     <TriCheckbox change={changeSkin} name="Brown, Dark Brown"/>
                     <TriCheckbox change={changeSkin} name="Black, Very Dark"/>
 
-                </CardContent>
-                </Card>
             </AccordionDetails>
             </Accordion>
        

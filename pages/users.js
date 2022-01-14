@@ -15,9 +15,9 @@ export default function Users(){
 	});
     console.log(filters);
     return (
-        <div>
-            <Filters setFilters={setFilters}/>
-            <UserList filters={filters}/>
+        <div style={{display:"flex"}}>
+            <div style={{flex:"1", overflowY: "scroll", height: "100vh", maxHeight:"100vh"}} ><Filters setFilters={setFilters}/></div>
+            <div style={{flex:"3"}}><UserList  filters={filters}/></div>
         </div>
     );
 }
