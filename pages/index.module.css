@@ -1,6 +1,6 @@
 .title {
   font-size: 84px;
-  color: #4D243D;
+  color: #4d243d;
   text-align: center;
   width: 100% !important;
   display: flex;
@@ -24,18 +24,17 @@
   flex-direction: column;
   justify-self: flex-start;
 }
-.paragraph{
-  margin:0;
-  padding:0;
+.paragraph {
+  margin: 0;
+  padding: 0;
   font-size: 90px;
 }
 
-.accounts{
-  margin:0;
-  padding:0;
+.accounts {
+  margin: 0;
+  padding: 0;
   font-size: 100px;
 }
-
 
 .mainTitle {
   margin-top: -11px;
@@ -50,44 +49,42 @@
 }
 
 .decoration {
-  background-color: #F9DF74;
-  width:100%;
-  height:1em;
-  display:inline-block;
+  background-color: #f9df74;
+  width: 100%;
+  height: 1em;
+  display: inline-block;
 }
 
-
-
-.buttonWrapper{
+.buttonWrapper {
   width: 100%;
   text-align: center;
 }
 
-.browse span{
+.browse span {
   position: relative;
   z-index: 2;
 }
 
-.browse:after{
+.browse:after {
   position: absolute;
   content: "";
   top: 0;
   left: 0;
   width: 0;
   height: 100%;
-  background: #F9DF74;
-  transition: all .35s;
+  background: #f9df74;
+  transition: all 0.35s;
 }
 
-.browse:hover{
+.browse:hover {
   color: black;
 }
 
-.browse:hover:after{
+.browse:hover:after {
   width: 100%;
 }
 
-.upload{
+.upload {
   display: inline-block;
   width: 70%;
   height: 70px;
@@ -104,7 +101,7 @@
   letter-spacing: 2px;
   text-align: center;
   position: relative;
-  transition: all .35s;
+  transition: all 0.35s;
 }
 
 .browse {
@@ -122,31 +119,31 @@
   letter-spacing: 2px;
   text-align: center;
   position: relative;
-  transition: all .35s;
+  transition: all 0.35s;
   margin-bottom: 5vh;
 }
 
-.upload span{
+.upload span {
   position: relative;
   z-index: 2;
 }
 
-.upload:after{
+.upload:after {
   position: absolute;
   content: "";
   top: 0;
   left: 0;
   width: 0;
   height: 100%;
-  background: #F9DF74;
-  transition: all .35s;
+  background: #f9df74;
+  transition: all 0.35s;
 }
 
-.upload:hover{
+.upload:hover {
   color: black;
 }
 
-.upload:hover:after{
+.upload:hover:after {
   width: 100%;
 }
 
@@ -154,9 +151,9 @@
   background-color: rgb(75, 48, 197);
   flex: 1;
   color: rgb(255, 255, 255);
-  height:1em;
+  height: 1em;
   position: relative;
-  display:inline-block;
+  display: inline-block;
   flex-direction: row;
 }
 
@@ -164,54 +161,51 @@
   background-color: rgb(247, 170, 183);
   color: rgb(68, 14, 30);
   flex: 1;
-  
-  height:1em;
-  position: relative;
-  display:inline-block;
-  flex-direction: row;
 
+  height: 1em;
+  position: relative;
+  display: inline-block;
+  flex-direction: row;
 }
-.textRight{
+.textRight {
   right: 0;
   color: wheat;
 }
 
-.text{
+.text {
   color: rgb(34, 34, 34);
   font-stretch: expanded;
 }
 
 .chart {
-  
-  width:70%;
+  width: 70%;
   display: flex;
-  flex-direction:row;
-  overflow:visible;
+  flex-direction: row;
+  overflow: visible;
 }
 
 .num {
   display: flex;
   width: 70%;
   flex-basis: 100%;
-  position:absolute;
+  position: absolute;
   justify-content: space-between;
   z-index: 1000;
 }
 
-.subtextMen{
+.subtextMen {
   float: left;
-  color:brown;
-  margin:0;
-  padding:0;
+  color: brown;
+  margin: 0;
+  padding: 0;
   font-size: 7vw;
 }
 
-
-.subtextWomen{
+.subtextWomen {
   margin-right: -6px;
   color: blueviolet;
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
   font-size: 7vw;
 }
 
@@ -230,13 +224,12 @@
   margin-bottom: 3px;
 }
 
-.aboutPar{
+.aboutPar {
   font-size: 40px;
   width: 70%;
   color: rgb(34, 34, 34);
   text-align: justify;
   text-justify: inter-word;
-
 }
 
 @media screen and (max-width: 1000px) {
@@ -247,10 +240,10 @@
 }
 
 @media screen and (max-width: 800px) {
-  .paragraph{
+  .paragraph {
     font-size: 7vw;
   }
-  .accounts{
+  .accounts {
     font-size: 10vw;
   }
   .sub {
@@ -258,24 +251,23 @@
 
     font-size: 24px;
   }
-  .mainTitle{
+  .mainTitle {
     margin-top: 11px;
   }
-  .upload{
+  .upload {
     font-size: 15px;
 
     height: 50px;
     line-height: 50px;
   }
-  .browse{
+  .browse {
     height: 50px;
     line-height: 50px;
   }
-  .about{
+  .about {
     font-size: 30px;
   }
-  .aboutPar{
+  .aboutPar {
     font-size: 18px;
   }
 }
-

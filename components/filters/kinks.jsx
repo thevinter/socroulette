@@ -1,9 +1,14 @@
-import { ExpandMoreIcon, Accordion, AccordionSummary, AccordionDetails, Typography } from "@mui/material"
-import TriCheckbox from "../tricheckbox"
+import {
+  ExpandMoreIcon,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  Typography,
+} from "@mui/material";
+import TriCheckbox from "../tricheckbox";
 import { useState, useEffect } from "react";
 
-export default function Kinks({setFilters}) {
-
+export default function Kinks({ setFilters }) {
   const [kinks, setKinks] = useState({
     BDSM: 0,
     Ropeplay: 0,
@@ -27,7 +32,7 @@ export default function Kinks({setFilters}) {
       }
     }
     return selected;
-  }
+  };
 
   const returnExcluded = (obj) => {
     let excluded = [];
@@ -37,25 +42,27 @@ export default function Kinks({setFilters}) {
       }
     }
     return excluded;
-  }
+  };
 
   const changeKink = (idx, value) => {
-    setKinks((state) => ({...state, [idx]: value % 3}));
-  }
+    setKinks((state) => ({ ...state, [idx]: value % 3 }));
+  };
 
-  useEffect(() => setFilters((old) =>
-  ({
-    ...old,
-    selected: {
-      ...old.selected,
-      kinks: returnSelected(kinks)
-    },
-    excluded: {
-      ...old.excluded,
-      kinks: returnExcluded(kinks)
-    }
-  })
-  ), [kinks, setFilters]);
+  useEffect(
+    () =>
+      setFilters((old) => ({
+        ...old,
+        selected: {
+          ...old.selected,
+          kinks: returnSelected(kinks),
+        },
+        excluded: {
+          ...old.excluded,
+          kinks: returnExcluded(kinks),
+        },
+      })),
+    [kinks, setFilters]
+  );
   const [open, setOpen] = useState(false);
 
   const accordionColor = open ? "#FFCFA0" : "white";
@@ -65,7 +72,11 @@ export default function Kinks({setFilters}) {
     <TriCheckbox key="Ropeplay" change={changeKink} name="Ropeplay" />,
     <TriCheckbox key="Bestiality" change={changeKink} name="Bestiality" />,
     <TriCheckbox key="Voyeurism" change={changeKink} name="Voyeurism" />,
-    <TriCheckbox key="Exhibitionism" change={changeKink} name="Exhibitionism" />,
+    <TriCheckbox
+      key="Exhibitionism"
+      change={changeKink}
+      name="Exhibitionism"
+    />,
     <TriCheckbox key="Roleplay" change={changeKink} name="Roleplay" />,
     <TriCheckbox key="Watersports" change={changeKink} name="Watersports" />,
     <TriCheckbox key="Humiliation" change={changeKink} name="Humiliation" />,
@@ -73,14 +84,14 @@ export default function Kinks({setFilters}) {
     <TriCheckbox key="Femdom" change={changeKink} name="Femdom" />,
     <TriCheckbox key="CNC" change={changeKink} name="CNC" />,
     <TriCheckbox key="Scat" change={changeKink} name="Scat" />,
-  ]
+  ];
   return (
     <>
-      <Accordion onChange={() => setOpen((s) => !s)} sx={{transition: "all .35s", backgroundColor: accordionColor}}>
-        <AccordionSummary
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
+      <Accordion
+        onChange={() => setOpen((s) => !s)}
+        sx={{ transition: "all .35s", backgroundColor: accordionColor }}
+      >
+        <AccordionSummary aria-controls="panel1a-content" id="panel1a-header">
           <Typography>Kinks</Typography>
         </AccordionSummary>
         <AccordionDetails>
@@ -88,6 +99,5 @@ export default function Kinks({setFilters}) {
         </AccordionDetails>
       </Accordion>
     </>
-  )
+  );
 }
-
