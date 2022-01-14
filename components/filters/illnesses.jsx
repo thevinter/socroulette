@@ -2,7 +2,7 @@ import { ExpandMoreIcon, Accordion, AccordionSummary, AccordionDetails, Typograp
 import TriCheckbox from "../tricheckbox"
 import { useState, useEffect } from "react";
 
-export default function Illnesses({setFilters}){
+export default function Illnesses({setFilters}) {
 
   const [disorders, setDisorders] = useState({
     Schizofrenia: 0,
@@ -18,13 +18,13 @@ export default function Illnesses({setFilters}){
   });
 
   const changeDisorder = (idx, value) => {
-    setDisorders((state) => ({...state, [idx]: value%3}));
+    setDisorders((state) => ({...state, [idx]: value % 3}));
   }
 
   const returnSelected = (obj) => {
     let selected = [];
-    for(let key in obj){
-      if(obj[key] === 1){
+    for (let key in obj) {
+      if (obj[key] === 1) {
         selected.push(key);
       }
     }
@@ -33,8 +33,8 @@ export default function Illnesses({setFilters}){
 
   const returnExcluded = (obj) => {
     let excluded = [];
-    for(let key in obj){
-      if(obj[key] === 2){
+    for (let key in obj) {
+      if (obj[key] === 2) {
         excluded.push(key);
       }
     }
@@ -42,29 +42,29 @@ export default function Illnesses({setFilters}){
   }
 
   useEffect(() => setFilters((old) =>
-    ({
-      ...old,
-      selected: {
-        ...old.selected,
-        mental: returnSelected(disorders)
-      },
-      excluded: {
-        ...old.excluded,
-        mental: returnExcluded(disorders)
-      }
-    })
+  ({
+    ...old,
+    selected: {
+      ...old.selected,
+      mental: returnSelected(disorders)
+    },
+    excluded: {
+      ...old.excluded,
+      mental: returnExcluded(disorders)
+    }
+  })
   ), [disorders, setFilters]);
 
   const illnesses = [
-    <TriCheckbox key="Schizofrenia" change={changeDisorder} name="Schizofrenia"/>,
-    <TriCheckbox key="Bipolar Disorder" change={changeDisorder} name="Bipolar DisorderBPD"/>,
-    <TriCheckbox key="Depression" change={changeDisorder} name="Depression"/>,
-    <TriCheckbox key="ADHD" change={changeDisorder} name="ADHD"/>,
-    <TriCheckbox key="PTSD" change={changeDisorder} name="PTSD"/>,
-    <TriCheckbox key="Eating" change={changeDisorder} name="Eating Disorders"/>,
-    <TriCheckbox key="Insomnia" change={changeDisorder} name="Insomnia"/>,
-    <TriCheckbox key="Borderline Personality Disorder" change={changeDisorder} name="Borderline Personality Disorder"/>,
-    <TriCheckbox key="Addiction / Substance Abuse" change={changeDisorder} name="Addiction / Substance Abuse"/>
+    <TriCheckbox key="Schizofrenia" change={changeDisorder} name="Schizofrenia" />,
+    <TriCheckbox key="Bipolar Disorder" change={changeDisorder} name="Bipolar DisorderBPD" />,
+    <TriCheckbox key="Depression" change={changeDisorder} name="Depression" />,
+    <TriCheckbox key="ADHD" change={changeDisorder} name="ADHD" />,
+    <TriCheckbox key="PTSD" change={changeDisorder} name="PTSD" />,
+    <TriCheckbox key="Eating" change={changeDisorder} name="Eating Disorders" />,
+    <TriCheckbox key="Insomnia" change={changeDisorder} name="Insomnia" />,
+    <TriCheckbox key="Borderline Personality Disorder" change={changeDisorder} name="Borderline Personality Disorder" />,
+    <TriCheckbox key="Addiction / Substance Abuse" change={changeDisorder} name="Addiction / Substance Abuse" />
   ]
   const [open, setOpen] = useState(false);
 
@@ -72,17 +72,18 @@ export default function Illnesses({setFilters}){
 
   return (
     <>
-      <Accordion onChange={() => setOpen((s) => !s)} sx={{transition:"all .35s", backgroundColor: accordionColor}}>
-      <AccordionSummary
-      aria-controls="panel1a-content"
-      id="panel1a-header"
-      >
-      <Typography>Illnesses</Typography>
-      </AccordionSummary>
-      <AccordionDetails>
-        <div>{illnesses}</div>
-      </AccordionDetails>
+      <Accordion onChange={() => setOpen((s) => !s)} sx={{transition: "all .35s", backgroundColor: accordionColor}}>
+        <AccordionSummary
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <Typography>Illnesses</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <div>{illnesses}</div>
+        </AccordionDetails>
       </Accordion>
     </>
   )
 }
+

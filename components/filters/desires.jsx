@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 
 export default function Desires({setFilters}){
 
+
   const [desires, setDesires] = useState({
     "Safe for work chat": 0,
     "Gaming": 0,
@@ -15,16 +16,16 @@ export default function Desires({setFilters}){
     "NSFW Video Chat": 0,
     "ERP": 0,
     "Meeting IRL": 0,
-  });  
+  });
 
   const changeDesire = (idx, value) => {
-    setDesires((state) => ({...state, [idx]: value%3}));
+    setDesires((state) => ({...state, [idx]: value % 3}));
   }
 
   const returnSelected = (obj) => {
     let selected = [];
-    for(let key in obj){
-      if(obj[key] === 1){
+    for (let key in obj) {
+      if (obj[key] === 1) {
         selected.push(key);
       }
     }
@@ -33,8 +34,8 @@ export default function Desires({setFilters}){
 
   const returnExcluded = (obj) => {
     let excluded = [];
-    for(let key in obj){
-      if(obj[key] === 2){
+    for (let key in obj) {
+      if (obj[key] === 2) {
         excluded.push(key);
       }
     }
@@ -42,7 +43,8 @@ export default function Desires({setFilters}){
   }
 
   useEffect(() => setFilters((old) => (
-    {   ...old,
+    {
+      ...old,
       selected: {
         ...old.selected,
         lf: returnSelected(desires)
@@ -55,34 +57,35 @@ export default function Desires({setFilters}){
   ), [desires, setFilters]);
 
   const desireList = [
-    <TriCheckbox key="Safe for work chat" change={changeDesire} name="Safe for work chat"/>,
-    <TriCheckbox key="Gaming" change={changeDesire} name="Gaming"/>,
-    <TriCheckbox key="Voice Chat" change={changeDesire} name="Voice Chat"/>,
-    <TriCheckbox key="SFW Video Chat" change={changeDesire} name="SFW Video Chat"/>,
-    <TriCheckbox key="Pic exchange" change={changeDesire} name="Pic exchange"/>,
-    <TriCheckbox key="Sexting" change={changeDesire} name="Sexting"/>,
-    <TriCheckbox key="Pen pals" change={changeDesire} name="Pen pals"/>,
-    <TriCheckbox key="NSFW Video Chat" change={changeDesire} name="NSFW Video Chat"/>,
-    <TriCheckbox key="ERP" change={changeDesire} name="ERP"/>,
-    <TriCheckbox key="Meeting IRL" change={changeDesire} name="Meeting IRL"/>,
+    <TriCheckbox key="Safe for work chat" change={changeDesire} name="Safe for work chat" />,
+    <TriCheckbox key="Gaming" change={changeDesire} name="Gaming" />,
+    <TriCheckbox key="Voice Chat" change={changeDesire} name="Voice Chat" />,
+    <TriCheckbox key="SFW Video Chat" change={changeDesire} name="SFW Video Chat" />,
+    <TriCheckbox key="Pic exchange" change={changeDesire} name="Pic exchange" />,
+    <TriCheckbox key="Sexting" change={changeDesire} name="Sexting" />,
+    <TriCheckbox key="Pen pals" change={changeDesire} name="Pen pals" />,
+    <TriCheckbox key="NSFW Video Chat" change={changeDesire} name="NSFW Video Chat" />,
+    <TriCheckbox key="ERP" change={changeDesire} name="ERP" />,
+    <TriCheckbox key="Meeting IRL" change={changeDesire} name="Meeting IRL" />,
   ]
   const [open, setOpen] = useState(false);
-  
+
   const accordionColor = open ? "#FFCFA0" : "white";
 
   return (
     <>
-      <Accordion onChange={() => setOpen((s) => !s)} sx={{transition:"all .35s", backgroundColor: accordionColor}}>
-      <AccordionSummary
-      aria-controls="panel1a-content"
-      id="panel1a-header"
-      >
-      <Typography>What are you looking for?</Typography>
-      </AccordionSummary>
-      <AccordionDetails>
-        <div>{desireList}</div>
-      </AccordionDetails>
+      <Accordion onChange={() => setOpen((s) => !s)} sx={{transition: "all .35s", backgroundColor: accordionColor}}>
+        <AccordionSummary
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <Typography>What are you looking for?</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <div>{desireList}</div>
+        </AccordionDetails>
       </Accordion>
     </>
   )
 }
+

@@ -1,7 +1,8 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import CreatableSelect from 'react-select/creatable';
 
-export default function TagSelect({setKinks}){
+export default function TagSelect({setKinks}) {
   const [value, setValue] = useState([]);
   const [input, setInput] = useState('');
 
@@ -23,9 +24,9 @@ export default function TagSelect({setKinks}){
     switch (event.key) {
       case 'Enter':
       case ',':
-      setValue(old => ([...old, createOption(input)]))
-      setInput('')
-      event.preventDefault();
+        setValue(old => ([...old, createOption(input)]))
+        setInput('')
+        event.preventDefault();
     }
   };
 

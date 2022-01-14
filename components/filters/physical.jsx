@@ -2,9 +2,9 @@ import { RadioGroup, FormLabel, FormControlLabel, Radio, Accordion, AccordionSum
 import { useState, useEffect } from "react";
 import TriCheckbox from "../tricheckbox";
 
-export default function Physical({setFilters}){
-  const [height, setHeight] = useState([100,250])
+export default function Physical({setFilters}) {
 
+  const [height, setHeight] = useState([100, 250])
   const [getRace, setRace] = useState(
     {
       White: 0,
@@ -17,9 +17,9 @@ export default function Physical({setFilters}){
     }
   )
   const changeRace = (idx, value) => {
-    setRace((state) => ({...state, [idx]: value%3}));
+    setRace((state) => ({...state, [idx]: value % 3}));
   }
-  
+
   const [hair, setHair] = useState(
     {
       Blonde: 0,
@@ -32,9 +32,9 @@ export default function Physical({setFilters}){
     }
   )
   const changeHair = (idx, value) => {
-    setHair((state) => ({...state, [idx]: value%3}));
+    setHair((state) => ({...state, [idx]: value % 3}));
   }
-  
+
   const [body, setBody] = useState(
     {
       "Skinny/underweight": 0,
@@ -48,9 +48,9 @@ export default function Physical({setFilters}){
     }
   )
   const changeBody = (idx, value) => {
-    setBody((state) => ({...state, [idx]: value%3}));
+    setBody((state) => ({...state, [idx]: value % 3}));
   }
-  
+
   const [skin, setSkin] = useState(
     {
       "Light, Pale White": 0,
@@ -62,14 +62,14 @@ export default function Physical({setFilters}){
     }
   )
   const changeSkin = (idx, value) => {
-    setSkin((state) => ({...state, [idx]: value%3}));
+    setSkin((state) => ({...state, [idx]: value % 3}));
   }
-  
+
   const returnSelected = (obj) => {
     console.log(obj)
     let selected = [];
-    for(let key in obj){
-      if(obj[key] === 1){
+    for (let key in obj) {
+      if (obj[key] === 1) {
         selected.push(key);
       }
     }
@@ -78,8 +78,8 @@ export default function Physical({setFilters}){
 
   const returnExcluded = (obj) => {
     let excluded = [];
-    for(let key in obj){
-      if(obj[key] === 2){
+    for (let key in obj) {
+      if (obj[key] === 2) {
         excluded.push(key);
       }
     }
@@ -87,87 +87,88 @@ export default function Physical({setFilters}){
   }
 
   useEffect(() => setFilters((old) =>
-    ({
-      ...old,
-      height: height,
-      selected: {
-        ...old.selected,
-        skin: returnSelected(skin),
-        btype: returnSelected(body),
-        hair: returnSelected(hair),
-        ethnicity: returnSelected(getRace)
-      },
-      excluded: {
-        ...old.excluded,
-        skin: returnExcluded(skin),
-        hair: returnExcluded(hair),
-        btype: returnExcluded(body),
-        ethnicity: returnExcluded(getRace)
-      }
-    })
+  ({
+    ...old,
+    height: height,
+    selected: {
+      ...old.selected,
+      skin: returnSelected(skin),
+      btype: returnSelected(body),
+      hair: returnSelected(hair),
+      ethnicity: returnSelected(getRace)
+    },
+    excluded: {
+      ...old.excluded,
+      skin: returnExcluded(skin),
+      hair: returnExcluded(hair),
+      btype: returnExcluded(body),
+      ethnicity: returnExcluded(getRace)
+    }
+  })
   ), [skin, height, hair, body, getRace, setFilters]);
-  
+
   const [open, setOpen] = useState(false);
   const accordionColor = open ? "#FFCFA0" : "white";
 
   return (
-    <Accordion  onChange={() => setOpen((s) => !s)} sx={{transition:"all .35s", backgroundColor: accordionColor}}>
+    <Accordion onChange={() => setOpen((s) => !s)} sx={{transition: "all .35s", backgroundColor: accordionColor}}>
       <AccordionSummary
-      aria-controls="panel1a-content"
-      id="panel1a-header"
+        aria-controls="panel1a-content"
+        id="panel1a-header"
       >
-      <Typography>Physical</Typography>
+        <Typography>Physical</Typography>
       </AccordionSummary>
       <AccordionDetails>
 
-          <p>Height (cm)</p>
-          <Slider
-            getAriaLabel={() => 'Desired height'}
-            min={100}
-            max={250}
-            value={height}
-            onChange={(e) => setHeight(e.target.value)}
-            valueLabelDisplay="auto"
-          />
+        <p>Height (cm)</p>
+        <Slider
+          getAriaLabel={() => 'Desired height'}
+          min={100}
+          max={250}
+          value={height}
+          onChange={(e) => setHeight(e.target.value)}
+          valueLabelDisplay="auto"
+        />
 
-          <FormLabel sx={{marginTop:"10px"}} component="legend">Ethnicity</FormLabel>
-          <TriCheckbox change={changeRace} name="White"/>
-          <TriCheckbox change={changeRace} name="Hispanic"/>
-          <TriCheckbox change={changeRace} name="West Asian"/>
-          <TriCheckbox change={changeRace} name="East Asian"/>
-          <TriCheckbox change={changeRace} name="Native Hawaiian or Other Pacific Islander"/>
-          <TriCheckbox change={changeRace} name="Black or African American"/>
-          <TriCheckbox change={changeRace} name="American Indian or Alaska Native"/>
+        <FormLabel sx={{marginTop: "10px"}} component="legend">Ethnicity</FormLabel>
+        <TriCheckbox change={changeRace} name="White" />
+        <TriCheckbox change={changeRace} name="Hispanic" />
+        <TriCheckbox change={changeRace} name="West Asian" />
+        <TriCheckbox change={changeRace} name="East Asian" />
+        <TriCheckbox change={changeRace} name="Native Hawaiian or Other Pacific Islander" />
+        <TriCheckbox change={changeRace} name="Black or African American" />
+        <TriCheckbox change={changeRace} name="American Indian or Alaska Native" />
 
-          <FormLabel  sx={{marginTop:"30px"}}  component="legend">Body Type</FormLabel>
-          <TriCheckbox change={changeBody} name="Skinny/underweight"/>
-          <TriCheckbox change={changeBody} name="Average"/>
-          <TriCheckbox change={changeBody} name="Hourglass"/>
-          <TriCheckbox change={changeBody} name="Lean/fit"/>
-          <TriCheckbox change={changeBody} name="Buff/muscular"/>
-          <TriCheckbox change={changeBody} name="Chubby"/>
-          <TriCheckbox change={changeBody} name="Fat"/>
-          <TriCheckbox change={changeBody} name="Obese"/>
+        <FormLabel sx={{marginTop: "30px"}} component="legend">Body Type</FormLabel>
+        <TriCheckbox change={changeBody} name="Skinny/underweight" />
+        <TriCheckbox change={changeBody} name="Average" />
+        <TriCheckbox change={changeBody} name="Hourglass" />
+        <TriCheckbox change={changeBody} name="Lean/fit" />
+        <TriCheckbox change={changeBody} name="Buff/muscular" />
+        <TriCheckbox change={changeBody} name="Chubby" />
+        <TriCheckbox change={changeBody} name="Fat" />
+        <TriCheckbox change={changeBody} name="Obese" />
 
-          <FormLabel sx={{marginTop:"30px"}}  component="legend">Hair Color</FormLabel>
-          <TriCheckbox change={changeHair} name="Blonde"/>
-          <TriCheckbox change={changeHair} name="Brown"/>
-          <TriCheckbox change={changeHair} name="Black"/>
-          <TriCheckbox change={changeHair} name="Red/Ginger"/>
-          <TriCheckbox change={changeHair} name="White/Gray"/>
-          <TriCheckbox change={changeHair} name="Shaved"/>
-          <TriCheckbox change={changeHair} name="Other"/>
+        <FormLabel sx={{marginTop: "30px"}} component="legend">Hair Color</FormLabel>
+        <TriCheckbox change={changeHair} name="Blonde" />
+        <TriCheckbox change={changeHair} name="Brown" />
+        <TriCheckbox change={changeHair} name="Black" />
+        <TriCheckbox change={changeHair} name="Red/Ginger" />
+        <TriCheckbox change={changeHair} name="White/Gray" />
+        <TriCheckbox change={changeHair} name="Shaved" />
+        <TriCheckbox change={changeHair} name="Other" />
 
-          <FormLabel sx={{marginTop:"30px"}} component="legend">Skin Color</FormLabel>
-          <TriCheckbox change={changeSkin} name="Light, Pale White"/>
-          <TriCheckbox change={changeSkin} name="White"/>
-          <TriCheckbox change={changeSkin} name="Medium, White to Olive"/>
-          <TriCheckbox change={changeSkin} name="Olive, Moderate Brown"/>
-          <TriCheckbox change={changeSkin} name="Brown, Dark Brown"/>
-          <TriCheckbox change={changeSkin} name="Black, Very Dark"/>
+        <FormLabel sx={{marginTop: "30px"}} component="legend">Skin Color</FormLabel>
+        <TriCheckbox change={changeSkin} name="Light, Pale White" />
+        <TriCheckbox change={changeSkin} name="White" />
+        <TriCheckbox change={changeSkin} name="Medium, White to Olive" />
+        <TriCheckbox change={changeSkin} name="Olive, Moderate Brown" />
+        <TriCheckbox change={changeSkin} name="Brown, Dark Brown" />
+        <TriCheckbox change={changeSkin} name="Black, Very Dark" />
 
       </AccordionDetails>
-      </Accordion>
-     
+    </Accordion>
+
   )
 }
+

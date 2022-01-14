@@ -2,7 +2,8 @@ import { RadioGroup, FormLabel, FormControlLabel, Radio, Accordion, AccordionSum
 import { useEffect, useState } from "react";
 import TriCheckbox from "../tricheckbox";
 
-export default function Miscellaneous({setFilters}){
+export default function Miscellaneous({setFilters}) {
+
   const [religion, setReligion] = useState(
     {
       Christian: 0,
@@ -14,10 +15,10 @@ export default function Miscellaneous({setFilters}){
     }
   )
   const changeReligion = (idx, value) => {
-    setReligion((state) => ({...state, [idx]: value%3}));
+    setReligion((state) => ({...state, [idx]: value % 3}));
   }
-  
-  
+
+
   const [employ, setEmploy] = useState(
     {
       "Student": 0,
@@ -30,9 +31,9 @@ export default function Miscellaneous({setFilters}){
     }
   )
   const changeEmploy = (idx, value) => {
-    setEmploy((state) => ({...state, [idx]: value%3}));
+    setEmploy((state) => ({...state, [idx]: value % 3}));
   }
-  
+
 
   const [politic, setPolitic] = useState(
     {
@@ -46,9 +47,9 @@ export default function Miscellaneous({setFilters}){
     }
   )
   const changePolitic = (idx, value) => {
-    setPolitic((state) => ({...state, [idx]: value%3}));
+    setPolitic((state) => ({...state, [idx]: value % 3}));
   }
-  
+
 
   const [online, setOnline] = useState(
     {
@@ -61,14 +62,14 @@ export default function Miscellaneous({setFilters}){
     }
   )
   const changeOnline = (idx, value) => {
-    setOnline((state) => ({...state, [idx]: value%3}));
+    setOnline((state) => ({...state, [idx]: value % 3}));
   }
-  
+
 
   const returnSelected = (obj) => {
     let selected = [];
-    for(let key in obj){
-      if(obj[key] === 1){
+    for (let key in obj) {
+      if (obj[key] === 1) {
         selected.push(key);
       }
     }
@@ -77,84 +78,85 @@ export default function Miscellaneous({setFilters}){
 
   const returnExcluded = (obj) => {
     let excluded = [];
-    for(let key in obj){
-      if(obj[key] === 2){
+    for (let key in obj) {
+      if (obj[key] === 2) {
         excluded.push(key);
       }
     }
     return excluded;
   }
   const [open, setOpen] = useState(false);
-  
+
   const accordionColor = open ? "#FFCFA0" : "white";
 
   useEffect(() => setFilters((old) =>
-      ({
-        ...old,
-        selected: {
-          ...old.selected,
-          religion: returnSelected(religion),
-          employment: returnSelected(employ),
-          politic: returnSelected(politic),
-          online: returnSelected(online)
-        },
-        excluded: {
-          ...old.excluded,
-          religion: returnExcluded(religion),
-          employment: returnExcluded(employ),
-          politic: returnExcluded(politic),
-          online: returnExcluded(online)
-        }
-      })
+  ({
+    ...old,
+    selected: {
+      ...old.selected,
+      religion: returnSelected(religion),
+      employment: returnSelected(employ),
+      politic: returnSelected(politic),
+      online: returnSelected(online)
+    },
+    excluded: {
+      ...old.excluded,
+      religion: returnExcluded(religion),
+      employment: returnExcluded(employ),
+      politic: returnExcluded(politic),
+      online: returnExcluded(online)
+    }
+  })
   ), [religion, employ, politic, online, setFilters]);
-    
+
 
   return (
-    <Accordion onChange={() => setOpen((s) => !s)} sx={{transition:"all .35s", backgroundColor: accordionColor}}>
+    <Accordion onChange={() => setOpen((s) => !s)} sx={{transition: "all .35s", backgroundColor: accordionColor}}>
       <AccordionSummary
-      aria-controls="panel1a-content"
-      id="panel1a-header"
+        aria-controls="panel1a-content"
+        id="panel1a-header"
       >
-      <Typography>Miscellaneous</Typography>
+        <Typography>Miscellaneous</Typography>
       </AccordionSummary>
       <AccordionDetails>
 
-          <FormLabel component="legend">Employment status</FormLabel>
-          <TriCheckbox change={changeEmploy} name="Student"/>
-          <TriCheckbox change={changeEmploy} name="Part time worker"/>
-          <TriCheckbox change={changeEmploy} name="Full time worker"/>
-          <TriCheckbox change={changeEmploy} name="Business owner"/>
-          <TriCheckbox change={changeEmploy} name="Self-Employed"/>
-          <TriCheckbox change={changeEmploy} name="Unemployed but looking"/>
-          <TriCheckbox change={changeEmploy} name="Neet"/>
+        <FormLabel component="legend">Employment status</FormLabel>
+        <TriCheckbox change={changeEmploy} name="Student" />
+        <TriCheckbox change={changeEmploy} name="Part time worker" />
+        <TriCheckbox change={changeEmploy} name="Full time worker" />
+        <TriCheckbox change={changeEmploy} name="Business owner" />
+        <TriCheckbox change={changeEmploy} name="Self-Employed" />
+        <TriCheckbox change={changeEmploy} name="Unemployed but looking" />
+        <TriCheckbox change={changeEmploy} name="Neet" />
 
-          <FormLabel component="legend">Religion</FormLabel>
-          <TriCheckbox change={changeReligion} name="Christian"/>
-          <TriCheckbox change={changeReligion} name="Muslim"/>
-          <TriCheckbox change={changeReligion} name="Jewish"/>
-          <TriCheckbox change={changeReligion} name="Atheist"/>
-          <TriCheckbox change={changeReligion} name="Hindu"/>
-          <TriCheckbox change={changeReligion} name="Other"/>
+        <FormLabel component="legend">Religion</FormLabel>
+        <TriCheckbox change={changeReligion} name="Christian" />
+        <TriCheckbox change={changeReligion} name="Muslim" />
+        <TriCheckbox change={changeReligion} name="Jewish" />
+        <TriCheckbox change={changeReligion} name="Atheist" />
+        <TriCheckbox change={changeReligion} name="Hindu" />
+        <TriCheckbox change={changeReligion} name="Other" />
 
-          <FormLabel component="legend">Political Beliefs</FormLabel>
-          <TriCheckbox change={changePolitic} name="Leftist"/>
-          <TriCheckbox change={changePolitic} name="Centrist"/>
-          <TriCheckbox change={changePolitic} name="Conservative"/>
-          <TriCheckbox change={changePolitic} name="Fascist"/>
-          <TriCheckbox change={changePolitic} name="Comunist"/>
-          <TriCheckbox change={changePolitic} name="Other"/>
-          <TriCheckbox change={changePolitic} name="I don't care"/>
+        <FormLabel component="legend">Political Beliefs</FormLabel>
+        <TriCheckbox change={changePolitic} name="Leftist" />
+        <TriCheckbox change={changePolitic} name="Centrist" />
+        <TriCheckbox change={changePolitic} name="Conservative" />
+        <TriCheckbox change={changePolitic} name="Fascist" />
+        <TriCheckbox change={changePolitic} name="Comunist" />
+        <TriCheckbox change={changePolitic} name="Other" />
+        <TriCheckbox change={changePolitic} name="I don't care" />
 
-          <FormLabel component="legend">Online schedule</FormLabel>
-          <TriCheckbox change={changeOnline} name="Most of the day"/>
-          <TriCheckbox change={changeOnline} name="In the morning"/>
-          <TriCheckbox change={changeOnline} name="Afternoon"/>
-          <TriCheckbox change={changeOnline} name="Evening"/>
-          <TriCheckbox change={changeOnline} name="A couple of times a week"/>
-          <TriCheckbox change={changeOnline} name="Rarely"/>
+        <FormLabel component="legend">Online schedule</FormLabel>
+        <TriCheckbox change={changeOnline} name="Most of the day" />
+        <TriCheckbox change={changeOnline} name="In the morning" />
+        <TriCheckbox change={changeOnline} name="Afternoon" />
+        <TriCheckbox change={changeOnline} name="Evening" />
+        <TriCheckbox change={changeOnline} name="A couple of times a week" />
+        <TriCheckbox change={changeOnline} name="Rarely" />
 
       </AccordionDetails>
-      </Accordion>
-     
+    </Accordion>
+
   )
 }
+

@@ -17,9 +17,9 @@ export async function GetUsers() {
     .find({})
     .toArray();
   return kinks;
-  };
+};
 
-export default async function handler(req, res){
+export default async function handler(req, res) {
   if (req.method === 'POST') {
     const id = await AddKink(req.query.kink)
     res.status(200).json(id)
@@ -29,3 +29,4 @@ export default async function handler(req, res){
     res.status(200).json(id)
   }
 }
+

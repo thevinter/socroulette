@@ -4,13 +4,13 @@ import { Controller } from "react-hook-form"
 export default function Geography({control}) {
   return (
     <>
-       <div>
+      <div>
         <Controller
           name="Location"
           control={control}
           defaultValue=""
-          render={({ field: { onChange, value } }) => (
-            <FormControl sx={{width:"100%", marginTop:2}}>
+          render={({field: {onChange, value}}) => (
+            <FormControl sx={{width: "100%", marginTop: 2}}>
               <InputLabel id="demo-simple-select-label">Current location</InputLabel>
               <Select
                 labelId="demo-simple-select-label"
@@ -27,18 +27,18 @@ export default function Geography({control}) {
                 <MenuItem value={"North America"}>North America</MenuItem>
                 <MenuItem value={"South America"}>South America</MenuItem>
                 <MenuItem value={"Africa"}>Africa</MenuItem>
-              </Select> 
+              </Select>
             </FormControl>
           )}
         />
-      </div>  
+      </div>
       <div>
-      <Controller
+        <Controller
           name="Timezone"
           control={control}
           defaultValue=""
-          render={({ field: { onChange, value } }) => (
-            <FormControl sx={{width:"100%", marginTop:2}}>
+          render={({field: {onChange, value}}) => (
+            <FormControl sx={{width: "100%", marginTop: 2}}>
               <InputLabel id="demo-simple-select-label">Timezone</InputLabel>
               <Select
                 labelId="demo-simple-select-label"
@@ -84,23 +84,24 @@ export default function Geography({control}) {
                 <MenuItem value={12.45}>UTC+12:45</MenuItem>
                 <MenuItem value={13.00}>UTC+13:00</MenuItem>
                 <MenuItem value={14.00}>UTC+14:00</MenuItem>
-              </Select> 
+              </Select>
             </FormControl>
           )}
         />
-      </div>  
+      </div>
       <div>
-      <Controller
-        name="Country"
-        control={control}
-        defaultValue=""
-        render={({ field: { onChange, value } }) => (
-          <>
-            <TextField sx={{width:"100%", marginTop:2}} onChange={onChange} value={value} id="outlined-basic" label="Country/State (optional)" variant="outlined" />
-          </>
-        )}
-      />
+        <Controller
+          name="Country"
+          control={control}
+          defaultValue=""
+          render={({field: {onChange, value}}) => (
+            <>
+              <TextField sx={{width: "100%", marginTop: 2}} onChange={onChange} value={value} id="outlined-basic" label="Country/State (optional)" variant="outlined" />
+            </>
+          )}
+        />
       </div>
     </>
   )
 }
+

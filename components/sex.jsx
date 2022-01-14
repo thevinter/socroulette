@@ -1,16 +1,16 @@
-import { FormControlLabel, FormControl, FormLabel, RadioGroup, Radio } from "@mui/material"
-import { Controller } from "react-hook-form"
+import {FormControlLabel, FormControl, FormLabel, RadioGroup, Radio} from "@mui/material"
+import {Controller} from "react-hook-form"
 
 export default function Sex({control}) {
   return (
     <>
-       <div>
+      <div>
         <Controller
           name="Sex"
           control={control}
           defaultValue=""
-          render={({ field: { onChange, value } }) => (
-            <FormControl sx={{margin:1}}>
+          render={({field: {onChange, value}}) => (
+            <FormControl sx={{margin: 1}}>
               <FormLabel component="legend">Sex at birth</FormLabel>
               <RadioGroup onChange={onChange} value={value} row aria-label="gender" name="row-radio-buttons-group">
                 <FormControlLabel value="Female" control={<Radio />} label="Female" />
@@ -20,14 +20,14 @@ export default function Sex({control}) {
             </FormControl>
           )}
         />
-      </div>  
+      </div>
       <div>
-      <Controller
+        <Controller
           name="Gender"
           control={control}
           defaultValue=""
-          render={({ field: { onChange, value } }) => (
-            <FormControl sx={{margin:1}}>
+          render={({field: {onChange, value}}) => (
+            <FormControl sx={{margin: 1}}>
               <FormLabel component="legend">Gender you identify with</FormLabel>
               <RadioGroup onChange={onChange} value={value} row aria-label="sex" name="row-radio-buttons-group">
                 <FormControlLabel value="Female" control={<Radio />} label="Female" />
@@ -37,7 +37,8 @@ export default function Sex({control}) {
             </FormControl>
           )}
         />
-      </div>  
+      </div>
     </>
   )
 }
+

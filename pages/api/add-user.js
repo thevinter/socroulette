@@ -14,9 +14,10 @@ export async function AddUser(userData) {
   return id;
 };
 
-export default async function handler(req, res){
+export default async function handler(req, res) {
   if (req.method === 'POST') {
     const id = await AddUser(req.body)
     res.status(200).json(id)
   }
 }
+

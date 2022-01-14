@@ -5,7 +5,8 @@ import { FormControlLabel, Checkbox } from "@mui/material"
 import { green, red, grey} from "@mui/material/colors"
 import { useEffect, useState } from "react"
 
-export default function TriCheckbox({change, name}){
+
+export default function TriCheckbox({change, name}) {
   const [checked, setChecked] = useState(0)
   const handleChange = () => {
     setChecked(state => state + 1)
@@ -31,8 +32,8 @@ export default function TriCheckbox({change, name}){
               },
 
             }}
-            checked={checked%3 === 1}
-            indeterminate={checked%3 == 2}
+            checked={checked % 3 === 1}
+            indeterminate={checked % 3 == 2}
             onChange={handleChange}
           />
         }
@@ -40,3 +41,4 @@ export default function TriCheckbox({change, name}){
     </div>
   )
 }
+

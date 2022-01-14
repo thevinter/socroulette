@@ -5,14 +5,14 @@ import styles from "./sexuality.module.css"
 export default function Sexuality({control}) {
   return (
     <div className={styles.inputList}>
-       <div className={styles.input}>
+      <div className={styles.input}>
         <Controller
           name="Sexuality"
           control={control}
           defaultValue="Heterosexual"
-          render={({ field: { onChange, value } }) => (
-            <FormControl sx={{width:"100%"}}>
-            <InputLabel id="demo-simple-select-label">Sexuality</InputLabel>
+          render={({field: {onChange, value}}) => (
+            <FormControl sx={{width: "100%"}}>
+              <InputLabel id="demo-simple-select-label">Sexuality</InputLabel>
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
@@ -25,41 +25,41 @@ export default function Sexuality({control}) {
                 <MenuItem value={"Bisexual"}>Bisexual</MenuItem>
                 <MenuItem value={"Asexual"}>Asexual</MenuItem>
                 <MenuItem value={"Other"}>Other</MenuItem>
-              </Select> 
+              </Select>
             </FormControl>
           )}
         />
-      </div>  
+      </div>
       <div className={styles.input}>
         <Controller
-            name="Orientation"
-            control={control}
-            defaultValue="Monogamous"
-            render={({ field: { onChange, value } }) => (
-              <FormControl sx={{width:"100%"}}>
-                <InputLabel id="demo-simple-select-label">Orientation</InputLabel>
-                <Select
-                  labelId="demo-simple-select-label"
-                  id="demo-simple-select"
-                  label="Orientation"
-                  onChange={onChange}
-                  value={value}
-                >
-                  <MenuItem value={"Polygamous"}>Polygamous</MenuItem>
-                  <MenuItem value={"Monogamous"}>Monogamous</MenuItem>
-                </Select> 
-              </FormControl>
-            )}
-          />
-        </div>  
+          name="Orientation"
+          control={control}
+          defaultValue="Monogamous"
+          render={({field: {onChange, value}}) => (
+            <FormControl sx={{width: "100%"}}>
+              <InputLabel id="demo-simple-select-label">Orientation</InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                label="Orientation"
+                onChange={onChange}
+                value={value}
+              >
+                <MenuItem value={"Polygamous"}>Polygamous</MenuItem>
+                <MenuItem value={"Monogamous"}>Monogamous</MenuItem>
+              </Select>
+            </FormControl>
+          )}
+        />
+      </div>
       <div className={styles.input}>
         <Controller
           name="Relationship Status"
           control={control}
           defaultValue="Single"
 
-          render={({ field: { onChange, value } }) => (
-            <FormControl sx={{width:"100%"}}>
+          render={({field: {onChange, value}}) => (
+            <FormControl sx={{width: "100%"}}>
               <InputLabel id="demo-simple-select-label">Relationship Status</InputLabel>
               <Select
                 labelId="demo-simple-select-label"
@@ -74,7 +74,7 @@ export default function Sexuality({control}) {
                 <MenuItem value={"Single Parent"}>Single Parent</MenuItem>
                 <MenuItem value={"Single Parent"}>Married</MenuItem>
                 <MenuItem value={"Single Parent"}>Engaged</MenuItem>
-              </Select> 
+              </Select>
             </FormControl>
           )}
         />
@@ -82,3 +82,4 @@ export default function Sexuality({control}) {
     </div>
   )
 }
+

@@ -1,6 +1,6 @@
 /* eslint-disable import/no-anonymous-default-export */
 import clientPromise from "../../lib/mongodb";
-const {ObjectId} = require('mongodb'); // or ObjectID 
+const {ObjectId} = require('mongodb'); // or ObjectID
 
 export async function GetUsers(id) {
 
@@ -15,7 +15,8 @@ export async function GetUsers(id) {
   return users;
 };
 
-export default async function handler(req, res){
+export default async function handler(req, res) {
   const jsonData = await GetUsers(req.query.id);
   res.status(200).json(jsonData)
 }
+
