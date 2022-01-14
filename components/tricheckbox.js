@@ -14,7 +14,7 @@ export default function TriCheckbox({change, name}){
   useEffect(() => {
     console.log(checked)
     change(name, checked)
-  }, [checked, name])
+  }, [checked, change, name])
 
   return (
     <div>
