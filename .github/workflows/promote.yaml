@@ -2,14 +2,14 @@ name: Create production promotion pull request
 on:
   push:
     branches:
-      - main
+      - staging
 jobs:
   productionPromotion:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         with:
-          ref: production
+          ref: main
       - name: Reset promotion branch
         run: |
           git fetch origin main:main
