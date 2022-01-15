@@ -1,8 +1,8 @@
-import { InputLabel, FormControl, MenuItem, Select } from "@mui/material"
-import { Controller } from "react-hook-form"
-import styles from "./sexuality.module.css"
+import { InputLabel, FormControl, MenuItem, Select } from "@mui/material";
+import { Controller } from "react-hook-form";
+import styles from "./sexuality.module.css";
 
-export default function Sexuality({control}) {
+export default function Sexuality({ control }) {
   return (
     <div className={styles.inputList}>
       <div className={styles.input}>
@@ -10,8 +10,8 @@ export default function Sexuality({control}) {
           name="Sexuality"
           control={control}
           defaultValue="Heterosexual"
-          render={({field: {onChange, value}}) => (
-            <FormControl sx={{width: "100%"}}>
+          render={({ field: { onChange, value } }) => (
+            <FormControl sx={{ width: "100%" }}>
               <InputLabel id="demo-simple-select-label">Sexuality</InputLabel>
               <Select
                 labelId="demo-simple-select-label"
@@ -35,8 +35,8 @@ export default function Sexuality({control}) {
           name="Orientation"
           control={control}
           defaultValue="Monogamous"
-          render={({field: {onChange, value}}) => (
-            <FormControl sx={{width: "100%"}}>
+          render={({ field: { onChange, value } }) => (
+            <FormControl sx={{ width: "100%" }}>
               <InputLabel id="demo-simple-select-label">Orientation</InputLabel>
               <Select
                 labelId="demo-simple-select-label"
@@ -57,10 +57,11 @@ export default function Sexuality({control}) {
           name="Relationship Status"
           control={control}
           defaultValue="Single"
-
-          render={({field: {onChange, value}}) => (
-            <FormControl sx={{width: "100%"}}>
-              <InputLabel id="demo-simple-select-label">Relationship Status</InputLabel>
+          render={({ field: { onChange, value } }) => (
+            <FormControl sx={{ width: "100%" }}>
+              <InputLabel id="demo-simple-select-label">
+                Relationship Status
+              </InputLabel>
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
@@ -80,6 +81,5 @@ export default function Sexuality({control}) {
         />
       </div>
     </div>
-  )
+  );
 }
-

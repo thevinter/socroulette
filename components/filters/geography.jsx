@@ -1,24 +1,33 @@
-import { RadioGroup, FormLabel, FormControlLabel, Radio, Accordion, AccordionSummary, AccordionDetails, Typography, Slider, Card, CardContent } from "@mui/material";
+import {
+  RadioGroup,
+  FormLabel,
+  FormControlLabel,
+  Radio,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  Typography,
+  Slider,
+  Card,
+  CardContent,
+} from "@mui/material";
 import { useState, useEffect } from "react";
 import TriCheckbox from "../tricheckbox";
 
-export default function Geography({setFilters}) {
-  const [location, setLocation] = useState(
-    {
-      "Eastern Europe": 0,
-      "Western Europe": 0,
-      "East Asia": 0,
-      "West Asia": 0,
-      "Australia/NZ/Oceania": 0,
-      "North America": 0,
-      "South America": 0,
-      Africa: 0
-    }
-  )
+export default function Geography({ setFilters }) {
+  const [location, setLocation] = useState({
+    "Eastern Europe": 0,
+    "Western Europe": 0,
+    "East Asia": 0,
+    "West Asia": 0,
+    "Australia/NZ/Oceania": 0,
+    "North America": 0,
+    "South America": 0,
+    Africa: 0,
+  });
   const changeLocation = (idx, value) => {
-    setLocation((state) => ({...state, [idx]: value % 3}));
-  }
-
+    setLocation((state) => ({ ...state, [idx]: value % 3 }));
+  };
 
   function valueLabelFormat(value) {
     if (value > 0) value = "+" + value;
@@ -33,7 +42,7 @@ export default function Geography({setFilters}) {
       }
     }
     return selected;
-  }
+  };
 
   const returnExcluded = (obj) => {
     let excluded = [];
@@ -43,40 +52,42 @@ export default function Geography({setFilters}) {
       }
     }
     return excluded;
-  }
-  
+  };
+
   const [timezone, setTimezone] = useState([-12, 14]);
 
-  useEffect(() => setFilters((old) => (
-    {
-      ...old,
-      timezone: timezone,
-      selected: {
-        ...old.selected,
-        location: returnSelected(location),
-      },
-      excluded: {
-        ...old.excluded,
-        location: returnExcluded(location),
-      }
-    })
-  ), [location, timezone, setFilters]);
+  useEffect(
+    () =>
+      setFilters((old) => ({
+        ...old,
+        timezone: timezone,
+        selected: {
+          ...old.selected,
+          location: returnSelected(location),
+        },
+        excluded: {
+          ...old.excluded,
+          location: returnExcluded(location),
+        },
+      })),
+    [location, timezone, setFilters]
+  );
 
   const [open, setOpen] = useState(false);
   const accordionColor = open ? "#FFCFA0" : "white";
 
   return (
-    <Accordion onChange={() => setOpen((s) => !s)} sx={{transition: "all .35s", backgroundColor: accordionColor}}>
-      <AccordionSummary
-        aria-controls="panel1a-content"
-        id="panel1a-header"
-      >
+    <Accordion
+      onChange={() => setOpen((s) => !s)}
+      sx={{ transition: "all .35s", backgroundColor: accordionColor }}
+    >
+      <AccordionSummary aria-controls="panel1a-content" id="panel1a-header">
         <Typography>Geography</Typography>
       </AccordionSummary>
       <AccordionDetails>
         <p>Timezone</p>
         <Slider
-          getAriaLabel={() => 'Desired timezone'}
+          getAriaLabel={() => "Desired timezone"}
           min={-12}
           max={14}
           step={1}
@@ -95,9 +106,7 @@ export default function Geography({setFilters}) {
         <TriCheckbox change={changeLocation} name="North America" />
         <TriCheckbox change={changeLocation} name="South America" />
         <TriCheckbox change={changeLocation} name="Africa" />
-
       </AccordionDetails>
     </Accordion>
-  )
+  );
 }
-

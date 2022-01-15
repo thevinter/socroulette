@@ -10,7 +10,7 @@
 }
 
 .userBox:hover {
-  background-color: #F9DF74;
+  background-color: #f9df74;
   color: black;
   display: flex;
   flex-direction: row;
@@ -23,7 +23,6 @@
   margin: 10px;
   flex-basis: 30%;
 }
-
 
 .secondInfo {
   margin: 10px;

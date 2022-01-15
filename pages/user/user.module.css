@@ -1,17 +1,23 @@
 .autoFit {
-    width: 30%;
+  width: 30%;
 }
 
 .removeTop {
-    margin-top: 0px;
+  margin-top: 0px;
+}
+
+.dataCard {
+  margin-bottom: "30px";
+  padding: "10px";
+  border: "1px solid";
 }
 
 @media screen and (max-width: 800px) {
-    .autoFit {
-        width: 100%;
-    }
+  .autoFit {
+    width: 100%;
+  }
 
-    .removeTop {
-        margin-top: -60px;
-    }
+  .removeTop {
+    margin-top: -60px;
+  }
 }

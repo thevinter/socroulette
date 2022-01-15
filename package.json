@@ -5,7 +5,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "preinstall": "./.git-hooks/install-hooks.sh"
   },
   "dependencies": {
     "@emotion/react": "^11.7.1",
@@ -22,7 +23,9 @@
     "swr": "^1.1.2"
   },
   "devDependencies": {
+    "prettier": "^2.5.1",
     "eslint": "8.6.0",
     "eslint-config-next": "12.0.7"
   }
 }
+

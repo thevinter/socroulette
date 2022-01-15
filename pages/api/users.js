@@ -3,7 +3,7 @@ import clientPromise from "../../lib/mongodb";
 
 export async function GetUsers(query) {
   const parse = (str) => {
-    console.log(`parsing "${str}"`)
+    console.log(`parsing "${str}"`);
     if (str === "") return {};
     let parsed = {};
     for (const section of str.split(",")) {
@@ -26,29 +26,24 @@ export async function GetUsers(query) {
     db_query[key] = {
       $gte: parseInt(val[0]),
       $lte: parseInt(val[1]),
-    }
+    };
   }
   console.log(db_query);
   const client = await clientPromise;
-  const db = client.db('users')
-  const users = await db
-  .collection("users")
-  .find(db_query)
-  .limit(20)
-  .toArray();
+  const db = client.db("users");
+  const users = await db.collection("users").find(db_query).limit(20).toArray();
   return users;
-};
+}
 
 export default async function handler(req, res) {
   const [_, ...q] = req.url.split("#")[0].split("?");
   const query_string = q.join("?");
   let query = {};
-  query_string.split("&").forEach(q => {
+  query_string.split("&").forEach((q) => {
     const [key, ...val] = q.split("=");
     query[key] = val.join("=");
-  })
+  });
   console.log("Query: ", query);
   const jsonData = await GetUsers(query);
-  res.status(200).json(jsonData)
+  res.status(200).json(jsonData);
 }
-
