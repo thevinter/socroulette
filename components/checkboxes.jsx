@@ -555,7 +555,7 @@ export default function Checkboxes({ control, setKinks }) {
         control={control}
         rules={{ required: true }}
         defaultValue=""
-        render={({ field: { onChange, value } }) => (
+        render={({ field: { onChange, ref,value } }) => (
           <FormControl sx={{ width: '100%', marginTop: 2 }}>
             <InputLabel id="demo-simple-select-label">
               When are you online?

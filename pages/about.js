@@ -36,7 +36,6 @@ export default function About() {
           style={{
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'cnter',
             justifyItems: 'center',
             alignItems: 'center',
             width: '100%',

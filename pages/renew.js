@@ -8,20 +8,6 @@ export default function Renew() {
   const [userId, setUserId] = useState('');
   const [result, setResult] = useState('');
 
-  let txt;
-  useEffect(() => {
-    if (result == '') txt = '';
-    if (result == 0) txt = "This account can't be found, please check the ID";
-    if (result == 1) txt = 'Your account has been deleted';
-    // convert userId from date to readable string and return
-    else
-      txt = `Your account has been renewed, your new expiration date is ${new Date(
-        result
-      ).toLocaleDateString()}`;
-  }, [result]);
-
-  console.log(`txt ${txt}`);
-
   const renew = () => {
     axios.post('/api/renew', { id: userId }).then((res) => {
       console.log(res);
@@ -82,7 +68,6 @@ export default function Renew() {
             flexDirection: 'column',
             alignItems: 'cnter',
             justifyItems: 'center',
-            alignItems: 'center',
             height: '100%',
             justifyContent: 'space-evenly',
             width: '100%',
