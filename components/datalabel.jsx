@@ -20,7 +20,6 @@ export default function Datalabel({
           display: 'inline-flex',
           alignItems: 'center',
           flexWrap: 'wrap',
-          marginBottom: '5px',
         }}
       >
         {icon}

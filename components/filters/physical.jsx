@@ -113,12 +113,17 @@ export default function Physical({ setFilters }) {
   );
 
   const [open, setOpen] = useState(false);
-  const accordionColor = open ? '#FFCFA0' : 'white';
+  const accordionColor = open ? '#FFF' : '#FFF';
 
   return (
     <Accordion
       onChange={() => setOpen((s) => !s)}
-      sx={{ transition: 'all .35s', backgroundColor: accordionColor }}
+      sx={{
+        transition: 'all .35s',
+        border: '1px solid rgb(0,0,0,.2)',
+        borderStyle: 'solid none solid none',
+        backgroundColor: accordionColor,
+      }}
     >
       <AccordionSummary
         aria-controls="panel1a-content"
@@ -144,18 +149,9 @@ export default function Physical({ setFilters }) {
         <TriCheckbox change={changeRace} name="Hispanic" />
         <TriCheckbox change={changeRace} name="West Asian" />
         <TriCheckbox change={changeRace} name="East Asian" />
-        <TriCheckbox
-          change={changeRace}
-          name="Native Hawaiian or Other Pacific Islander"
-        />
-        <TriCheckbox
-          change={changeRace}
-          name="Black or African American"
-        />
-        <TriCheckbox
-          change={changeRace}
-          name="American Indian or Alaska Native"
-        />
+        <TriCheckbox change={changeRace} name="Native Hawaiian or Other Pacific Islander" />
+        <TriCheckbox change={changeRace} name="Black or African American" />
+        <TriCheckbox change={changeRace} name="American Indian or Alaska Native" />
 
         <FormLabel sx={{ marginTop: '30px' }} component="legend">
           Body Type

@@ -9,16 +9,20 @@ export default function UserList({ filters }) {
   }, [filters]);
 
   const fetcher = (url) => fetch(url).then((res) => res.json());
-  const { data, error } = useSWR(
-    `/api/users?${filter_query(filters)}`,
-    fetcher
-  );
+  const { data, error } = useSWR(`/api/users?${filter_query(filters)}`, fetcher);
 
   if (error) {
     console.log(error);
     return <div>failed to load</div>;
   }
-  if (!data) return <div>loading...</div>;
+  if (!data)
+    return (
+      <div
+        style={{ textAlign: 'center', height: '100%', display: 'flex', justifyContent: 'center' }}
+      >
+        <p style={{ alignSelf: 'center' }}>LOADING...</p>
+      </div>
+    );
 
   return (
     <div>
@@ -34,8 +38,7 @@ function filter_query(filters) {
     if (value.length === 0) return null;
     return `${key}=${value.map(encodeURIComponent).join('~')}`;
   };
-  const serialize_range = (key) =>
-    `${key}=${filters[key][0]}~${filters[key][1]}`;
+  const serialize_range = (key) => `${key}=${filters[key][0]}~${filters[key][1]}`;
   let query = {
     selected: Object.entries(filters.selected)
       .map(serialize_list)

@@ -3,10 +3,13 @@ body {
   padding: 0;
   margin: 0;
   width: 100%;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
+    Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
-
+.MuiCardContent-root:last-child {
+  padding-bottom: 10px !important;
+}
 a {
   color: inherit;
   text-decoration: none;
@@ -18,4 +21,8 @@ h1 {
 .flex-row {
   display: flex;
   flex-direction: row;
+}
+
+.error {
+  color: red;
 }

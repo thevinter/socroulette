@@ -63,42 +63,14 @@ export default function Desires({ setFilters }) {
   );
 
   const desireList = [
-    <TriCheckbox
-      key="Safe for work chat"
-      change={changeDesire}
-      name="Safe for work chat"
-    />,
+    <TriCheckbox key="Safe for work chat" change={changeDesire} name="Safe for work chat" />,
     <TriCheckbox key="Gaming" change={changeDesire} name="Gaming" />,
-    <TriCheckbox
-      key="Voice Chat"
-      change={changeDesire}
-      name="Voice Chat"
-    />,
-    <TriCheckbox
-      key="SFW Video Chat"
-      change={changeDesire}
-      name="SFW Video Chat"
-    />,
-    <TriCheckbox
-      key="Pic exchange"
-      change={changeDesire}
-      name="Pic exchange"
-    />,
-    <TriCheckbox
-      key="Sexting"
-      change={changeDesire}
-      name="Sexting"
-    />,
-    <TriCheckbox
-      key="Pen pals"
-      change={changeDesire}
-      name="Pen pals"
-    />,
-    <TriCheckbox
-      key="NSFW Video Chat"
-      change={changeDesire}
-      name="NSFW Video Chat"
-    />,
+    <TriCheckbox key="Voice Chat" change={changeDesire} name="Voice Chat" />,
+    <TriCheckbox key="SFW Video Chat" change={changeDesire} name="SFW Video Chat" />,
+    <TriCheckbox key="Pic exchange" change={changeDesire} name="Pic exchange" />,
+    <TriCheckbox key="Sexting" change={changeDesire} name="Sexting" />,
+    <TriCheckbox key="Pen pals" change={changeDesire} name="Pen pals" />,
+    <TriCheckbox key="NSFW Video Chat" change={changeDesire} name="NSFW Video Chat" />,
     <TriCheckbox key="ERP" change={changeDesire} name="ERP" />,
     <TriCheckbox
       key="Meeting IRL"
@@ -108,14 +80,15 @@ export default function Desires({ setFilters }) {
   ];
   const [open, setOpen] = useState(false);
 
-  const accordionColor = open ? '#FFCFA0' : 'white';
-
+  const accordionColor = open ? '#FFF' : '#FFF';
   return (
     <>
       <Accordion
         onChange={() => setOpen((s) => !s)}
         sx={{
           transition: 'all .35s',
+          border: '1px solid rgb(0,0,0,.2)',
+          borderStyle: 'solid none solid none',
           backgroundColor: accordionColor,
         }}
       >

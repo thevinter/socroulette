@@ -63,33 +63,13 @@ export default function Illnesses({ setFilters }) {
   );
 
   const illnesses = [
-    <TriCheckbox
-      key="Schizofrenia"
-      change={changeDisorder}
-      name="Schizofrenia"
-    />,
-    <TriCheckbox
-      key="Bipolar Disorder"
-      change={changeDisorder}
-      name="Bipolar DisorderBPD"
-    />,
-    <TriCheckbox
-      key="Depression"
-      change={changeDisorder}
-      name="Depression"
-    />,
+    <TriCheckbox key="Schizofrenia" change={changeDisorder} name="Schizofrenia" />,
+    <TriCheckbox key="Bipolar Disorder" change={changeDisorder} name="Bipolar DisorderBPD" />,
+    <TriCheckbox key="Depression" change={changeDisorder} name="Depression" />,
     <TriCheckbox key="ADHD" change={changeDisorder} name="ADHD" />,
     <TriCheckbox key="PTSD" change={changeDisorder} name="PTSD" />,
-    <TriCheckbox
-      key="Eating"
-      change={changeDisorder}
-      name="Eating Disorders"
-    />,
-    <TriCheckbox
-      key="Insomnia"
-      change={changeDisorder}
-      name="Insomnia"
-    />,
+    <TriCheckbox key="Eating" change={changeDisorder} name="Eating Disorders" />,
+    <TriCheckbox key="Insomnia" change={changeDisorder} name="Insomnia" />,
     <TriCheckbox
       key="Borderline Personality Disorder"
       change={changeDisorder}
@@ -103,7 +83,7 @@ export default function Illnesses({ setFilters }) {
   ];
   const [open, setOpen] = useState(false);
 
-  const accordionColor = open ? '#FFCFA0' : 'white';
+  const accordionColor = open ? '# #FFF' : '#FFF';
 
   return (
     <>
@@ -111,6 +91,8 @@ export default function Illnesses({ setFilters }) {
         onChange={() => setOpen((s) => !s)}
         sx={{
           transition: 'all .35s',
+          border: '1px solid rgb(0,0,0,.2)',
+          borderStyle: 'solid none solid none',
           backgroundColor: accordionColor,
         }}
       >

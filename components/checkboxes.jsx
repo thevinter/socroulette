@@ -164,13 +164,7 @@ export default function Checkboxes({ control, setKinks }) {
       </FormGroup>
 
       <FormLabel component="legend">Your kinks</FormLabel>
-      <FormGroup
-        sx={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          flexDirection: 'row',
-        }}
-      >
+      <FormGroup sx={{ display: 'flex', flexWrap: 'wrap', flexDirection: 'row' }}>
         <FormControlLabel
           sx={{ flex: '1 1 auto' }}
           control={
@@ -559,8 +553,9 @@ export default function Checkboxes({ control, setKinks }) {
       <Controller
         name="Online"
         control={control}
+        rules={{ required: true }}
         defaultValue=""
-        render={({ field: { onChange, value } }) => (
+        render={({ field: { onChange, ref,value } }) => (
           <FormControl sx={{ width: '100%', marginTop: 2 }}>
             <InputLabel id="demo-simple-select-label">
               When are you online?
@@ -569,20 +564,15 @@ export default function Checkboxes({ control, setKinks }) {
               labelId="demo-simple-select-label"
               id="demo-simple-select"
               label="Online"
+              inputRef={ref}
               onChange={onChange}
               value={value}
             >
-              <MenuItem value={'Most of the day'}>
-                Most of the day
-              </MenuItem>
-              <MenuItem value={'In the morning'}>
-                In the morning
-              </MenuItem>
+              <MenuItem value={'Most of the day'}>Most of the day</MenuItem>
+              <MenuItem value={'In the morning'}>In the morning</MenuItem>
               <MenuItem value={'Afternoon'}>Afternoon</MenuItem>
               <MenuItem value={'Evening'}>Evening</MenuItem>
-              <MenuItem value={'A couple of times a week'}>
-                A couple of times a week
-              </MenuItem>
+              <MenuItem value={'A couple of times a week'}>A couple of times a week</MenuItem>
               <MenuItem value={'Rarely'}>Rarely</MenuItem>
             </Select>
           </FormControl>

@@ -28,14 +28,12 @@ export async function GetUsers(query) {
       $lte: parseInt(val[1]),
     };
   }
+  db_query['active'] = {};
+  db_query['active'].$eq = true;
   console.log(db_query);
   const client = await clientPromise;
   const db = client.db('users');
-  const users = await db
-    .collection('users')
-    .find(db_query)
-    .limit(20)
-    .toArray();
+  const users = await db.collection('users').find(db_query).limit(20).toArray();
   return users;
 }
 

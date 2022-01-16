@@ -2,7 +2,7 @@ import { TextField } from '@mui/material';
 import { Controller } from 'react-hook-form';
 import styles from './contacts.module.css';
 
-export default function Contacts({ control }) {
+export default function Contacts({ control, getValues, errors }) {
   return (
     <div className={styles.inputList}>
       <div className={styles.input}>
@@ -10,9 +10,18 @@ export default function Contacts({ control }) {
           name="Kik"
           control={control}
           defaultValue=""
-          render={({ field: { onChange, value } }) => (
+          rules={{
+            validate: (value) =>
+              getValues('Kik') != '' ||
+              getValues('Telegram') != '' ||
+              getValues('Discord') != '' ||
+              getValues('Snapchat') != '' ||
+              getValues('Email') != '',
+          }}
+          render={({ field: { onChange, value, ref } }) => (
             <TextField
               value={value}
+              inputRef={ref}
               onChange={onChange}
               id="outlined-basic"
               label="Kik"
@@ -26,9 +35,18 @@ export default function Contacts({ control }) {
           name="Discord"
           control={control}
           defaultValue=""
-          render={({ field: { onChange, value } }) => (
+          rules={{
+            validate: () =>
+              getValues('Kik') != '' ||
+              getValues('Telegram') != '' ||
+              getValues('Discord') != '' ||
+              getValues('Snapchat') != '' ||
+              getValues('Email') != '',
+          }}
+          render={({ field: { onChange, ref, value } }) => (
             <TextField
               value={value}
+              inputRef={ref}
               onChange={onChange}
               id="outlined-basic"
               label="Discord"
@@ -42,6 +60,14 @@ export default function Contacts({ control }) {
           name="Telegram"
           control={control}
           defaultValue=""
+          rules={{
+            validate: () =>
+              getValues('Kik') != '' ||
+              getValues('Telegram') != '' ||
+              getValues('Discord') != '' ||
+              getValues('Snapchat') != '' ||
+              getValues('Email') != '',
+          }}
           render={({ field: { onChange, value } }) => (
             <TextField
               value={value}
@@ -58,6 +84,14 @@ export default function Contacts({ control }) {
           name="Snapchat"
           control={control}
           defaultValue=""
+          rules={{
+            validate: () =>
+              getValues('Kik') != '' ||
+              getValues('Telegram') != '' ||
+              getValues('Discord') != '' ||
+              getValues('Snapchat') != '' ||
+              getValues('Email') != '',
+          }}
           render={({ field: { onChange, value } }) => (
             <TextField
               value={value}
@@ -74,6 +108,14 @@ export default function Contacts({ control }) {
           name="Email"
           control={control}
           defaultValue=""
+          rules={{
+            validate: () =>
+              getValues('Kik') != '' ||
+              getValues('Telegram') != '' ||
+              getValues('Discord') != '' ||
+              getValues('Snapchat') != '' ||
+              getValues('Email') != '',
+          }}
           render={({ field: { onChange, value } }) => (
             <TextField
               value={value}

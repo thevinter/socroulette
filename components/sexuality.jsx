@@ -7,29 +7,27 @@ import {
 import { Controller } from 'react-hook-form';
 import styles from './sexuality.module.css';
 
-export default function Sexuality({ control }) {
+export default function Sexuality({ control, errors }) {
   return (
     <div className={styles.inputList}>
       <div className={styles.input}>
         <Controller
           name="Sexuality"
           control={control}
+          rules={{ required: true }}
           defaultValue="Heterosexual"
-          render={({ field: { onChange, value } }) => (
+          render={({ field: { onChange, value, ref } }) => (
             <FormControl sx={{ width: '100%' }}>
-              <InputLabel id="demo-simple-select-label">
-                Sexuality
-              </InputLabel>
+              <InputLabel id="demo-simple-select-label">Sexuality</InputLabel>
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 label="Sexuality"
+                inputRef={ref}
                 onChange={onChange}
                 value={value}
               >
-                <MenuItem value={'Heterosexual'}>
-                  Heterosexual
-                </MenuItem>
+                <MenuItem value={'Heterosexual'}>Heterosexual</MenuItem>
                 <MenuItem value={'Homosexual'}>Homosexual</MenuItem>
                 <MenuItem value={'Bisexual'}>Bisexual</MenuItem>
                 <MenuItem value={'Asexual'}>Asexual</MenuItem>
@@ -38,18 +36,19 @@ export default function Sexuality({ control }) {
             </FormControl>
           )}
         />
+        {errors.Sexuality && <div className="error">This field is required</div>}
       </div>
       <div className={styles.input}>
         <Controller
           name="Orientation"
+          rules={{ required: true }}
           control={control}
           defaultValue="Monogamous"
-          render={({ field: { onChange, value } }) => (
+          render={({ field: { onChange, ref, value } }) => (
             <FormControl sx={{ width: '100%' }}>
-              <InputLabel id="demo-simple-select-label">
-                Orientation
-              </InputLabel>
+              <InputLabel id="demo-simple-select-label">Orientation</InputLabel>
               <Select
+                inputRef={ref}
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 label="Orientation"
@@ -62,18 +61,19 @@ export default function Sexuality({ control }) {
             </FormControl>
           )}
         />
+        {errors.Orientation && <div className="error">This field is required</div>}
       </div>
       <div className={styles.input}>
         <Controller
           name="Relationship Status"
           control={control}
+          rules={{ required: true }}
           defaultValue="Single"
-          render={({ field: { onChange, value } }) => (
+          render={({ field: { onChange, ref, value } }) => (
             <FormControl sx={{ width: '100%' }}>
-              <InputLabel id="demo-simple-select-label">
-                Relationship Status
-              </InputLabel>
+              <InputLabel id="demo-simple-select-label">Relationship Status</InputLabel>
               <Select
+                inputRef={ref}
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 label="Relationship Status"
@@ -83,9 +83,7 @@ export default function Sexuality({ control }) {
                 <MenuItem value={'Single'}>Single</MenuItem>
                 <MenuItem value={'Widowed'}>Widowed</MenuItem>
                 <MenuItem value={'Divorced'}>Divorced</MenuItem>
-                <MenuItem value={'Single Parent'}>
-                  Single Parent
-                </MenuItem>
+                <MenuItem value={'Single Parent'}>Single Parent</MenuItem>
                 <MenuItem value={'Single Parent'}>Married</MenuItem>
                 <MenuItem value={'Single Parent'}>Engaged</MenuItem>
               </Select>

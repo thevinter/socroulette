@@ -74,12 +74,17 @@ export default function Geography({ setFilters }) {
   );
 
   const [open, setOpen] = useState(false);
-  const accordionColor = open ? '#FFCFA0' : 'white';
+  const accordionColor = open ? '#FFF' : '#FFF';
 
   return (
     <Accordion
       onChange={() => setOpen((s) => !s)}
-      sx={{ transition: 'all .35s', backgroundColor: accordionColor }}
+      sx={{
+        transition: 'all .35s',
+        border: '1px solid rgb(0,0,0,.2)',
+        borderStyle: 'solid none solid none',
+        backgroundColor: accordionColor,
+      }}
     >
       <AccordionSummary
         aria-controls="panel1a-content"

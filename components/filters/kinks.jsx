@@ -65,50 +65,18 @@ export default function Kinks({ setFilters }) {
   );
   const [open, setOpen] = useState(false);
 
-  const accordionColor = open ? '#FFCFA0' : 'white';
+  const accordionColor = open ? '#FFF' : '#FFF';
 
   const kinkList = [
     <TriCheckbox key="BDSM" change={changeKink} name="BDSM" />,
-    <TriCheckbox
-      key="Ropeplay"
-      change={changeKink}
-      name="Ropeplay"
-    />,
-    <TriCheckbox
-      key="Bestiality"
-      change={changeKink}
-      name="Bestiality"
-    />,
-    <TriCheckbox
-      key="Voyeurism"
-      change={changeKink}
-      name="Voyeurism"
-    />,
-    <TriCheckbox
-      key="Exhibitionism"
-      change={changeKink}
-      name="Exhibitionism"
-    />,
-    <TriCheckbox
-      key="Roleplay"
-      change={changeKink}
-      name="Roleplay"
-    />,
-    <TriCheckbox
-      key="Watersports"
-      change={changeKink}
-      name="Watersports"
-    />,
-    <TriCheckbox
-      key="Humiliation"
-      change={changeKink}
-      name="Humiliation"
-    />,
-    <TriCheckbox
-      key="Cuckolding"
-      change={changeKink}
-      name="Cuckolding"
-    />,
+    <TriCheckbox key="Ropeplay" change={changeKink} name="Ropeplay" />,
+    <TriCheckbox key="Bestiality" change={changeKink} name="Bestiality" />,
+    <TriCheckbox key="Voyeurism" change={changeKink} name="Voyeurism" />,
+    <TriCheckbox key="Exhibitionism" change={changeKink} name="Exhibitionism" />,
+    <TriCheckbox key="Roleplay" change={changeKink} name="Roleplay" />,
+    <TriCheckbox key="Watersports" change={changeKink} name="Watersports" />,
+    <TriCheckbox key="Humiliation" change={changeKink} name="Humiliation" />,
+    <TriCheckbox key="Cuckolding" change={changeKink} name="Cuckolding" />,
     <TriCheckbox key="Femdom" change={changeKink} name="Femdom" />,
     <TriCheckbox key="CNC" change={changeKink} name="CNC" />,
     <TriCheckbox key="Scat" change={changeKink} name="Scat" />,
@@ -119,6 +87,8 @@ export default function Kinks({ setFilters }) {
         onChange={() => setOpen((s) => !s)}
         sx={{
           transition: 'all .35s',
+          border: '1px solid rgb(0,0,0,.2)',
+          borderStyle: 'solid none solid none',
           backgroundColor: accordionColor,
         }}
       >

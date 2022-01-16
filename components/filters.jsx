@@ -11,7 +11,14 @@ import Desires from './filters/desires';
 
 export default function Filter({ setFilters }) {
   return (
-    <div>
+    <div
+      style={{
+        flex: '1',
+        overflowY: 'scroll',
+        height: '100%',
+        maxHeight: '100%',
+      }}
+    >
       <General setFilters={setFilters} />
       <Physical setFilters={setFilters} />
       <Geography setFilters={setFilters} />

@@ -15,35 +15,24 @@ export default function Geography({ control }) {
           name="Location"
           control={control}
           defaultValue=""
-          render={({ field: { onChange, value } }) => (
+          render={({ field: { onChange, ref, value } }) => (
             <FormControl sx={{ width: '100%', marginTop: 2 }}>
-              <InputLabel id="demo-simple-select-label">
-                Current location
-              </InputLabel>
+              <InputLabel id="demo-simple-select-label">Current location</InputLabel>
               <Select
+                inputRef={ref}
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 label="Current location"
                 onChange={onChange}
                 value={value}
               >
-                <MenuItem value={'Eastern Europe'}>
-                  Eastern Europe
-                </MenuItem>
-                <MenuItem value={'Western Europe'}>
-                  Western Europe
-                </MenuItem>
+                <MenuItem value={'Eastern Europe'}>Eastern Europe</MenuItem>
+                <MenuItem value={'Western Europe'}>Western Europe</MenuItem>
                 <MenuItem value={'East Asia'}>East Asia</MenuItem>
                 <MenuItem value={'West Asia'}>West Asia</MenuItem>
-                <MenuItem value={'Australia/NZ/Oceania'}>
-                  Australia/NZ/Oceania
-                </MenuItem>
-                <MenuItem value={'North America'}>
-                  North America
-                </MenuItem>
-                <MenuItem value={'South America'}>
-                  South America
-                </MenuItem>
+                <MenuItem value={'Australia/NZ/Oceania'}>Australia/NZ/Oceania</MenuItem>
+                <MenuItem value={'North America'}>North America</MenuItem>
+                <MenuItem value={'South America'}>South America</MenuItem>
                 <MenuItem value={'Africa'}>Africa</MenuItem>
               </Select>
             </FormControl>
@@ -54,17 +43,17 @@ export default function Geography({ control }) {
         <Controller
           name="Timezone"
           control={control}
+          rules={{ required: true }}
           defaultValue=""
-          render={({ field: { onChange, value } }) => (
+          render={({ field: { onChange, ref, value } }) => (
             <FormControl sx={{ width: '100%', marginTop: 2 }}>
-              <InputLabel id="demo-simple-select-label">
-                Timezone
-              </InputLabel>
+              <InputLabel id="demo-simple-select-label">Timezone</InputLabel>
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 label="Timezone"
                 onChange={onChange}
+                inputRef={ref}
                 value={value}
               >
                 <MenuItem value={-12}>UTC−12:00</MenuItem>
