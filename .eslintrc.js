@@ -15,5 +15,6 @@ module.exports = {
   rules: {
     semi: ['error', 'always'],
     'prefer-const': 'warn',
+    '@typescript-eslint/no-var-requires': 0,
   },
 };
