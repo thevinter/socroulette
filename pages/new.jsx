@@ -84,9 +84,8 @@ export default function Home() {
 
   useEffect(() => {
     const firstError = Object.keys(errors).reduce((field, a) => {
-      return !!errors[field] ? field : a;
+      return errors[field] ? field : a;
     }, null);
-    console.log(firstError);
     if (firstError) {
       setFocus(firstError);
     }
