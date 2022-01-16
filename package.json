@@ -20,12 +20,13 @@
     "react-hook-form": "^7.22.5",
     "react-select": "^5.2.1",
     "react-social-icons": "^5.7.0",
-    "swr": "^1.1.2"
+    "swr": "^1.1.2",
+    "typescript": "4.5.4"
   },
   "devDependencies": {
-    "prettier": "^2.5.1",
+    "@typescript-eslint/eslint-plugin": "^5.9.1",
     "eslint": "8.6.0",
-    "eslint-config-next": "12.0.7"
+    "eslint-config-next": "12.0.7",
+    "prettier": "^2.5.1"
   }
 }
-

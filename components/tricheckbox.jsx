@@ -22,7 +22,7 @@ export default function TriCheckbox({ change, name }) {
         control={
           <Checkbox
             sx={{
-              color: 'white',
+              color: grey[800],
               '&.MuiCheckbox-indeterminate': {
                 color: red[600],
               },

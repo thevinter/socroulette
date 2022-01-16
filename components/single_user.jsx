@@ -12,7 +12,13 @@ export default function SingleUser({ user }) {
       'Pen pals',
       'Meeting IRL',
     ];
-    const nsfw = ['Pic exchange', 'Sexting', 'NSFW Video Chat', 'ERP', 'Meeting IRL'];
+    const nsfw = [
+      'Pic exchange',
+      'Sexting',
+      'NSFW Video Chat',
+      'ERP',
+      'Meeting IRL',
+    ];
     let res = 0;
     if (user.lf.some((item) => sfw.includes(item))) res += 1;
     if (user.lf.some((item) => nsfw.includes(item))) res += 2;

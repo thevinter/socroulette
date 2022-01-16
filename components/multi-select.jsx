@@ -1,5 +1,5 @@
-import Select from "react-select";
-import { Controller } from "react-hook-form";
+import Select from 'react-select';
+import { Controller } from 'react-hook-form';
 
 export default function MultiSelector({
   options,
@@ -20,9 +20,13 @@ export default function MultiSelector({
           isMulti
           options={options}
           placeholder={placeholder}
-          onChange={(values) => onChange(values?.map((option) => option.value))}
+          onChange={(values) =>
+            onChange(values?.map((option) => option.value))
+          }
           onBlur={onBlur}
-          value={options.filter((option) => value?.includes(option.value))}
+          value={options.filter((option) =>
+            value?.includes(option.value)
+          )}
           defaultValue={options.filter((option) =>
             value?.includes(option.value)
           )}

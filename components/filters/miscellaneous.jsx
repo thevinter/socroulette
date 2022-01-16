@@ -120,7 +120,10 @@ export default function Miscellaneous({ setFilters }) {
         backgroundColor: accordionColor,
       }}
     >
-      <AccordionSummary aria-controls="panel1a-content" id="panel1a-header">
+      <AccordionSummary
+        aria-controls="panel1a-content"
+        id="panel1a-header"
+      >
         <Typography>Miscellaneous</Typography>
       </AccordionSummary>
       <AccordionDetails>
@@ -130,7 +133,10 @@ export default function Miscellaneous({ setFilters }) {
         <TriCheckbox change={changeEmploy} name="Full time worker" />
         <TriCheckbox change={changeEmploy} name="Business owner" />
         <TriCheckbox change={changeEmploy} name="Self-Employed" />
-        <TriCheckbox change={changeEmploy} name="Unemployed but looking" />
+        <TriCheckbox
+          change={changeEmploy}
+          name="Unemployed but looking"
+        />
         <TriCheckbox change={changeEmploy} name="Neet" />
 
         <FormLabel component="legend">Religion</FormLabel>
@@ -155,7 +161,10 @@ export default function Miscellaneous({ setFilters }) {
         <TriCheckbox change={changeOnline} name="In the morning" />
         <TriCheckbox change={changeOnline} name="Afternoon" />
         <TriCheckbox change={changeOnline} name="Evening" />
-        <TriCheckbox change={changeOnline} name="A couple of times a week" />
+        <TriCheckbox
+          change={changeOnline}
+          name="A couple of times a week"
+        />
         <TriCheckbox change={changeOnline} name="Rarely" />
       </AccordionDetails>
     </Accordion>

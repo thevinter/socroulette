@@ -86,7 +86,10 @@ export default function Geography({ setFilters }) {
         backgroundColor: accordionColor,
       }}
     >
-      <AccordionSummary aria-controls="panel1a-content" id="panel1a-header">
+      <AccordionSummary
+        aria-controls="panel1a-content"
+        id="panel1a-header"
+      >
         <Typography>Geography</Typography>
       </AccordionSummary>
       <AccordionDetails>
@@ -107,7 +110,10 @@ export default function Geography({ setFilters }) {
         <TriCheckbox change={changeLocation} name="Western Europe" />
         <TriCheckbox change={changeLocation} name="East Asia" />
         <TriCheckbox change={changeLocation} name="West Asia" />
-        <TriCheckbox change={changeLocation} name="Australia/NZ/Oceania" />
+        <TriCheckbox
+          change={changeLocation}
+          name="Australia/NZ/Oceania"
+        />
         <TriCheckbox change={changeLocation} name="North America" />
         <TriCheckbox change={changeLocation} name="South America" />
         <TriCheckbox change={changeLocation} name="Africa" />

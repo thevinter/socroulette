@@ -96,7 +96,10 @@ export default function Illnesses({ setFilters }) {
           backgroundColor: accordionColor,
         }}
       >
-        <AccordionSummary aria-controls="panel1a-content" id="panel1a-header">
+        <AccordionSummary
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
           <Typography>Illnesses</Typography>
         </AccordionSummary>
         <AccordionDetails>

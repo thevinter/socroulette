@@ -1,4 +1,9 @@
-import { InputLabel, FormControl, MenuItem, Select } from '@mui/material';
+import {
+  InputLabel,
+  FormControl,
+  MenuItem,
+  Select,
+} from '@mui/material';
 import { Controller } from 'react-hook-form';
 import styles from './sexuality.module.css';
 

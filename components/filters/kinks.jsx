@@ -92,7 +92,10 @@ export default function Kinks({ setFilters }) {
           backgroundColor: accordionColor,
         }}
       >
-        <AccordionSummary aria-controls="panel1a-content" id="panel1a-header">
+        <AccordionSummary
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
           <Typography>Kinks</Typography>
         </AccordionSummary>
         <AccordionDetails>

@@ -1,4 +1,10 @@
-import { InputLabel, FormControl, MenuItem, Select, TextField } from '@mui/material';
+import {
+  InputLabel,
+  FormControl,
+  MenuItem,
+  Select,
+  TextField,
+} from '@mui/material';
 import { Controller } from 'react-hook-form';
 
 export default function Geography({ control }) {

@@ -37,7 +37,9 @@ export default function Generalities({ control, errors }) {
       {errors.Age && <div className="error">This field is required</div>}
 
       <div className={styles.input}>
-        <InputLabel id="demo-simple-select-label">Your ethnicity</InputLabel>
+        <InputLabel id="demo-simple-select-label">
+          Your ethnicity
+        </InputLabel>
         <FormGroup>
           <FormControlLabel
             control={

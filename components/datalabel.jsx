@@ -5,7 +5,13 @@ const fetcher = (...args) =>
     mode: 'no-cors',
   }).then((res) => res.json());
 
-export default function Datalabel({ icon, label, data, lStyle, dStyle }) {
+export default function Datalabel({
+  icon,
+  label,
+  data,
+  lStyle,
+  dStyle,
+}) {
   return (
     <div>
       <div

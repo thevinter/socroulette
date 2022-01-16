@@ -129,7 +129,10 @@ export default function General({ setFilters }) {
         backgroundColor: accordionColor,
       }}
     >
-      <AccordionSummary aria-controls="panel1a-content" id="panel1a-header">
+      <AccordionSummary
+        aria-controls="panel1a-content"
+        id="panel1a-header"
+      >
         <Typography>General</Typography>
       </AccordionSummary>
       <AccordionDetails>
@@ -147,7 +150,9 @@ export default function General({ setFilters }) {
         <TriCheckbox change={changeSex} name="Female" />
         <TriCheckbox change={changeSex} name="Other" />
 
-        <FormLabel component="legend">Gender they identify with</FormLabel>
+        <FormLabel component="legend">
+          Gender they identify with
+        </FormLabel>
         <TriCheckbox change={changeGender} name="Male" />
         <TriCheckbox change={changeGender} name="Female" />
         <TriCheckbox change={changeGender} name="Other" />
