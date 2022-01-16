@@ -1,7 +1,7 @@
 /* eslint-disable import/no-anonymous-default-export */
 import clientPromise from '../../lib/mongodb';
 
-export async function AddUser(kink) {
+export async function AddKink(kink) {
   const client = await clientPromise;
   const db = client.db('users');
   db.collection('kinks').insertOne(kink); //qui dovrebbe esserci tipo upsert o qualcosa di simile per evitare duplicati
@@ -9,7 +9,7 @@ export async function AddUser(kink) {
   return kink;
 }
 
-export async function GetUsers() {
+export async function GetKinks() {
   const client = await clientPromise;
   const db = client.db('users');
   const kinks = await db.collection('kinks').find({}).toArray();
