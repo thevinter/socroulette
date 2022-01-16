@@ -1,16 +1,18 @@
 .userBox {
   margin: 40px;
   height: 100%;
-  background-color: #fff;
+  background-color: #ffefef;
   display: flex;
   flex-direction: row;
   align-items: flex-end;
   border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: -10px 5px 5px rgba(154, 160, 185, 0.05), -15px 13px 15px rgba(166, 173, 201, 0.3);
   justify-content: space-evenly;
 }
 
 .userBox:hover {
-  background-color: #f9df74;
+  background-color: #d3dedc;
   color: black;
   display: flex;
   flex-direction: row;

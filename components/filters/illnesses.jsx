@@ -4,22 +4,22 @@ import {
   AccordionSummary,
   AccordionDetails,
   Typography,
-} from "@mui/material";
-import TriCheckbox from "../tricheckbox";
-import { useState, useEffect } from "react";
+} from '@mui/material';
+import TriCheckbox from '../tricheckbox';
+import { useState, useEffect } from 'react';
 
 export default function Illnesses({ setFilters }) {
   const [disorders, setDisorders] = useState({
     Schizofrenia: 0,
-    "Bipolar Disorder": 0,
+    'Bipolar Disorder': 0,
     Depression: 0,
     ADHD: 0,
     PTSD: 0,
     Anxiety: 0,
-    "Eating Disorders": 0,
+    'Eating Disorders': 0,
     Insomnia: 0,
-    "Borderline Personality Disorder": 0,
-    "Addiction / Substance Abuse": 0,
+    'Borderline Personality Disorder': 0,
+    'Addiction / Substance Abuse': 0,
   });
 
   const changeDisorder = (idx, value) => {
@@ -63,24 +63,12 @@ export default function Illnesses({ setFilters }) {
   );
 
   const illnesses = [
-    <TriCheckbox
-      key="Schizofrenia"
-      change={changeDisorder}
-      name="Schizofrenia"
-    />,
-    <TriCheckbox
-      key="Bipolar Disorder"
-      change={changeDisorder}
-      name="Bipolar DisorderBPD"
-    />,
+    <TriCheckbox key="Schizofrenia" change={changeDisorder} name="Schizofrenia" />,
+    <TriCheckbox key="Bipolar Disorder" change={changeDisorder} name="Bipolar DisorderBPD" />,
     <TriCheckbox key="Depression" change={changeDisorder} name="Depression" />,
     <TriCheckbox key="ADHD" change={changeDisorder} name="ADHD" />,
     <TriCheckbox key="PTSD" change={changeDisorder} name="PTSD" />,
-    <TriCheckbox
-      key="Eating"
-      change={changeDisorder}
-      name="Eating Disorders"
-    />,
+    <TriCheckbox key="Eating" change={changeDisorder} name="Eating Disorders" />,
     <TriCheckbox key="Insomnia" change={changeDisorder} name="Insomnia" />,
     <TriCheckbox
       key="Borderline Personality Disorder"
@@ -95,13 +83,13 @@ export default function Illnesses({ setFilters }) {
   ];
   const [open, setOpen] = useState(false);
 
-  const accordionColor = open ? "#FFCFA0" : "white";
+  const accordionColor = open ? '#D3DEDC' : '#D3DEDC';
 
   return (
     <>
       <Accordion
         onChange={() => setOpen((s) => !s)}
-        sx={{ transition: "all .35s", backgroundColor: accordionColor }}
+        sx={{ transition: 'all .35s', backgroundColor: accordionColor }}
       >
         <AccordionSummary aria-controls="panel1a-content" id="panel1a-header">
           <Typography>Illnesses</Typography>

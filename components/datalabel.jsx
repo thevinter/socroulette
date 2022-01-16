@@ -1,8 +1,8 @@
-import useSWR from "swr";
+import useSWR from 'swr';
 
 const fetcher = (...args) =>
   fetch(...args, {
-    mode: "no-cors",
+    mode: 'no-cors',
   }).then((res) => res.json());
 
 export default function Datalabel({ icon, label, data, lStyle, dStyle }) {
@@ -10,11 +10,10 @@ export default function Datalabel({ icon, label, data, lStyle, dStyle }) {
     <div>
       <div
         style={{
-          fontSize: "20px",
-          display: "inline-flex",
-          alignItems: "center",
-          flexWrap: "wrap",
-          marginBottom: "5px",
+          fontSize: '20px',
+          display: 'inline-flex',
+          alignItems: 'center',
+          flexWrap: 'wrap',
         }}
       >
         {icon}

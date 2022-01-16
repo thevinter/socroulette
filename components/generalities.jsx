@@ -1,4 +1,4 @@
-import { Controller } from "react-hook-form";
+import { Controller } from 'react-hook-form';
 import {
   TextField,
   FormControl,
@@ -8,8 +8,8 @@ import {
   MenuItem,
   InputLabel,
   Select,
-} from "@mui/material";
-import styles from "./generalities.module.css";
+} from '@mui/material';
+import styles from './generalities.module.css';
 
 export default function Generalities({ control }) {
   return (
@@ -20,7 +20,7 @@ export default function Generalities({ control }) {
         defaultValue=""
         render={({ field: { onChange, value } }) => (
           <TextField
-            sx={{ width: "100%" }}
+            sx={{ width: '100%' }}
             onChange={onChange}
             value={value}
             id="outlined-basic"
@@ -124,10 +124,8 @@ export default function Generalities({ control }) {
           control={control}
           defaultValue=""
           render={({ field: { onChange, value } }) => (
-            <FormControl sx={{ width: "100%", marginTop: 2 }}>
-              <InputLabel id="demo-simple-select-label">
-                Your body type
-              </InputLabel>
+            <FormControl sx={{ width: '100%', marginTop: 2 }}>
+              <InputLabel id="demo-simple-select-label">Your body type</InputLabel>
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
@@ -135,16 +133,14 @@ export default function Generalities({ control }) {
                 onChange={onChange}
                 value={value}
               >
-                <MenuItem value={"Skinny/underweight"}>
-                  Skinny/underweight
-                </MenuItem>
-                <MenuItem value={"Average"}>Average</MenuItem>
-                <MenuItem value={"Hourglass"}>Hourglass</MenuItem>
-                <MenuItem value={"Lean/fit"}>Lean/fit</MenuItem>
-                <MenuItem value={"Buff/muscular"}>Buff/muscular</MenuItem>
-                <MenuItem value={"Chubby"}>Chubby</MenuItem>
-                <MenuItem value={"Fat"}>Fat</MenuItem>
-                <MenuItem value={"Obese"}>Obese</MenuItem>
+                <MenuItem value={'Skinny/underweight'}>Skinny/underweight</MenuItem>
+                <MenuItem value={'Average'}>Average</MenuItem>
+                <MenuItem value={'Hourglass'}>Hourglass</MenuItem>
+                <MenuItem value={'Lean/fit'}>Lean/fit</MenuItem>
+                <MenuItem value={'Buff/muscular'}>Buff/muscular</MenuItem>
+                <MenuItem value={'Chubby'}>Chubby</MenuItem>
+                <MenuItem value={'Fat'}>Fat</MenuItem>
+                <MenuItem value={'Obese'}>Obese</MenuItem>
               </Select>
             </FormControl>
           )}
@@ -155,7 +151,7 @@ export default function Generalities({ control }) {
           defaultValue=""
           render={({ field: { onChange, value } }) => (
             <TextField
-              sx={{ width: "100%", marginTop: 2 }}
+              sx={{ width: '100%', marginTop: 2 }}
               onChange={onChange}
               value={value}
               id="outlined-basic"
@@ -170,7 +166,7 @@ export default function Generalities({ control }) {
           control={control}
           defaultValue=""
           render={({ field: { onChange, value } }) => (
-            <FormControl sx={{ width: "100%", marginTop: 2 }}>
+            <FormControl sx={{ width: '100%', marginTop: 2 }}>
               <InputLabel id="demo-simple-select-label">Hair Color</InputLabel>
               <Select
                 labelId="demo-simple-select-label"
@@ -179,13 +175,13 @@ export default function Generalities({ control }) {
                 onChange={onChange}
                 value={value}
               >
-                <MenuItem value={"Blonde"}>Blonde</MenuItem>
-                <MenuItem value={"Brown"}>Brown</MenuItem>
-                <MenuItem value={"Black"}>Black</MenuItem>
-                <MenuItem value={"Red/Ginger"}>Red/Ginger</MenuItem>
-                <MenuItem value={"White/Gray"}>White/Gray</MenuItem>
-                <MenuItem value={"Shaved"}>Shaved</MenuItem>
-                <MenuItem value={"Other"}>Other</MenuItem>
+                <MenuItem value={'Blonde'}>Blonde</MenuItem>
+                <MenuItem value={'Brown'}>Brown</MenuItem>
+                <MenuItem value={'Black'}>Black</MenuItem>
+                <MenuItem value={'Red/Ginger'}>Red/Ginger</MenuItem>
+                <MenuItem value={'White/Gray'}>White/Gray</MenuItem>
+                <MenuItem value={'Shaved'}>Shaved</MenuItem>
+                <MenuItem value={'Other'}>Other</MenuItem>
               </Select>
             </FormControl>
           )}
@@ -195,10 +191,8 @@ export default function Generalities({ control }) {
           control={control}
           defaultValue=""
           render={({ field: { onChange, value } }) => (
-            <FormControl sx={{ width: "100%", marginTop: 2 }}>
-              <InputLabel id="demo-simple-select-label">
-                Your skin color
-              </InputLabel>
+            <FormControl sx={{ width: '100%', marginTop: 2 }}>
+              <InputLabel id="demo-simple-select-label">Your skin color</InputLabel>
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
@@ -206,20 +200,12 @@ export default function Generalities({ control }) {
                 onChange={onChange}
                 value={value}
               >
-                <MenuItem value={"Light, Pale White"}>
-                  Light, Pale White
-                </MenuItem>
-                <MenuItem value={"White"}>White</MenuItem>
-                <MenuItem value={"Medium, White to Olive"}>
-                  Medium, White to Olive
-                </MenuItem>
-                <MenuItem value={"Olive, Moderate Brown"}>
-                  Olive, Moderate Brown
-                </MenuItem>
-                <MenuItem value={"Brown, Dark Brown"}>
-                  Brown, Dark Brown
-                </MenuItem>
-                <MenuItem value={"Black, Very Dark"}>Black, Very Dark</MenuItem>
+                <MenuItem value={'Light, Pale White'}>Light, Pale White</MenuItem>
+                <MenuItem value={'White'}>White</MenuItem>
+                <MenuItem value={'Medium, White to Olive'}>Medium, White to Olive</MenuItem>
+                <MenuItem value={'Olive, Moderate Brown'}>Olive, Moderate Brown</MenuItem>
+                <MenuItem value={'Brown, Dark Brown'}>Brown, Dark Brown</MenuItem>
+                <MenuItem value={'Black, Very Dark'}>Black, Very Dark</MenuItem>
               </Select>
             </FormControl>
           )}

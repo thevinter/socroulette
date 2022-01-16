@@ -4,9 +4,9 @@ import {
   AccordionSummary,
   AccordionDetails,
   Typography,
-} from "@mui/material";
-import TriCheckbox from "../tricheckbox";
-import { useState, useEffect } from "react";
+} from '@mui/material';
+import TriCheckbox from '../tricheckbox';
+import { useState, useEffect } from 'react';
 
 export default function Kinks({ setFilters }) {
   const [kinks, setKinks] = useState({
@@ -65,18 +65,14 @@ export default function Kinks({ setFilters }) {
   );
   const [open, setOpen] = useState(false);
 
-  const accordionColor = open ? "#FFCFA0" : "white";
+  const accordionColor = open ? '#D3DEDC' : '#D3DEDC';
 
   const kinkList = [
     <TriCheckbox key="BDSM" change={changeKink} name="BDSM" />,
     <TriCheckbox key="Ropeplay" change={changeKink} name="Ropeplay" />,
     <TriCheckbox key="Bestiality" change={changeKink} name="Bestiality" />,
     <TriCheckbox key="Voyeurism" change={changeKink} name="Voyeurism" />,
-    <TriCheckbox
-      key="Exhibitionism"
-      change={changeKink}
-      name="Exhibitionism"
-    />,
+    <TriCheckbox key="Exhibitionism" change={changeKink} name="Exhibitionism" />,
     <TriCheckbox key="Roleplay" change={changeKink} name="Roleplay" />,
     <TriCheckbox key="Watersports" change={changeKink} name="Watersports" />,
     <TriCheckbox key="Humiliation" change={changeKink} name="Humiliation" />,
@@ -89,7 +85,7 @@ export default function Kinks({ setFilters }) {
     <>
       <Accordion
         onChange={() => setOpen((s) => !s)}
-        sx={{ transition: "all .35s", backgroundColor: accordionColor }}
+        sx={{ transition: 'all .35s', backgroundColor: accordionColor }}
       >
         <AccordionSummary aria-controls="panel1a-content" id="panel1a-header">
           <Typography>Kinks</Typography>

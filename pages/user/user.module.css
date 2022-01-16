@@ -7,9 +7,20 @@
 }
 
 .dataCard {
-  margin-bottom: "30px";
-  padding: "10px";
-  border: "1px solid";
+  margin-bottom: 30px;
+  padding: 10px;
+  border: 1px solid;
+  color: white;
+  background-color: coral;
+  border-radius: 4px;
+}
+
+.name {
+  font-family: 'Cabin', sans-serif;
+}
+
+.shadow {
+  box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05), 0 15px 40px rgba(166, 173, 201, 0.2);
 }
 
 @media screen and (max-width: 800px) {

@@ -10,9 +10,9 @@ import {
   Slider,
   Card,
   CardContent,
-} from "@mui/material";
-import { useState, useEffect } from "react";
-import TriCheckbox from "../tricheckbox";
+} from '@mui/material';
+import { useState, useEffect } from 'react';
+import TriCheckbox from '../tricheckbox';
 
 export default function General({ setFilters }) {
   const [age, setAge] = useState([18, 100]);
@@ -51,7 +51,7 @@ export default function General({ setFilters }) {
     Widowed: 0,
     Divorced: 0,
     Married: 0,
-    "Single Parent": 0,
+    'Single Parent': 0,
     Engaged: 0,
   });
 
@@ -117,12 +117,12 @@ export default function General({ setFilters }) {
 
   const [open, setOpen] = useState(false);
 
-  const accordionColor = open ? "#FFCFA0" : "white";
+  const accordionColor = open ? '#D3DEDC' : '#D3DEDC';
 
   return (
     <Accordion
       onChange={() => setOpen((s) => !s)}
-      sx={{ transition: "all .35s", backgroundColor: accordionColor }}
+      sx={{ transition: 'all .35s', backgroundColor: accordionColor }}
     >
       <AccordionSummary aria-controls="panel1a-content" id="panel1a-header">
         <Typography>General</Typography>
@@ -130,7 +130,7 @@ export default function General({ setFilters }) {
       <AccordionDetails>
         <p>Age</p>
         <Slider
-          getAriaLabel={() => "Desired range"}
+          getAriaLabel={() => 'Desired range'}
           min={18}
           value={age}
           onChange={(e) => setAge(e.target.value)}
