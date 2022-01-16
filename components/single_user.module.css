@@ -1,30 +1,48 @@
 .userBox {
   margin: 40px;
-  height: 100%;
-  background-color: #fff;
   display: flex;
   flex-direction: row;
   align-items: flex-end;
   border: 1px solid black;
-  justify-content: space-evenly;
+  box-shadow: -3px 3px 1px 1px rgb(0, 0, 0, 0.1), -8px 8px #ffe300, -8px 8px 0px 2px black;
+  justify-content: space-around;
+  align-items: flex-start;
+  background-color: #ffbc97;
+  box-sizing: 'border-box';
+  transition: all 0.25s;
 }
 
 .userBox:hover {
-  background-color: #f9df74;
   color: black;
   display: flex;
+
   flex-direction: row;
   align-items: flex-end;
   border: 1px solid black;
+  box-shadow: -3px 3px 1px 1px rgb(0, 0, 0, 0.1), -12px 12px #ffe300, -12px 12px 0px 2px black;
   justify-content: space-evenly;
 }
 
+.entry {
+  margin: 25px;
+}
+
 .firstInfo {
-  margin: 10px;
-  flex-basis: 30%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: 'border-box';
+  overflow: hidden;
+  margin: 30px;
+  background-color: #ffbc97;
 }
 
 .secondInfo {
-  margin: 10px;
+  overflow: hidden;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  margin: 30px;
+  background-color: #ffbc97;
+  flex: 7;
   flex-basis: 70%;
 }

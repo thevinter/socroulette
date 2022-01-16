@@ -10,20 +10,20 @@ import {
   Slider,
   Card,
   CardContent,
-} from "@mui/material";
-import { useState, useEffect } from "react";
-import TriCheckbox from "../tricheckbox";
+} from '@mui/material';
+import { useState, useEffect } from 'react';
+import TriCheckbox from '../tricheckbox';
 
 export default function Physical({ setFilters }) {
   const [height, setHeight] = useState([100, 250]);
   const [getRace, setRace] = useState({
     White: 0,
     Hispanic: 0,
-    "West Asian": 0,
-    "East Asian": 0,
-    "Native Hawaiian or Other Pacific Islander": 0,
-    "Black or African American": 0,
-    "American Indian or Alaska Native": 0,
+    'West Asian': 0,
+    'East Asian': 0,
+    'Native Hawaiian or Other Pacific Islander': 0,
+    'Black or African American': 0,
+    'American Indian or Alaska Native': 0,
   });
   const changeRace = (idx, value) => {
     setRace((state) => ({ ...state, [idx]: value % 3 }));
@@ -33,8 +33,8 @@ export default function Physical({ setFilters }) {
     Blonde: 0,
     Brown: 0,
     Black: 0,
-    "Red/Ginger": 0,
-    "White/Gray": 0,
+    'Red/Ginger': 0,
+    'White/Gray': 0,
     Shaved: 0,
     Other: 0,
   });
@@ -43,11 +43,11 @@ export default function Physical({ setFilters }) {
   };
 
   const [body, setBody] = useState({
-    "Skinny/underweight": 0,
+    'Skinny/underweight': 0,
     Average: 0,
     Hourglass: 0,
-    "Lean/fit": 0,
-    "Buff/muscular": 0,
+    'Lean/fit': 0,
+    'Buff/muscular': 0,
     Chubby: 0,
     Fat: 0,
     Obese: 0,
@@ -57,12 +57,12 @@ export default function Physical({ setFilters }) {
   };
 
   const [skin, setSkin] = useState({
-    "Light, Pale White": 0,
+    'Light, Pale White': 0,
     White: 0,
-    "Medium, White to Olive": 0,
-    "Olive, Moderate Brown": 0,
-    "Brown, Dark Brown": 0,
-    "Black, Very Dark": 0,
+    'Medium, White to Olive': 0,
+    'Olive, Moderate Brown': 0,
+    'Brown, Dark Brown': 0,
+    'Black, Very Dark': 0,
   });
   const changeSkin = (idx, value) => {
     setSkin((state) => ({ ...state, [idx]: value % 3 }));
@@ -113,20 +113,28 @@ export default function Physical({ setFilters }) {
   );
 
   const [open, setOpen] = useState(false);
-  const accordionColor = open ? "#FFCFA0" : "white";
+  const accordionColor = open ? '#FFF' : '#FFF';
 
   return (
     <Accordion
       onChange={() => setOpen((s) => !s)}
-      sx={{ transition: "all .35s", backgroundColor: accordionColor }}
+      sx={{
+        transition: 'all .35s',
+        border: '1px solid rgb(0,0,0,.2)',
+        borderStyle: 'solid none solid none',
+        backgroundColor: accordionColor,
+      }}
     >
-      <AccordionSummary aria-controls="panel1a-content" id="panel1a-header">
+      <AccordionSummary
+        aria-controls="panel1a-content"
+        id="panel1a-header"
+      >
         <Typography>Physical</Typography>
       </AccordionSummary>
       <AccordionDetails>
         <p>Height (cm)</p>
         <Slider
-          getAriaLabel={() => "Desired height"}
+          getAriaLabel={() => 'Desired height'}
           min={100}
           max={250}
           value={height}
@@ -134,24 +142,18 @@ export default function Physical({ setFilters }) {
           valueLabelDisplay="auto"
         />
 
-        <FormLabel sx={{ marginTop: "10px" }} component="legend">
+        <FormLabel sx={{ marginTop: '10px' }} component="legend">
           Ethnicity
         </FormLabel>
         <TriCheckbox change={changeRace} name="White" />
         <TriCheckbox change={changeRace} name="Hispanic" />
         <TriCheckbox change={changeRace} name="West Asian" />
         <TriCheckbox change={changeRace} name="East Asian" />
-        <TriCheckbox
-          change={changeRace}
-          name="Native Hawaiian or Other Pacific Islander"
-        />
+        <TriCheckbox change={changeRace} name="Native Hawaiian or Other Pacific Islander" />
         <TriCheckbox change={changeRace} name="Black or African American" />
-        <TriCheckbox
-          change={changeRace}
-          name="American Indian or Alaska Native"
-        />
+        <TriCheckbox change={changeRace} name="American Indian or Alaska Native" />
 
-        <FormLabel sx={{ marginTop: "30px" }} component="legend">
+        <FormLabel sx={{ marginTop: '30px' }} component="legend">
           Body Type
         </FormLabel>
         <TriCheckbox change={changeBody} name="Skinny/underweight" />
@@ -163,7 +165,7 @@ export default function Physical({ setFilters }) {
         <TriCheckbox change={changeBody} name="Fat" />
         <TriCheckbox change={changeBody} name="Obese" />
 
-        <FormLabel sx={{ marginTop: "30px" }} component="legend">
+        <FormLabel sx={{ marginTop: '30px' }} component="legend">
           Hair Color
         </FormLabel>
         <TriCheckbox change={changeHair} name="Blonde" />
@@ -174,13 +176,19 @@ export default function Physical({ setFilters }) {
         <TriCheckbox change={changeHair} name="Shaved" />
         <TriCheckbox change={changeHair} name="Other" />
 
-        <FormLabel sx={{ marginTop: "30px" }} component="legend">
+        <FormLabel sx={{ marginTop: '30px' }} component="legend">
           Skin Color
         </FormLabel>
         <TriCheckbox change={changeSkin} name="Light, Pale White" />
         <TriCheckbox change={changeSkin} name="White" />
-        <TriCheckbox change={changeSkin} name="Medium, White to Olive" />
-        <TriCheckbox change={changeSkin} name="Olive, Moderate Brown" />
+        <TriCheckbox
+          change={changeSkin}
+          name="Medium, White to Olive"
+        />
+        <TriCheckbox
+          change={changeSkin}
+          name="Olive, Moderate Brown"
+        />
         <TriCheckbox change={changeSkin} name="Brown, Dark Brown" />
         <TriCheckbox change={changeSkin} name="Black, Very Dark" />
       </AccordionDetails>

@@ -1,4 +1,4 @@
-import { Controller } from "react-hook-form";
+import { Controller } from 'react-hook-form';
 import {
   TextField,
   FormControl,
@@ -8,20 +8,25 @@ import {
   MenuItem,
   InputLabel,
   Select,
-} from "@mui/material";
-import styles from "./generalities.module.css";
+} from '@mui/material';
+import styles from './generalities.module.css';
 
-export default function Generalities({ control }) {
+export default function Generalities({ control, errors }) {
   return (
     <>
       <Controller
         name="Age"
         control={control}
         defaultValue=""
-        render={({ field: { onChange, value } }) => (
+        rules={{ required: true }}
+        render={({ field: { onChange, ref, value } }) => (
           <TextField
-            sx={{ width: "100%" }}
-            onChange={onChange}
+            sx={{ width: '100%' }}
+            onChange={(e) => {
+              const onlyNums = e.target.value.replace(/[^0-9]/g, '');
+              onChange(onlyNums);
+            }}
+            inputRef={ref}
             value={value}
             id="outlined-basic"
             label="Age"
@@ -29,8 +34,12 @@ export default function Generalities({ control }) {
           />
         )}
       />
+      {errors.Age && <div className="error">This field is required</div>}
+
       <div className={styles.input}>
-        <InputLabel id="demo-simple-select-label">Your ethnicity</InputLabel>
+        <InputLabel id="demo-simple-select-label">
+          Your ethnicity
+        </InputLabel>
         <FormGroup>
           <FormControlLabel
             control={
@@ -123,40 +132,45 @@ export default function Generalities({ control }) {
           name="BodyType"
           control={control}
           defaultValue=""
-          render={({ field: { onChange, value } }) => (
-            <FormControl sx={{ width: "100%", marginTop: 2 }}>
-              <InputLabel id="demo-simple-select-label">
-                Your body type
-              </InputLabel>
+          rules={{ required: true }}
+          render={({ field: { onChange, ref, value } }) => (
+            <FormControl sx={{ width: '100%', marginTop: 2 }}>
+              <InputLabel id="demo-simple-select-label">Your body type</InputLabel>
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 label="Your body type"
                 onChange={onChange}
+                inputRef={ref}
                 value={value}
               >
-                <MenuItem value={"Skinny/underweight"}>
-                  Skinny/underweight
-                </MenuItem>
-                <MenuItem value={"Average"}>Average</MenuItem>
-                <MenuItem value={"Hourglass"}>Hourglass</MenuItem>
-                <MenuItem value={"Lean/fit"}>Lean/fit</MenuItem>
-                <MenuItem value={"Buff/muscular"}>Buff/muscular</MenuItem>
-                <MenuItem value={"Chubby"}>Chubby</MenuItem>
-                <MenuItem value={"Fat"}>Fat</MenuItem>
-                <MenuItem value={"Obese"}>Obese</MenuItem>
+                <MenuItem value={'Skinny/underweight'}>Skinny/underweight</MenuItem>
+                <MenuItem value={'Average'}>Average</MenuItem>
+                <MenuItem value={'Hourglass'}>Hourglass</MenuItem>
+                <MenuItem value={'Lean/fit'}>Lean/fit</MenuItem>
+                <MenuItem value={'Buff/muscular'}>Buff/muscular</MenuItem>
+                <MenuItem value={'Chubby'}>Chubby</MenuItem>
+                <MenuItem value={'Fat'}>Fat</MenuItem>
+                <MenuItem value={'Obese'}>Obese</MenuItem>
               </Select>
             </FormControl>
           )}
         />
+        {errors.BodyType && <div className="error">This field is required</div>}
+
         <Controller
           name="Height"
           control={control}
           defaultValue=""
-          render={({ field: { onChange, value } }) => (
+          rules={{ required: true }}
+          render={({ field: { onChange, ref, value } }) => (
             <TextField
-              sx={{ width: "100%", marginTop: 2 }}
-              onChange={onChange}
+              inputRef={ref}
+              sx={{ width: '100%', marginTop: 2 }}
+              onChange={(e) => {
+                const onlyNums = e.target.value.replace(/[^0-9]/g, '');
+                onChange(onlyNums);
+              }}
               value={value}
               id="outlined-basic"
               label="Height (cm)"
@@ -164,66 +178,64 @@ export default function Generalities({ control }) {
             />
           )}
         />
+        {errors.Height && <div className="error">This field is required</div>}
 
         <Controller
           name="Hair"
           control={control}
           defaultValue=""
-          render={({ field: { onChange, value } }) => (
-            <FormControl sx={{ width: "100%", marginTop: 2 }}>
+          rules={{ required: true }}
+          render={({ field: { onChange, ref, value } }) => (
+            <FormControl sx={{ width: '100%', marginTop: 2 }}>
               <InputLabel id="demo-simple-select-label">Hair Color</InputLabel>
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
+                inputRef={ref}
                 label="Hair color"
                 onChange={onChange}
                 value={value}
               >
-                <MenuItem value={"Blonde"}>Blonde</MenuItem>
-                <MenuItem value={"Brown"}>Brown</MenuItem>
-                <MenuItem value={"Black"}>Black</MenuItem>
-                <MenuItem value={"Red/Ginger"}>Red/Ginger</MenuItem>
-                <MenuItem value={"White/Gray"}>White/Gray</MenuItem>
-                <MenuItem value={"Shaved"}>Shaved</MenuItem>
-                <MenuItem value={"Other"}>Other</MenuItem>
+                <MenuItem value={'Blonde'}>Blonde</MenuItem>
+                <MenuItem value={'Brown'}>Brown</MenuItem>
+                <MenuItem value={'Black'}>Black</MenuItem>
+                <MenuItem value={'Red/Ginger'}>Red/Ginger</MenuItem>
+                <MenuItem value={'White/Gray'}>White/Gray</MenuItem>
+                <MenuItem value={'Shaved'}>Shaved</MenuItem>
+                <MenuItem value={'Other'}>Other</MenuItem>
               </Select>
             </FormControl>
           )}
         />
+        {errors.Hair && <div className="error">This field is required</div>}
+
         <Controller
           name="Skin"
           control={control}
           defaultValue=""
-          render={({ field: { onChange, value } }) => (
-            <FormControl sx={{ width: "100%", marginTop: 2 }}>
-              <InputLabel id="demo-simple-select-label">
-                Your skin color
-              </InputLabel>
+          rules={{ required: true }}
+          render={({ field: { onChange, ref, value } }) => (
+            <FormControl sx={{ width: '100%', marginTop: 2 }}>
+              <InputLabel id="demo-simple-select-label">Your skin color</InputLabel>
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 label="Your skin color"
+                inputRef={ref}
                 onChange={onChange}
                 value={value}
               >
-                <MenuItem value={"Light, Pale White"}>
-                  Light, Pale White
-                </MenuItem>
-                <MenuItem value={"White"}>White</MenuItem>
-                <MenuItem value={"Medium, White to Olive"}>
-                  Medium, White to Olive
-                </MenuItem>
-                <MenuItem value={"Olive, Moderate Brown"}>
-                  Olive, Moderate Brown
-                </MenuItem>
-                <MenuItem value={"Brown, Dark Brown"}>
-                  Brown, Dark Brown
-                </MenuItem>
-                <MenuItem value={"Black, Very Dark"}>Black, Very Dark</MenuItem>
+                <MenuItem value={'Light, Pale White'}>Light, Pale White</MenuItem>
+                <MenuItem value={'White'}>White</MenuItem>
+                <MenuItem value={'Medium, White to Olive'}>Medium, White to Olive</MenuItem>
+                <MenuItem value={'Olive, Moderate Brown'}>Olive, Moderate Brown</MenuItem>
+                <MenuItem value={'Brown, Dark Brown'}>Brown, Dark Brown</MenuItem>
+                <MenuItem value={'Black, Very Dark'}>Black, Very Dark</MenuItem>
               </Select>
             </FormControl>
           )}
         />
+        {errors.Skin && <div className="error">This field is required</div>}
       </div>
     </>
   );

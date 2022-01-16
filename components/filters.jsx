@@ -1,17 +1,24 @@
-import { useCallback, useState } from "react";
-import General from "./filters/general";
-import Miscellaneous from "./filters/miscellaneous";
-import Physical from "./filters/physical";
-import FilterList from "./filter_list";
-import Geography from "./filters/geography";
-import TriCheckbox from "./tricheckbox";
-import Kinks from "./filters/kinks";
-import Illnesses from "./filters/illnesses";
-import Desires from "./filters/desires";
+import { useCallback, useState } from 'react';
+import General from './filters/general';
+import Miscellaneous from './filters/miscellaneous';
+import Physical from './filters/physical';
+import FilterList from './filter_list';
+import Geography from './filters/geography';
+import TriCheckbox from './tricheckbox';
+import Kinks from './filters/kinks';
+import Illnesses from './filters/illnesses';
+import Desires from './filters/desires';
 
 export default function Filter({ setFilters }) {
   return (
-    <div>
+    <div
+      style={{
+        flex: '1',
+        overflowY: 'scroll',
+        height: '100%',
+        maxHeight: '100%',
+      }}
+    >
       <General setFilters={setFilters} />
       <Physical setFilters={setFilters} />
       <Geography setFilters={setFilters} />
