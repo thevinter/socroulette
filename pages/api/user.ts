@@ -1,13 +1,13 @@
 /* eslint-disable import/no-anonymous-default-export */
-import clientPromise from "../../lib/mongodb";
-const { ObjectId } = require("mongodb"); // or ObjectID
+import clientPromise from '../../lib/mongodb';
+import { ObjectId } from 'mongodb'; // or ObjectID
 
 export async function GetUsers(id) {
   const client = await clientPromise;
-  const db = client.db("users");
+  const db = client.db('users');
   const users = await db
-    .collection("users")
-    .find({ _id: ObjectId(id) })
+    .collection('users')
+    .find({ _id: new ObjectId(id) })
     .toArray();
   return users;
 }
