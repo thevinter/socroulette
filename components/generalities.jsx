@@ -11,17 +11,22 @@ import {
 } from '@mui/material';
 import styles from './generalities.module.css';
 
-export default function Generalities({ control }) {
+export default function Generalities({ control, errors }) {
   return (
     <>
       <Controller
         name="Age"
         control={control}
         defaultValue=""
-        render={({ field: { onChange, value } }) => (
+        rules={{ required: true }}
+        render={({ field: { onChange, ref, value } }) => (
           <TextField
             sx={{ width: '100%' }}
-            onChange={onChange}
+            onChange={(e) => {
+              const onlyNums = e.target.value.replace(/[^0-9]/g, '');
+              onChange(onlyNums);
+            }}
+            inputRef={ref}
             value={value}
             id="outlined-basic"
             label="Age"
@@ -29,6 +34,8 @@ export default function Generalities({ control }) {
           />
         )}
       />
+      {errors.Age && <div className="error">This field is required</div>}
+
       <div className={styles.input}>
         <InputLabel id="demo-simple-select-label">Your ethnicity</InputLabel>
         <FormGroup>
@@ -123,7 +130,8 @@ export default function Generalities({ control }) {
           name="BodyType"
           control={control}
           defaultValue=""
-          render={({ field: { onChange, value } }) => (
+          rules={{ required: true }}
+          render={({ field: { onChange, ref, value } }) => (
             <FormControl sx={{ width: '100%', marginTop: 2 }}>
               <InputLabel id="demo-simple-select-label">Your body type</InputLabel>
               <Select
@@ -131,6 +139,7 @@ export default function Generalities({ control }) {
                 id="demo-simple-select"
                 label="Your body type"
                 onChange={onChange}
+                inputRef={ref}
                 value={value}
               >
                 <MenuItem value={'Skinny/underweight'}>Skinny/underweight</MenuItem>
@@ -145,14 +154,21 @@ export default function Generalities({ control }) {
             </FormControl>
           )}
         />
+        {errors.BodyType && <div className="error">This field is required</div>}
+
         <Controller
           name="Height"
           control={control}
           defaultValue=""
-          render={({ field: { onChange, value } }) => (
+          rules={{ required: true }}
+          render={({ field: { onChange, ref, value } }) => (
             <TextField
+              inputRef={ref}
               sx={{ width: '100%', marginTop: 2 }}
-              onChange={onChange}
+              onChange={(e) => {
+                const onlyNums = e.target.value.replace(/[^0-9]/g, '');
+                onChange(onlyNums);
+              }}
               value={value}
               id="outlined-basic"
               label="Height (cm)"
@@ -160,17 +176,20 @@ export default function Generalities({ control }) {
             />
           )}
         />
+        {errors.Height && <div className="error">This field is required</div>}
 
         <Controller
           name="Hair"
           control={control}
           defaultValue=""
-          render={({ field: { onChange, value } }) => (
+          rules={{ required: true }}
+          render={({ field: { onChange, ref, value } }) => (
             <FormControl sx={{ width: '100%', marginTop: 2 }}>
               <InputLabel id="demo-simple-select-label">Hair Color</InputLabel>
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
+                inputRef={ref}
                 label="Hair color"
                 onChange={onChange}
                 value={value}
@@ -186,17 +205,21 @@ export default function Generalities({ control }) {
             </FormControl>
           )}
         />
+        {errors.Hair && <div className="error">This field is required</div>}
+
         <Controller
           name="Skin"
           control={control}
           defaultValue=""
-          render={({ field: { onChange, value } }) => (
+          rules={{ required: true }}
+          render={({ field: { onChange, ref, value } }) => (
             <FormControl sx={{ width: '100%', marginTop: 2 }}>
               <InputLabel id="demo-simple-select-label">Your skin color</InputLabel>
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 label="Your skin color"
+                inputRef={ref}
                 onChange={onChange}
                 value={value}
               >
@@ -210,6 +233,7 @@ export default function Generalities({ control }) {
             </FormControl>
           )}
         />
+        {errors.Skin && <div className="error">This field is required</div>}
       </div>
     </>
   );

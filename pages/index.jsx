@@ -32,7 +32,17 @@ export default function Index() {
       }}
     >
       <div style={{ marginBottom: '3px', marginTop: '-30px', fontSize: '30px' }}>
-        homepage / renew
+        <Link href="/">
+          <a>homepage</a>
+        </Link>
+        {' / '}
+        <Link href="/renew">
+          <a>manage</a>
+        </Link>
+        {' / '}
+        <Link href="/about">
+          <a>about</a>
+        </Link>
       </div>
       <div
         style={{

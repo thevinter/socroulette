@@ -22,22 +22,18 @@ export default function Success() {
   console.log(data);
   const [selected, setSelected] = useState('general');
 
-  let u;
-  if (!data) u = {};
-  else u = data[0];
-
   const selectedSection = (function () {
     switch (selected) {
       case 'general':
-        return <GeneralInfo u={u} />;
+        return <GeneralInfo u={data ? data[0] : null} />;
       case 'interests':
-        return <InterestsInfo u={u} />;
+        return <InterestsInfo u={data ? data[0] : null} />;
       case 'private':
-        return <PrivateInfo u={u} />;
+        return <PrivateInfo u={data ? data[0] : null} />;
       case 'appearance':
-        return <AppearanceInfo u={u} />;
+        return <AppearanceInfo u={data ? data[0] : null} />;
       default:
-        return <GeneralInfo u={u} />;
+        return <GeneralInfo u={data ? data[0] : null} />;
     }
   })();
 
@@ -60,7 +56,17 @@ export default function Success() {
         }}
       >
         <div style={{ marginBottom: '3px', marginTop: '-30px', fontSize: '30px' }}>
-          homepage / renew
+          <Link href="/">
+            <a>homepage</a>
+          </Link>
+          {' / '}
+          <Link href="/renew">
+            <a>manage</a>
+          </Link>
+          {' / '}
+          <Link href="/about">
+            <a>about</a>
+          </Link>
         </div>
         <div
           style={{
@@ -161,8 +167,13 @@ export default function Success() {
             </div>
             <div style={{ flex: '1', backgroundColor: 'white' }}>
               <div style={{ margin: '66px', alignSelf: 'flex-end' }}>
-                {' '}
-                {data ? selectedSection : <div style={{ textAlign: 'center' }}>Loading</div>}
+                {data && data.length > 0 ? (
+                  selectedSection
+                ) : (
+                  <div style={{ textAlign: 'center' }}>
+                    {data ? 'The current user cannot be found' : 'Loading'}
+                  </div>
+                )}
               </div>
             </div>
           </div>

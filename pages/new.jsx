@@ -1,94 +1,97 @@
-import Head from "next/head";
-import Image from "next/image";
-import TextField from "@mui/material/TextField";
-import {
-  FormLabel,
-  FormGroup,
-  Checkbox,
-  RadioGroup,
-  FormControlLabel,
-  Radio,
-  InputLabel,
-  Select,
-  MenuItem,
-} from "@mui/material";
-import styles from "../styles/Home.module.css";
-import Contacts from "../components/contacts";
-import { useState } from "react";
-import { useForm, Controller } from "react-hook-form";
-import Sex from "../components/sex";
-import Sexuality from "../components/sexuality";
-import Generalities from "../components/generalities";
-import Status from "../components/status";
-import Geography from "../components/geography";
-import Checkboxes from "../components/checkboxes";
-import axios from "axios";
-import { useRouter } from "next/router";
+import styles from '../styles/Home.module.css';
+import Contacts from '../components/contacts';
+import { useState, useEffect } from 'react';
+import { useForm, Controller } from 'react-hook-form';
+import Sex from '../components/sex';
+import Sexuality from '../components/sexuality';
+import Generalities from '../components/generalities';
+import Status from '../components/status';
+import Geography from '../components/geography';
+import Checkboxes from '../components/checkboxes';
+import axios from 'axios';
+import { useRouter } from 'next/router';
 
 export default function Home() {
   const router = useRouter();
-
+  const {
+    setFocus,
+    handleSubmit,
+    control,
+    getValues,
+    formState: { errors },
+  } = useForm({ shouldFocusError: true });
   function getEthnicity(data) {
     let eth = [];
-    if (data.White) eth.push("White");
-    if (data.Hispanic) eth.push("Hispanic");
-    if (data.Black) eth.push("Black or African American");
-    if (data.EAsian) eth.push("East Asian");
-    if (data.WAsian) eth.push("West Asian");
-    if (data.Hawaiian) eth.push("Native Hawaiian or Other Pacific Islander");
-    if (data.Indian) eth.push("American Indian or Alaska Native");
+    if (data.White) eth.push('White');
+    if (data.Hispanic) eth.push('Hispanic');
+    if (data.Black) eth.push('Black or African American');
+    if (data.EAsian) eth.push('East Asian');
+    if (data.WAsian) eth.push('West Asian');
+    if (data.Hawaiian) eth.push('Native Hawaiian or Other Pacific Islander');
+    if (data.Indian) eth.push('American Indian or Alaska Native');
     return eth;
   }
 
   function getIllnesses(data) {
     let eth = [];
-    if (data.Schizofrenia) eth.push("Schizofrenia");
-    if (data.BPD) eth.push("Bipolar Disorder");
-    if (data.Depression) eth.push("Depression");
-    if (data.ADHD) eth.push("ADHD");
-    if (data.PTSD) eth.push("PTSD");
-    if (data.Anxiety) eth.push("Anxiety");
-    if (data.Eating) eth.push("Eating disorders");
-    if (data.Insomnia) eth.push("Insomnia");
-    if (data.Borderline) eth.push("Borderline Personality Disorder");
-    if (data.Addiction) eth.push("Addiction / Substance Abuse");
+    if (data.Schizofrenia) eth.push('Schizofrenia');
+    if (data.BPD) eth.push('Bipolar Disorder');
+    if (data.Depression) eth.push('Depression');
+    if (data.ADHD) eth.push('ADHD');
+    if (data.PTSD) eth.push('PTSD');
+    if (data.Anxiety) eth.push('Anxiety');
+    if (data.Eating) eth.push('Eating disorders');
+    if (data.Insomnia) eth.push('Insomnia');
+    if (data.Borderline) eth.push('Borderline Personality Disorder');
+    if (data.Addiction) eth.push('Addiction / Substance Abuse');
     return eth;
   }
 
   function getKinks(data) {
     let eth = [];
-    if (data.BDSM) eth.push("BDSM");
-    if (data.Ropeplay) eth.push("Ropeplay");
-    if (data.Bestiality) eth.push("Bestiality");
-    if (data.Voyeurism) eth.push("Voyeurism");
-    if (data.Exhibitionism) eth.push("Exhibitionism");
-    if (data.Watersports) eth.push("Watersports");
-    if (data.Humiliation) eth.push("Humiliation");
-    if (data.Cuckolding) eth.push("Cuckolding");
-    if (data.Femdom) eth.push("Femdom");
-    if (data.CNC) eth.push("CNC");
-    if (data.Scat) eth.push("Scat");
+    if (data.BDSM) eth.push('BDSM');
+    if (data.Ropeplay) eth.push('Ropeplay');
+    if (data.Bestiality) eth.push('Bestiality');
+    if (data.Voyeurism) eth.push('Voyeurism');
+    if (data.Exhibitionism) eth.push('Exhibitionism');
+    if (data.Watersports) eth.push('Watersports');
+    if (data.Humiliation) eth.push('Humiliation');
+    if (data.Cuckolding) eth.push('Cuckolding');
+    if (data.Femdom) eth.push('Femdom');
+    if (data.CNC) eth.push('CNC');
+    if (data.Scat) eth.push('Scat');
     return eth;
   }
 
   function getGoal(data) {
     let eth = [];
-    if (data.SFW) eth.push("Safe for work chat");
-    if (data.Gaming) eth.push("Gaming");
-    if (data.VC) eth.push("Voice Chat");
-    if (data.Video) eth.push("SFW Video Chat");
-    if (data.Pic) eth.push("Pic exchange");
-    if (data.Sexting) eth.push("Sexting");
-    if (data.Penpals) eth.push("Pen pals");
-    if (data.NSFWVC) eth.push("NSFW Video Chat");
-    if (data.ERP) eth.push("ERP");
-    if (data.IRL) eth.push("Meeting IRL");
+    if (data.SFW) eth.push('Safe for work chat');
+    if (data.Gaming) eth.push('Gaming');
+    if (data.VC) eth.push('Voice Chat');
+    if (data.Video) eth.push('SFW Video Chat');
+    if (data.Pic) eth.push('Pic exchange');
+    if (data.Sexting) eth.push('Sexting');
+    if (data.Penpals) eth.push('Pen pals');
+    if (data.NSFWVC) eth.push('NSFW Video Chat');
+    if (data.ERP) eth.push('ERP');
+    if (data.IRL) eth.push('Meeting IRL');
     return eth;
   }
 
   const [kinks, setKinks] = useState([]);
 
-  const { handleSubmit, control } = useForm();
+  console.log(errors);
+
+  useEffect(() => {
+    const firstError = Object.keys(errors).reduce((field, a) => {
+      return !!errors[field] ? field : a;
+    }, null);
+    console.log(firstError);
+    if (firstError) {
+      setFocus(firstError);
+    }
+  }, [errors, setFocus]);
+
   const onSubmit = (data) => {
     const user = {
       contacts: {
@@ -126,50 +129,59 @@ export default function Home() {
       nowrite: data.No,
       bio: data.Bio,
     };
-    axios.post("/api/add-user", user).then((res) => {
+    axios.post('/api/add-user', user).then((res) => {
       router.push(`/success/${res.data}`);
     });
     console.log(data);
     console.log(user);
   };
 
+  console.log(
+    getValues('Kik') != '' ||
+      getValues('Telegram') != '' ||
+      getValues('Discord') != '' ||
+      getValues('Snapchat') != '' ||
+      getValues('Email') != ''
+  );
+
   return (
     <div>
       <form
         style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
         }}
         onSubmit={handleSubmit(onSubmit)}
       >
-        <div style={{ marginTop: "40px", width: "70%" }}>
-          <h1 style={{ alignSelf: "flex-start" }}>Enter your data here:</h1>
+        <div style={{ marginTop: '40px', width: '70%' }}>
+          <h1 style={{ alignSelf: 'flex-start' }}>Enter your data here:</h1>
         </div>
-        <fieldset style={{ marginTop: "3rem", width: "70%" }}>
+        <fieldset style={{ marginTop: '3rem', width: '70%' }}>
           <legend>Contacts:</legend>
-          <Contacts control={control} />
+          <Contacts control={control} getValues={getValues} />
+          {errors.Kik && <div className="error">Please enter at least a value</div>}
         </fieldset>
-        <fieldset style={{ marginTop: "3rem", width: "70%" }}>
+        <fieldset style={{ marginTop: '3rem', width: '70%' }}>
           <legend>Sexuality:</legend>
-          <Sex control={control} />
-          <Sexuality control={control} />
+          <Sex control={control} errors={errors} />
+          <Sexuality control={control} errors={errors} />
         </fieldset>
-        <fieldset style={{ marginTop: "3rem", width: "70%" }}>
+        <fieldset style={{ marginTop: '3rem', width: '70%' }}>
           <legend>Physical info:</legend>
-          <Generalities control={control} />
+          <Generalities control={control} errors={errors} />
         </fieldset>
-        <fieldset style={{ marginTop: "3rem", width: "70%" }}>
+        <fieldset style={{ marginTop: '3rem', width: '70%' }}>
           <legend>Social info:</legend>
-          <Status control={control} />
+          <Status control={control} errors={errors} />
         </fieldset>
-        <fieldset style={{ marginTop: "3rem", width: "70%" }}>
+        <fieldset style={{ marginTop: '3rem', width: '70%' }}>
           <legend>Location info:</legend>
-          <Geography control={control} />
+          <Geography control={control} errors={errors} />
         </fieldset>
-        <fieldset style={{ marginTop: "3rem", width: "70%" }}>
+        <fieldset style={{ marginTop: '3rem', width: '70%' }}>
           <legend>Miscellaneous:</legend>
-          <Checkboxes setKinks={setKinks} control={control} />
+          <Checkboxes setKinks={setKinks} control={control} errors={errors} />
         </fieldset>
         <div className={styles.buttonWrapper}>
           <button className={styles.btn} type="submit">

@@ -193,14 +193,12 @@
 
 .about {
   font-size: 90px;
-  width: 70%;
   text-align: justify;
   margin-bottom: 3px;
 }
 
 .aboutPar {
   font-size: 40px;
-  width: 70%;
   color: rgb(34, 34, 34);
   text-align: justify;
   text-justify: inter-word;

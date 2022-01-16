@@ -2,6 +2,7 @@ import Filters from '../components/filters';
 import SingleUser from '../components/single_user';
 import { useState } from 'react';
 import UserList from '../components/userlist';
+import Link from 'next/link';
 
 export default function Users() {
   const [filters, setFilters] = useState({
@@ -21,7 +22,17 @@ export default function Users() {
       }}
     >
       <div style={{ marginBottom: '3px', marginTop: '-30px', fontSize: '30px' }}>
-        homepage / renew
+        <Link href="/">
+          <a>homepage</a>
+        </Link>
+        {' / '}
+        <Link href="/renew">
+          <a>manage</a>
+        </Link>
+        {' / '}
+        <Link href="/about">
+          <a>about</a>
+        </Link>
       </div>
       <div
         style={{
