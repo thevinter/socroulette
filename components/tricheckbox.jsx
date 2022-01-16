@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-hooks/rules-of-hooks */
 
-import { FormControlLabel, Checkbox } from "@mui/material";
-import { green, red, grey } from "@mui/material/colors";
-import { useEffect, useState } from "react";
+import { FormControlLabel, Checkbox } from '@mui/material';
+import { green, red, grey } from '@mui/material/colors';
+import { useEffect, useState } from 'react';
 
 export default function TriCheckbox({ change, name }) {
   const [checked, setChecked] = useState(0);
@@ -23,10 +23,10 @@ export default function TriCheckbox({ change, name }) {
           <Checkbox
             sx={{
               color: grey[800],
-              "&.MuiCheckbox-indeterminate": {
+              '&.MuiCheckbox-indeterminate': {
                 color: red[600],
               },
-              "&.Mui-checked": {
+              '&.Mui-checked': {
                 color: green[600],
               },
             }}

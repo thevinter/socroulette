@@ -1,6 +1,6 @@
-import { TextField } from "@mui/material";
-import { Controller } from "react-hook-form";
-import styles from "./contacts.module.css";
+import { TextField } from '@mui/material';
+import { Controller } from 'react-hook-form';
+import styles from './contacts.module.css';
 
 export default function Contacts({ control }) {
   return (

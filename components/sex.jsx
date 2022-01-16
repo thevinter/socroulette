@@ -4,8 +4,8 @@ import {
   FormLabel,
   RadioGroup,
   Radio,
-} from "@mui/material";
-import { Controller } from "react-hook-form";
+} from '@mui/material';
+import { Controller } from 'react-hook-form';
 
 export default function Sex({ control }) {
   return (
@@ -52,7 +52,9 @@ export default function Sex({ control }) {
           defaultValue=""
           render={({ field: { onChange, value } }) => (
             <FormControl sx={{ margin: 1 }}>
-              <FormLabel component="legend">Gender you identify with</FormLabel>
+              <FormLabel component="legend">
+                Gender you identify with
+              </FormLabel>
               <RadioGroup
                 onChange={onChange}
                 value={value}

@@ -1,11 +1,11 @@
-import { Controller } from "react-hook-form";
+import { Controller } from 'react-hook-form';
 import {
   InputLabel,
   FormControl,
   TextField,
   MenuItem,
   Select,
-} from "@mui/material";
+} from '@mui/material';
 
 export default function Status({ control }) {
   return (
@@ -16,7 +16,7 @@ export default function Status({ control }) {
           control={control}
           defaultValue=""
           render={({ field: { onChange, value } }) => (
-            <FormControl sx={{ width: "100%", marginTop: 2 }}>
+            <FormControl sx={{ width: '100%', marginTop: 2 }}>
               <InputLabel id="demo-simple-select-label">
                 Your employment status
               </InputLabel>
@@ -27,15 +27,23 @@ export default function Status({ control }) {
                 onChange={onChange}
                 value={value}
               >
-                <MenuItem value={"Student"}>Student</MenuItem>
-                <MenuItem value={"Part time worker"}>Part time worker</MenuItem>
-                <MenuItem value={"Full time worker"}>Full time worker</MenuItem>
-                <MenuItem value={"Business owner"}>Business owner</MenuItem>
-                <MenuItem value={"Self-Employed"}>Self-Employed</MenuItem>
-                <MenuItem value={"Unemployed but looking"}>
+                <MenuItem value={'Student'}>Student</MenuItem>
+                <MenuItem value={'Part time worker'}>
+                  Part time worker
+                </MenuItem>
+                <MenuItem value={'Full time worker'}>
+                  Full time worker
+                </MenuItem>
+                <MenuItem value={'Business owner'}>
+                  Business owner
+                </MenuItem>
+                <MenuItem value={'Self-Employed'}>
+                  Self-Employed
+                </MenuItem>
+                <MenuItem value={'Unemployed but looking'}>
                   Unemployed but looking
                 </MenuItem>
-                <MenuItem value={"Neet"}>Neet</MenuItem>
+                <MenuItem value={'Neet'}>Neet</MenuItem>
               </Select>
             </FormControl>
           )}
@@ -47,8 +55,10 @@ export default function Status({ control }) {
           control={control}
           defaultValue=""
           render={({ field: { onChange, value } }) => (
-            <FormControl sx={{ width: "100%", marginTop: 2 }}>
-              <InputLabel id="demo-simple-select-label">Religion</InputLabel>
+            <FormControl sx={{ width: '100%', marginTop: 2 }}>
+              <InputLabel id="demo-simple-select-label">
+                Religion
+              </InputLabel>
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
@@ -56,12 +66,12 @@ export default function Status({ control }) {
                 onChange={onChange}
                 value={value}
               >
-                <MenuItem value={"Christian"}>Christian</MenuItem>
-                <MenuItem value={"Muslim"}>Muslim</MenuItem>
-                <MenuItem value={"Jewish"}>Jewish</MenuItem>
-                <MenuItem value={"Atheist"}>Atheist</MenuItem>
-                <MenuItem value={"Hindu"}>Hindu</MenuItem>
-                <MenuItem value={"Other"}>Other</MenuItem>
+                <MenuItem value={'Christian'}>Christian</MenuItem>
+                <MenuItem value={'Muslim'}>Muslim</MenuItem>
+                <MenuItem value={'Jewish'}>Jewish</MenuItem>
+                <MenuItem value={'Atheist'}>Atheist</MenuItem>
+                <MenuItem value={'Hindu'}>Hindu</MenuItem>
+                <MenuItem value={'Other'}>Other</MenuItem>
               </Select>
             </FormControl>
           )}
@@ -73,7 +83,7 @@ export default function Status({ control }) {
           control={control}
           defaultValue=""
           render={({ field: { onChange, value } }) => (
-            <FormControl sx={{ width: "100%", marginTop: 2 }}>
+            <FormControl sx={{ width: '100%', marginTop: 2 }}>
               <InputLabel id="demo-simple-select-label">
                 Political Beliefs
               </InputLabel>
@@ -84,13 +94,17 @@ export default function Status({ control }) {
                 onChange={onChange}
                 value={value}
               >
-                <MenuItem value={"Leftist"}>Leftist</MenuItem>
-                <MenuItem value={"Conservative"}>Conservative</MenuItem>
-                <MenuItem value={"Centrist"}>Centrist</MenuItem>
-                <MenuItem value={"Fascist"}>Fascist</MenuItem>
-                <MenuItem value={"Comunist"}>Comunist</MenuItem>
-                <MenuItem value={"Other"}>Other</MenuItem>
-                <MenuItem value={"I don't care"}>I dont care</MenuItem>
+                <MenuItem value={'Leftist'}>Leftist</MenuItem>
+                <MenuItem value={'Conservative'}>
+                  Conservative
+                </MenuItem>
+                <MenuItem value={'Centrist'}>Centrist</MenuItem>
+                <MenuItem value={'Fascist'}>Fascist</MenuItem>
+                <MenuItem value={'Comunist'}>Comunist</MenuItem>
+                <MenuItem value={'Other'}>Other</MenuItem>
+                <MenuItem value={"I don't care"}>
+                  I dont care
+                </MenuItem>
               </Select>
             </FormControl>
           )}
@@ -102,7 +116,7 @@ export default function Status({ control }) {
           control={control}
           defaultValue=""
           render={({ field: { onChange, value } }) => (
-            <FormControl sx={{ width: "100%", marginTop: 2 }}>
+            <FormControl sx={{ width: '100%', marginTop: 2 }}>
               <TextField
                 placeholder="Optional bio..."
                 multiline
