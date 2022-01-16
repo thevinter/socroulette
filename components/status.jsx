@@ -7,7 +7,7 @@ import {
   Select,
 } from '@mui/material';
 
-export default function Status({ control }) {
+export default function Status({ control, errors}) {
   return (
     <>
       <div>

@@ -7,7 +7,7 @@ import {
 import { Controller } from 'react-hook-form';
 import styles from './sexuality.module.css';
 
-export default function Sexuality({ control }) {
+export default function Sexuality({ control, errors }) {
   return (
     <div className={styles.inputList}>
       <div className={styles.input}>
