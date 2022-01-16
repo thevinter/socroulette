@@ -25,6 +25,14 @@ echo "running fixers..."
 js_fixer="npx -- prettier --write"
 git diff --cached --name-only --diff-filter=ACM | while read fname; do
 	case "$fname" in
+		*.ts|*.tsx)
+				current="${repo_root}/${fname}"
+				if ! $js_fixer --parser typescript "$current"; then
+					die "Autofixer (${js_fixer}) error, somehow you broke it??"
+				else
+					git add "$current"
+				fi
+			;;
 		*.js|*.jsx)
 				current="${repo_root}/${fname}"
 				if ! $js_fixer "$current"; then
