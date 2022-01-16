@@ -10,9 +10,9 @@ import {
   Slider,
   Card,
   CardContent,
-} from "@mui/material";
-import { useEffect, useState } from "react";
-import TriCheckbox from "../tricheckbox";
+} from '@mui/material';
+import { useEffect, useState } from 'react';
+import TriCheckbox from '../tricheckbox';
 
 export default function Miscellaneous({ setFilters }) {
   const [religion, setReligion] = useState({
@@ -29,11 +29,11 @@ export default function Miscellaneous({ setFilters }) {
 
   const [employ, setEmploy] = useState({
     Student: 0,
-    "Part time worker": 0,
-    "Full time worker": 0,
-    "Business owner": 0,
-    "Self-Employed": 0,
-    "Unemployed but looking": 0,
+    'Part time worker': 0,
+    'Full time worker': 0,
+    'Business owner': 0,
+    'Self-Employed': 0,
+    'Unemployed but looking': 0,
     Neet: 0,
   });
   const changeEmploy = (idx, value) => {
@@ -54,11 +54,11 @@ export default function Miscellaneous({ setFilters }) {
   };
 
   const [online, setOnline] = useState({
-    "Most of the day": 0,
-    "In the morning": 0,
+    'Most of the day': 0,
+    'In the morning': 0,
     Afternoon: 0,
     Evening: 0,
-    "A couple of times a week": 0,
+    'A couple of times a week': 0,
     Rarely: 0,
   });
   const changeOnline = (idx, value) => {
@@ -86,7 +86,7 @@ export default function Miscellaneous({ setFilters }) {
   };
   const [open, setOpen] = useState(false);
 
-  const accordionColor = open ? "#FFCFA0" : "white";
+  const accordionColor = open ? '#FFCFA0' : 'white';
 
   useEffect(
     () =>
@@ -113,9 +113,12 @@ export default function Miscellaneous({ setFilters }) {
   return (
     <Accordion
       onChange={() => setOpen((s) => !s)}
-      sx={{ transition: "all .35s", backgroundColor: accordionColor }}
+      sx={{ transition: 'all .35s', backgroundColor: accordionColor }}
     >
-      <AccordionSummary aria-controls="panel1a-content" id="panel1a-header">
+      <AccordionSummary
+        aria-controls="panel1a-content"
+        id="panel1a-header"
+      >
         <Typography>Miscellaneous</Typography>
       </AccordionSummary>
       <AccordionDetails>
@@ -125,7 +128,10 @@ export default function Miscellaneous({ setFilters }) {
         <TriCheckbox change={changeEmploy} name="Full time worker" />
         <TriCheckbox change={changeEmploy} name="Business owner" />
         <TriCheckbox change={changeEmploy} name="Self-Employed" />
-        <TriCheckbox change={changeEmploy} name="Unemployed but looking" />
+        <TriCheckbox
+          change={changeEmploy}
+          name="Unemployed but looking"
+        />
         <TriCheckbox change={changeEmploy} name="Neet" />
 
         <FormLabel component="legend">Religion</FormLabel>
@@ -150,7 +156,10 @@ export default function Miscellaneous({ setFilters }) {
         <TriCheckbox change={changeOnline} name="In the morning" />
         <TriCheckbox change={changeOnline} name="Afternoon" />
         <TriCheckbox change={changeOnline} name="Evening" />
-        <TriCheckbox change={changeOnline} name="A couple of times a week" />
+        <TriCheckbox
+          change={changeOnline}
+          name="A couple of times a week"
+        />
         <TriCheckbox change={changeOnline} name="Rarely" />
       </AccordionDetails>
     </Accordion>

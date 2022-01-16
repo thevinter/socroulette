@@ -10,19 +10,19 @@ import {
   Slider,
   Card,
   CardContent,
-} from "@mui/material";
-import { useState, useEffect } from "react";
-import TriCheckbox from "../tricheckbox";
+} from '@mui/material';
+import { useState, useEffect } from 'react';
+import TriCheckbox from '../tricheckbox';
 
 export default function Geography({ setFilters }) {
   const [location, setLocation] = useState({
-    "Eastern Europe": 0,
-    "Western Europe": 0,
-    "East Asia": 0,
-    "West Asia": 0,
-    "Australia/NZ/Oceania": 0,
-    "North America": 0,
-    "South America": 0,
+    'Eastern Europe': 0,
+    'Western Europe': 0,
+    'East Asia': 0,
+    'West Asia': 0,
+    'Australia/NZ/Oceania': 0,
+    'North America': 0,
+    'South America': 0,
     Africa: 0,
   });
   const changeLocation = (idx, value) => {
@@ -30,7 +30,7 @@ export default function Geography({ setFilters }) {
   };
 
   function valueLabelFormat(value) {
-    if (value > 0) value = "+" + value;
+    if (value > 0) value = '+' + value;
     return `UTC${value}:00`;
   }
 
@@ -74,20 +74,23 @@ export default function Geography({ setFilters }) {
   );
 
   const [open, setOpen] = useState(false);
-  const accordionColor = open ? "#FFCFA0" : "white";
+  const accordionColor = open ? '#FFCFA0' : 'white';
 
   return (
     <Accordion
       onChange={() => setOpen((s) => !s)}
-      sx={{ transition: "all .35s", backgroundColor: accordionColor }}
+      sx={{ transition: 'all .35s', backgroundColor: accordionColor }}
     >
-      <AccordionSummary aria-controls="panel1a-content" id="panel1a-header">
+      <AccordionSummary
+        aria-controls="panel1a-content"
+        id="panel1a-header"
+      >
         <Typography>Geography</Typography>
       </AccordionSummary>
       <AccordionDetails>
         <p>Timezone</p>
         <Slider
-          getAriaLabel={() => "Desired timezone"}
+          getAriaLabel={() => 'Desired timezone'}
           min={-12}
           max={14}
           step={1}
@@ -102,7 +105,10 @@ export default function Geography({ setFilters }) {
         <TriCheckbox change={changeLocation} name="Western Europe" />
         <TriCheckbox change={changeLocation} name="East Asia" />
         <TriCheckbox change={changeLocation} name="West Asia" />
-        <TriCheckbox change={changeLocation} name="Australia/NZ/Oceania" />
+        <TriCheckbox
+          change={changeLocation}
+          name="Australia/NZ/Oceania"
+        />
         <TriCheckbox change={changeLocation} name="North America" />
         <TriCheckbox change={changeLocation} name="South America" />
         <TriCheckbox change={changeLocation} name="Africa" />
