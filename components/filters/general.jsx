@@ -14,61 +14,56 @@ import {
 import { useState, useEffect } from 'react';
 import TriCheckbox from '../tricheckbox';
 
+const data = {
+  ranges: {
+    age: [18, 100],
+  },
+  binaryProps: {
+    sex: ['Male', 'Female', 'Other'],
+    gender: ['Male', 'Female', 'Other'],
+    orientation: ['Polygamous', 'Monogamous'],
+    status: [
+      'Single',
+      'Widowed',
+      'Divorced',
+      'Married',
+      'Single parent',
+      'Engaged',
+    ],
+    sexuality: [
+      'Heterosexual',
+      'Homosexual',
+      'Bisexual',
+      'Asexual',
+      'Other',
+    ],
+  },
+};
+
+function useRangeOf(property) {
+  let [min, max] = data.ranges[property];
+  const [value, setter] = useState([min, max]);
+  return [value, setter];
+}
+
+function useTristateOf(property) {
+  const possible_values = data.binaryProps[property];
+  let obj = Object.fromEntries(possible_values.map((v) => [v, 0]));
+  let [val, setter] = useState(obj);
+  const changer = (idx, value) => {
+    setter((state) => ({ ...state, [idx]: value }));
+  };
+  return [val, changer];
+}
+
 export default function General({ setFilters }) {
-  const [age, setAge] = useState([18, 100]);
-
-  const [sex, setSex] = useState({
-    Male: 0,
-    Female: 0,
-    Other: 0,
-  });
-
-  const changeSex = (idx, value) => {
-    setSex((state) => ({ ...state, [idx]: value % 3 }));
-  };
-
-  const [gender, setGender] = useState({
-    Male: 0,
-    Female: 0,
-    Other: 0,
-  });
-
-  const changeGender = (idx, value) => {
-    setGender((state) => ({ ...state, [idx]: value % 3 }));
-  };
-
-  const [orientation, setOrientation] = useState({
-    Polygamous: 0,
-    Monogamous: 0,
-  });
-
-  const changeOrientation = (idx, value) => {
-    setOrientation((state) => ({ ...state, [idx]: value % 3 }));
-  };
-
-  const [status, setStatus] = useState({
-    Single: 0,
-    Widowed: 0,
-    Divorced: 0,
-    Married: 0,
-    'Single Parent': 0,
-    Engaged: 0,
-  });
-
-  const changeStatus = (idx, value) => {
-    setStatus((state) => ({ ...state, [idx]: value % 3 }));
-  };
-
-  const [sexuality, setSexuality] = useState({
-    Heterosexual: 0,
-    Homosexual: 0,
-    Bisexual: 0,
-    Asexual: 0,
-    Other: 0,
-  });
-  const changeSexuality = (idx, value) => {
-    setSexuality((state) => ({ ...state, [idx]: value % 3 }));
-  };
+  const [age, setAge] = useRangeOf('age');
+  const [sex, changeSex] = useTristateOf('sex');
+  const [gender, changeGender] = useTristateOf('gender');
+  const [orientation, changeOrientation] =
+    useTristateOf('orientation');
+  const [status, changeStatus] = useTristateOf('status');
+  const [sexuality, changeSexuality] = useTristateOf('sexuality');
 
   const returnSelected = (obj) => {
     let selected = [];
@@ -136,26 +131,32 @@ export default function General({ setFilters }) {
         <Typography>General</Typography>
       </AccordionSummary>
       <AccordionDetails>
-        <p>Age</p>
-        <Slider
-          getAriaLabel={() => 'Desired range'}
-          min={18}
-          value={age}
-          onChange={(e) => setAge(e.target.value)}
-          valueLabelDisplay="auto"
-        />
+        <div>
+          <p>Age</p>
+          <Slider
+            getAriaLabel={() => 'Desired range'}
+            min={18}
+            value={age}
+            onChange={(e) => setAge(e.target.value)}
+            valueLabelDisplay="auto"
+          />
+        </div>
 
-        <FormLabel component="legend">Sex at birth</FormLabel>
-        <TriCheckbox change={changeSex} name="Male" />
-        <TriCheckbox change={changeSex} name="Female" />
-        <TriCheckbox change={changeSex} name="Other" />
+        <div>
+          <FormLabel component="legend">Sex at birth</FormLabel>
+          <TriCheckbox change={changeSex} name="Male" />
+          <TriCheckbox change={changeSex} name="Female" />
+          <TriCheckbox change={changeSex} name="Other" />
+        </div>
 
-        <FormLabel component="legend">
-          Gender they identify with
-        </FormLabel>
-        <TriCheckbox change={changeGender} name="Male" />
-        <TriCheckbox change={changeGender} name="Female" />
-        <TriCheckbox change={changeGender} name="Other" />
+        <div>
+          <FormLabel component="legend">
+            Gender they identify with
+          </FormLabel>
+          <TriCheckbox change={changeGender} name="Male" />
+          <TriCheckbox change={changeGender} name="Female" />
+          <TriCheckbox change={changeGender} name="Other" />
+        </div>
 
         <FormLabel component="legend">Their orientation</FormLabel>
         <TriCheckbox change={changeOrientation} name="Polygamous" />
