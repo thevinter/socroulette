@@ -11,21 +11,30 @@ export default function Users() {
     height: [],
     timezone: [],
   });
-  console.log(filters);
   return (
-    <div style={{ boxSizing: 'border-box', height: '100vh', padding: '80px' }}>
+    <div
+      style={{
+        backgroundColor: '#F7F7F7',
+        boxSizing: 'border-box',
+        height: '100vh',
+        padding: '80px',
+      }}
+    >
+      <div style={{ marginBottom: '3px', marginTop: '-30px', fontSize: '30px' }}>
+        homepage / renew
+      </div>
       <div
         style={{
-          boxShadow: '-10px 5px 5px rgba(154,160,185,.05), -15px 13px 15px rgba(166,173,201,1)',
+          boxShadow: '-3px 3px 1px 1px rgb(0,0,0,0.1), -8px 8px #FFE300, -8px 8px 0px 2px black ',
           display: 'flex',
           height: '100%',
           border: '1px solid black',
         }}
       >
-        <div dir="rtl">
+        <div style={{ backgroundColor: '#F7F7F7', width: '25%' }}>
           <Filters setFilters={setFilters} />
         </div>
-        <div style={{ flex: '3' }}>
+        <div style={{ backgroundColor: '#F7F7F7', flex: '1', overflow: 'scroll' }}>
           <UserList filters={filters} />
         </div>
       </div>

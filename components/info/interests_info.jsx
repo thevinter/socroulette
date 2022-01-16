@@ -1,4 +1,4 @@
-import Datalabel from "../datalabel";
+import Datalabel from '../datalabel';
 
 const strTimezone = (timezone) => {
   let base = 'GMT';
@@ -11,19 +11,20 @@ const strTimezone = (timezone) => {
   return `${base}${int}:${dec}`;
 };
 
-
-export default function InterestsInfo({u}) {
+export default function InterestsInfo({ u }) {
+  console.log(u);
   return (
     <div>
-      <Datalabel lStyle={{ fontWeight: 'bold' }} label="Timezone" data={strTimezone(u.timezone)} />
-      <Datalabel lStyle={{ fontWeight: 'bold' }} label="Location" data={u.Location} />
-      {u.country && <Datalabel lStyle={{ fontWeight: 'bold' }} label="Age" data={u.country} />}
+      <Datalabel lStyle={{ fontWeight: 'bold' }} label="Religion" data={u.religion} />
+      {u.interests && (
+        <Datalabel
+          lStyle={{ fontWeight: 'bold' }}
+          label="Interests and Hobbies"
+          data={u.interests}
+        />
+      )}
+      {u.games && <Datalabel lStyle={{ fontWeight: 'bold' }} label="Games" data={u.games} />}
       <Datalabel lStyle={{ fontWeight: 'bold' }} label="Employment" data={u.employment} />
-      <Datalabel
-        lStyle={{ fontWeight: 'bold' }}
-        label="Ethnicities"
-        data={u.ethnicity.join(', ')}
-      />
     </div>
   );
 }

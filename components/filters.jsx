@@ -16,11 +16,8 @@ export default function Filter({ setFilters }) {
         flex: '1',
         overflowY: 'scroll',
         height: '100%',
-        backgroundColor: 'white',
-
         maxHeight: '100%',
       }}
-      dir="ltr"
     >
       <General setFilters={setFilters} />
       <Physical setFilters={setFilters} />

@@ -65,7 +65,7 @@ export default function Kinks({ setFilters }) {
   );
   const [open, setOpen] = useState(false);
 
-  const accordionColor = open ? '#D3DEDC' : '#D3DEDC';
+  const accordionColor = open ? '#FFF' : '#FFF';
 
   const kinkList = [
     <TriCheckbox key="BDSM" change={changeKink} name="BDSM" />,
@@ -85,7 +85,12 @@ export default function Kinks({ setFilters }) {
     <>
       <Accordion
         onChange={() => setOpen((s) => !s)}
-        sx={{ transition: 'all .35s', backgroundColor: accordionColor }}
+        sx={{
+          transition: 'all .35s',
+          border: '1px solid rgb(0,0,0,.2)',
+          borderStyle: 'solid none solid none',
+          backgroundColor: accordionColor,
+        }}
       >
         <AccordionSummary aria-controls="panel1a-content" id="panel1a-header">
           <Typography>Kinks</Typography>

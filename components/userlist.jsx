@@ -15,7 +15,14 @@ export default function UserList({ filters }) {
     console.log(error);
     return <div>failed to load</div>;
   }
-  if (!data) return <div>loading...</div>;
+  if (!data)
+    return (
+      <div
+        style={{ textAlign: 'center', height: '100%', display: 'flex', justifyContent: 'center' }}
+      >
+        <p style={{ alignSelf: 'center' }}>LOADING...</p>
+      </div>
+    );
 
   return (
     <div>

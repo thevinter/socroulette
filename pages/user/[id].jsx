@@ -9,10 +9,11 @@ import Longtext from '../../components/longtext';
 import { SocialIcon } from 'react-social-icons';
 import GeneralInfo from '../../components/info/general_info';
 import InterestsInfo from '../../components/info/interests_info';
-import LocationInfo from '../../components/info/location_info';
 import AppearanceInfo from '../../components/info/appearance_info';
 import Head from 'next/head';
 import MenuItem from '../../components/menuitem';
+import SexualInfo from '../../components/info/interests_info';
+import PrivateInfo from '../../components/info/private_info';
 
 const fetcher = (url) => fetch(url).then((r) => r.json());
 
@@ -21,25 +22,25 @@ export default function Success() {
   console.log(data);
   const [selected, setSelected] = useState('general');
 
-  if (!data) return <div>Loading...</div>;
+  let u;
+  if (!data) u = {};
+  else u = data[0];
 
   const selectedSection = (function () {
     switch (selected) {
       case 'general':
-        return <GeneralInfo u={data[0]} />;
+        return <GeneralInfo u={u} />;
       case 'interests':
-        return <InterestsInfo u={data[0]} />;
-      case 'location':
-        return <LocationInfo u={data[0]} />;
+        return <InterestsInfo u={u} />;
+      case 'private':
+        return <PrivateInfo u={u} />;
       case 'appearance':
-        return <AppearanceInfo u={data[0]} />;
+        return <AppearanceInfo u={u} />;
       default:
-        return <GeneralInfo u={data[0]} />;
+        return <GeneralInfo u={u} />;
     }
   })();
 
-  if (!data) return <p>Loading...</p>;
-  const u = data[0];
   return (
     <>
       <Head>
@@ -54,10 +55,13 @@ export default function Success() {
         style={{
           boxSizing: 'border-box',
           height: '100vh',
-          backgroundColor: '#FFEFEF',
+          backgroundColor: '#F7F7F7',
           padding: '80px',
         }}
       >
+        <div style={{ marginBottom: '3px', marginTop: '-30px', fontSize: '30px' }}>
+          homepage / renew
+        </div>
         <div
           style={{
             height: '100%',
@@ -68,14 +72,15 @@ export default function Success() {
             style={{
               display: 'flex',
               height: '100%',
-              boxShadow: '-10px 5px 5px rgba(154,160,185,.05), -15px 13px 15px rgba(166,173,201,1)',
+              boxShadow:
+                '-3px 3px 1px 1px rgb(0,0,0,0.1), -8px 8px #FFE300, -8px 8px 0px 2px black ',
               zIndex: '100',
               flexDirection: 'row',
               border: '1px solid black',
             }}
           >
-            <div style={{ width: '30%', height: '100%', backgroundColor: '#D3DEDC' }}>
-              <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <div style={{ width: '25%', height: '100%', backgroundColor: '#ffbc97' }}>
+              <div style={{ display: 'flex', height: '100%', flexDirection: 'column' }}>
                 <p
                   className={styles.name}
                   style={{
@@ -90,8 +95,7 @@ export default function Success() {
                   style={
                     selected == 'general'
                       ? {
-                          borderRadius: '100px 0px 0px 100px',
-                          width: '60%',
+                          width: '50%',
                           alignSelf: 'flex-end',
                           backgroundColor: 'white',
                         }
@@ -104,7 +108,6 @@ export default function Success() {
                   style={
                     selected == 'interests'
                       ? {
-                          borderRadius: '100px 0px 0px 100px',
                           width: '60%',
                           alignSelf: 'flex-end',
                           backgroundColor: 'white',
@@ -116,9 +119,8 @@ export default function Success() {
                 </div>
                 <div
                   style={
-                    selected == 'location'
+                    selected == 'private'
                       ? {
-                          borderRadius: '100px 0px 0px 100px',
                           width: '60%',
                           alignSelf: 'flex-end',
                           backgroundColor: 'white',
@@ -126,13 +128,12 @@ export default function Success() {
                       : {}
                   }
                 >
-                  <MenuItem label="location" setLabel={setSelected} />
+                  <MenuItem label="private" setLabel={setSelected} />
                 </div>
                 <div
                   style={
                     selected == 'appearance'
                       ? {
-                          borderRadius: '100px 0px 0px 100px',
                           width: '68%',
                           alignSelf: 'flex-end',
                           backgroundColor: 'white',
@@ -142,10 +143,27 @@ export default function Success() {
                 >
                   <MenuItem label="appearance" setLabel={setSelected} />
                 </div>
+                <div style={{ flex: '1', display: 'flex', width: '100%' }}>
+                  <Link passHref href="/users">
+                    <p
+                      style={{
+                        alignSelf: 'flex-end',
+                        margin: '30px',
+                        fontSize: '20px',
+                        fontWeight: 'bold',
+                      }}
+                    >
+                      {'⮜ BACK'}
+                    </p>
+                  </Link>
+                </div>
               </div>
             </div>
-            <div style={{ flex: '1' }}>
-              <div style={{ margin: '66px' }}>{selectedSection}</div>
+            <div style={{ flex: '1', backgroundColor: 'white' }}>
+              <div style={{ margin: '66px', alignSelf: 'flex-end' }}>
+                {' '}
+                {data ? selectedSection : <div style={{ textAlign: 'center' }}>Loading</div>}
+              </div>
             </div>
           </div>
         </div>

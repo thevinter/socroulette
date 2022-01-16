@@ -1,8 +1,18 @@
 import Datalabel from '../datalabel';
 import { SocialIcon } from 'react-social-icons';
 
+const strTimezone = (timezone) => {
+  let base = 'GMT';
+  let time = timezone.toString();
+  let [int, dec] = time.split('.');
+  if (timezone > 0) base += '+';
+  if (timezone === 0) base += '±';
+  int = int.padStart(2, '0');
+  dec = dec ? dec.padEnd(2, '0') : '00';
+  return `${base}${int}:${dec}`;
+};
+
 export default function GeneralInfo({ u }) {
-  console.log(u);
   return (
     <div>
       {u.contacts.kik && (
@@ -95,14 +105,59 @@ export default function GeneralInfo({ u }) {
           data={u.contacts.snapchat}
         />
       )}
-      <Datalabel lStyle={{ fontWeight: 'bold' }} label="Age" data={u.age} />
-      <Datalabel lStyle={{ fontWeight: 'bold' }} label="Sex" data={u.sex} />
-      <Datalabel lStyle={{ fontWeight: 'bold' }} label="Gender" data={u.gender} />
-      <Datalabel lStyle={{ fontWeight: 'bold' }} label="Orientation" data={u.orientation} />
-      <Datalabel lStyle={{ fontWeight: 'bold' }} label="Sexuality" data={u.sexuality} />
-      <Datalabel lStyle={{ fontWeight: 'bold' }} label="Beliefs" data={u.religion} />
-      <Datalabel lStyle={{ fontWeight: 'bold' }} label="Online" data={u.online} />
-      <Datalabel lStyle={{ fontWeight: 'bold' }} label="Is looking for" data={u.lf.join(', ')} />
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <div
+          style={{
+            display: 'flex',
+            marginTop: '30px',
+            marginBottom: '30px',
+
+            justifyContent: 'space-between',
+            flexDirection: 'row',
+          }}
+        >
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <Datalabel lStyle={{ fontWeight: 'bold' }} label="Age" data={u.age} />
+            <Datalabel lStyle={{ fontWeight: 'bold' }} label="Sex" data={u.sex} />
+            <Datalabel lStyle={{ fontWeight: 'bold' }} label="Gender" data={u.gender} />
+            <Datalabel lStyle={{ fontWeight: 'bold' }} label="Orientation" data={u.orientation} />
+            <Datalabel lStyle={{ fontWeight: 'bold' }} label="Sexuality" data={u.sexuality} />
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <Datalabel
+              lStyle={{ fontWeight: 'bold' }}
+              label="Timezone"
+              data={strTimezone(u.timezone)}
+            />
+            <Datalabel lStyle={{ fontWeight: 'bold' }} label="Location" data={u.location} />
+            {u.country && (
+              <Datalabel lStyle={{ fontWeight: 'bold' }} label="Country" data={u.country} />
+            )}
+            <Datalabel lStyle={{ fontWeight: 'bold' }} label="Online" data={u.online} />
+          </div>
+        </div>
+        <Datalabel lStyle={{ fontWeight: 'bold' }} label="Is looking for" data={u.lf.join(', ')} />
+        <div
+          style={{
+            border: '1px solid black',
+            marginTop: '30px',
+            boxSizing: 'border-box',
+            wordWrap: 'break-word',
+            overflowWrap: 'break-word',
+            wordBreak: 'break-word',
+            whiteSpace: 'normal',
+            boxShadow:
+              '-3px 3px 1px 1px rgb(0, 0, 0, 0.1), -8px 8px #ffe300, -8px 8px 0px 2px black',
+          }}
+        >
+          <Datalabel
+            dStyle={{ margin: '40px' }}
+            lStyle={{ margin: '40px', fontWeight: 'bold' }}
+            label="Bio"
+            data={u.bio}
+          />
+        </div>
+      </div>
     </div>
   );
 }
