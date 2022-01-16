@@ -74,7 +74,7 @@ echo "running linters..."
 # run linter/format-checker/whatever
 if ! (
 	npx -- eslint --ext .js,.jsx --ignore-pattern 'node_modules' --ignore-pattern '.next' --cache --cache-location "${repo_root}/.eslintcache" "$repo_root" &&
-	tsc -noEmit --project "$repo_root"
+	npx -- tsc -noEmit --project "$repo_root"
 	); then
 	die "Error: the linter doesn't like what you just did"
 fi
