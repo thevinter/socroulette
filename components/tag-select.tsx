@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from "react";
-import CreatableSelect from "react-select/creatable";
+import { useEffect, useState } from 'react';
+import CreatableSelect from 'react-select/creatable';
 
 export default function TagSelect({ setKinks }) {
   const [value, setValue] = useState([]);
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState('');
 
   const createOption = (label) => ({
     label,
@@ -22,10 +22,10 @@ export default function TagSelect({ setKinks }) {
   const handleKeyDown = (event) => {
     if (!input) return;
     switch (event.key) {
-      case "Enter":
-      case ",":
+      case 'Enter':
+      case ',':
         setValue((old) => [...old, createOption(input)]);
-        setInput("");
+        setInput('');
         event.preventDefault();
     }
   };

@@ -10,9 +10,9 @@ import {
   Slider,
   Card,
   CardContent,
-} from "@mui/material";
-import { useState, useEffect } from "react";
-import TriCheckbox from "../tricheckbox";
+} from '@mui/material';
+import { useState, useEffect } from 'react';
+import TriCheckbox from '../tricheckbox';
 
 export default function General({ setFilters }) {
   const [age, setAge] = useState([18, 100]);
@@ -51,7 +51,7 @@ export default function General({ setFilters }) {
     Widowed: 0,
     Divorced: 0,
     Married: 0,
-    "Single Parent": 0,
+    'Single Parent': 0,
     Engaged: 0,
   });
 
@@ -117,20 +117,23 @@ export default function General({ setFilters }) {
 
   const [open, setOpen] = useState(false);
 
-  const accordionColor = open ? "#FFCFA0" : "white";
+  const accordionColor = open ? '#FFCFA0' : 'white';
 
   return (
     <Accordion
       onChange={() => setOpen((s) => !s)}
-      sx={{ transition: "all .35s", backgroundColor: accordionColor }}
+      sx={{ transition: 'all .35s', backgroundColor: accordionColor }}
     >
-      <AccordionSummary aria-controls="panel1a-content" id="panel1a-header">
+      <AccordionSummary
+        aria-controls="panel1a-content"
+        id="panel1a-header"
+      >
         <Typography>General</Typography>
       </AccordionSummary>
       <AccordionDetails>
         <p>Age</p>
         <Slider
-          getAriaLabel={() => "Desired range"}
+          getAriaLabel={() => 'Desired range'}
           min={18}
           value={age}
           onChange={(e) => setAge(e.target.value)}
@@ -142,7 +145,9 @@ export default function General({ setFilters }) {
         <TriCheckbox change={changeSex} name="Female" />
         <TriCheckbox change={changeSex} name="Other" />
 
-        <FormLabel component="legend">Gender they identify with</FormLabel>
+        <FormLabel component="legend">
+          Gender they identify with
+        </FormLabel>
         <TriCheckbox change={changeGender} name="Male" />
         <TriCheckbox change={changeGender} name="Female" />
         <TriCheckbox change={changeGender} name="Other" />

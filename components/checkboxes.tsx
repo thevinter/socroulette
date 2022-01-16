@@ -1,4 +1,4 @@
-import { Controller } from "react-hook-form";
+import { Controller } from 'react-hook-form';
 import {
   FormLabel,
   TextField,
@@ -9,12 +9,12 @@ import {
   InputLabel,
   Select,
   FormControl,
-} from "@mui/material";
-import MultiSelector from "./multi-select";
-import CreatableSelect from "react-select/creatable";
-import TagSelect from "./tag-select";
-import CreatableSingle from "./example";
-import { useState } from "react";
+} from '@mui/material';
+import MultiSelector from './multi-select';
+import CreatableSelect from 'react-select/creatable';
+import TagSelect from './tag-select';
+import CreatableSingle from './example';
+import { useState } from 'react';
 
 export default function Checkboxes({ control, setKinks }) {
   const [gamer, setGamer] = useState(true);
@@ -25,10 +25,14 @@ export default function Checkboxes({ control, setKinks }) {
         Your mental illnesses (ignore if none apply)
       </FormLabel>
       <FormGroup
-        sx={{ display: "flex", flexWrap: "wrap", flexDirection: "row" }}
+        sx={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          flexDirection: 'row',
+        }}
       >
         <FormControlLabel
-          sx={{ flex: "1 1 auto" }}
+          sx={{ flex: '1 1 auto' }}
           control={
             <Controller
               name="Schizofrenia"
@@ -41,7 +45,7 @@ export default function Checkboxes({ control, setKinks }) {
           label="Schizofrenia"
         />
         <FormControlLabel
-          sx={{ flex: "1 1 auto" }}
+          sx={{ flex: '1 1 auto' }}
           control={
             <Controller
               name="BPD"
@@ -54,7 +58,7 @@ export default function Checkboxes({ control, setKinks }) {
           label="Bipolar Disorder"
         />
         <FormControlLabel
-          sx={{ flex: "1 1 auto" }}
+          sx={{ flex: '1 1 auto' }}
           control={
             <Controller
               name="Depression"
@@ -67,7 +71,7 @@ export default function Checkboxes({ control, setKinks }) {
           label="Depression"
         />
         <FormControlLabel
-          sx={{ flex: "1 1 auto" }}
+          sx={{ flex: '1 1 auto' }}
           control={
             <Controller
               name="ADHD"
@@ -80,7 +84,7 @@ export default function Checkboxes({ control, setKinks }) {
           label="ADHD"
         />
         <FormControlLabel
-          sx={{ flex: "1 1 auto" }}
+          sx={{ flex: '1 1 auto' }}
           control={
             <Controller
               name="PTSD"
@@ -93,7 +97,7 @@ export default function Checkboxes({ control, setKinks }) {
           label="PTSD"
         />
         <FormControlLabel
-          sx={{ flex: "1 1 auto" }}
+          sx={{ flex: '1 1 auto' }}
           control={
             <Controller
               name="Anxiety"
@@ -106,7 +110,7 @@ export default function Checkboxes({ control, setKinks }) {
           label="Anxiety"
         />
         <FormControlLabel
-          sx={{ flex: "1 1 auto" }}
+          sx={{ flex: '1 1 auto' }}
           control={
             <Controller
               name="Eating"
@@ -119,7 +123,7 @@ export default function Checkboxes({ control, setKinks }) {
           label="Eating disorders"
         />
         <FormControlLabel
-          sx={{ flex: "1 1 auto" }}
+          sx={{ flex: '1 1 auto' }}
           control={
             <Controller
               name="Insomnia"
@@ -132,7 +136,7 @@ export default function Checkboxes({ control, setKinks }) {
           label="Insomnia"
         />
         <FormControlLabel
-          sx={{ flex: "1 1 auto" }}
+          sx={{ flex: '1 1 auto' }}
           control={
             <Controller
               name="Borderline"
@@ -145,7 +149,7 @@ export default function Checkboxes({ control, setKinks }) {
           label="Borderline Personality Disorder"
         />
         <FormControlLabel
-          sx={{ flex: "1 1 auto" }}
+          sx={{ flex: '1 1 auto' }}
           control={
             <Controller
               name="Addiction"
@@ -161,10 +165,14 @@ export default function Checkboxes({ control, setKinks }) {
 
       <FormLabel component="legend">Your kinks</FormLabel>
       <FormGroup
-        sx={{ display: "flex", flexWrap: "wrap", flexDirection: "row" }}
+        sx={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          flexDirection: 'row',
+        }}
       >
         <FormControlLabel
-          sx={{ flex: "1 1 auto" }}
+          sx={{ flex: '1 1 auto' }}
           control={
             <Controller
               name="BDSM"
@@ -177,7 +185,7 @@ export default function Checkboxes({ control, setKinks }) {
           label="BDSM"
         />
         <FormControlLabel
-          sx={{ flex: "1 1 auto" }}
+          sx={{ flex: '1 1 auto' }}
           control={
             <Controller
               name="Ropeplay"
@@ -190,7 +198,7 @@ export default function Checkboxes({ control, setKinks }) {
           label="Ropeplay"
         />
         <FormControlLabel
-          sx={{ flex: "1 1 auto" }}
+          sx={{ flex: '1 1 auto' }}
           control={
             <Controller
               name="Bestiality"
@@ -203,7 +211,7 @@ export default function Checkboxes({ control, setKinks }) {
           label="Bestiality"
         />
         <FormControlLabel
-          sx={{ flex: "1 1 auto" }}
+          sx={{ flex: '1 1 auto' }}
           control={
             <Controller
               name="Voyeurism"
@@ -216,7 +224,7 @@ export default function Checkboxes({ control, setKinks }) {
           label="Voyeurism"
         />
         <FormControlLabel
-          sx={{ flex: "1 1 auto" }}
+          sx={{ flex: '1 1 auto' }}
           control={
             <Controller
               name="Exhibitionism"
@@ -229,7 +237,7 @@ export default function Checkboxes({ control, setKinks }) {
           label="Exhibitionism"
         />
         <FormControlLabel
-          sx={{ flex: "1 1 auto" }}
+          sx={{ flex: '1 1 auto' }}
           control={
             <Controller
               name="Roleplay"
@@ -242,7 +250,7 @@ export default function Checkboxes({ control, setKinks }) {
           label="Roleplay"
         />
         <FormControlLabel
-          sx={{ flex: "1 1 auto" }}
+          sx={{ flex: '1 1 auto' }}
           control={
             <Controller
               name="Watersports"
@@ -255,7 +263,7 @@ export default function Checkboxes({ control, setKinks }) {
           label="Watersports"
         />
         <FormControlLabel
-          sx={{ flex: "1 1 auto" }}
+          sx={{ flex: '1 1 auto' }}
           control={
             <Controller
               name="Humiliation"
@@ -268,7 +276,7 @@ export default function Checkboxes({ control, setKinks }) {
           label="Humiliation"
         />
         <FormControlLabel
-          sx={{ flex: "1 1 auto" }}
+          sx={{ flex: '1 1 auto' }}
           control={
             <Controller
               name="Cuckolding"
@@ -281,7 +289,7 @@ export default function Checkboxes({ control, setKinks }) {
           label="Cuckolding"
         />
         <FormControlLabel
-          sx={{ flex: "1 1 auto" }}
+          sx={{ flex: '1 1 auto' }}
           control={
             <Controller
               name="Femdom"
@@ -294,7 +302,7 @@ export default function Checkboxes({ control, setKinks }) {
           label="Femdom"
         />
         <FormControlLabel
-          sx={{ flex: "1 1 auto" }}
+          sx={{ flex: '1 1 auto' }}
           control={
             <Controller
               name="CNC"
@@ -307,7 +315,7 @@ export default function Checkboxes({ control, setKinks }) {
           label="CNC"
         />
         <FormControlLabel
-          sx={{ flex: "1 1 auto" }}
+          sx={{ flex: '1 1 auto' }}
           control={
             <Controller
               name="Scat"
@@ -320,18 +328,24 @@ export default function Checkboxes({ control, setKinks }) {
           label="Scat"
         />
       </FormGroup>
-      <div style={{ marginTop: "1rem", marginBottom: "1rem" }}>
+      <div style={{ marginTop: '1rem', marginBottom: '1rem' }}>
         <FormLabel component="legend">
           Additional kinks? (separated by comma)
         </FormLabel>
         <TagSelect setKinks={setKinks} />
       </div>
-      <FormLabel component="legend">What are you looking for?</FormLabel>
+      <FormLabel component="legend">
+        What are you looking for?
+      </FormLabel>
       <FormGroup
-        sx={{ display: "flex", flexWrap: "wrap", flexDirection: "row" }}
+        sx={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          flexDirection: 'row',
+        }}
       >
         <FormControlLabel
-          sx={{ flex: "1 1 auto" }}
+          sx={{ flex: '1 1 auto' }}
           control={
             <Controller
               name="SFW"
@@ -344,7 +358,7 @@ export default function Checkboxes({ control, setKinks }) {
           label="Safe for work chat"
         />
         <FormControlLabel
-          sx={{ flex: "1 1 auto" }}
+          sx={{ flex: '1 1 auto' }}
           control={
             <Controller
               name="Gaming"
@@ -363,7 +377,7 @@ export default function Checkboxes({ control, setKinks }) {
           label="Gaming"
         />
         <FormControlLabel
-          sx={{ flex: "1 1 auto" }}
+          sx={{ flex: '1 1 auto' }}
           control={
             <Controller
               name="VC"
@@ -376,7 +390,7 @@ export default function Checkboxes({ control, setKinks }) {
           label="Voice Chat"
         />
         <FormControlLabel
-          sx={{ flex: "1 1 auto" }}
+          sx={{ flex: '1 1 auto' }}
           control={
             <Controller
               name="Video"
@@ -389,7 +403,7 @@ export default function Checkboxes({ control, setKinks }) {
           label="SFW Video Chat"
         />
         <FormControlLabel
-          sx={{ flex: "1 1 auto" }}
+          sx={{ flex: '1 1 auto' }}
           control={
             <Controller
               name="Pic"
@@ -402,7 +416,7 @@ export default function Checkboxes({ control, setKinks }) {
           label="Pic exchange"
         />
         <FormControlLabel
-          sx={{ flex: "1 1 auto" }}
+          sx={{ flex: '1 1 auto' }}
           control={
             <Controller
               name="Sexting"
@@ -415,7 +429,7 @@ export default function Checkboxes({ control, setKinks }) {
           label="Sexting"
         />
         <FormControlLabel
-          sx={{ flex: "1 1 auto" }}
+          sx={{ flex: '1 1 auto' }}
           control={
             <Controller
               name="Penpals"
@@ -428,7 +442,7 @@ export default function Checkboxes({ control, setKinks }) {
           label="Pen pals"
         />
         <FormControlLabel
-          sx={{ flex: "1 1 auto" }}
+          sx={{ flex: '1 1 auto' }}
           control={
             <Controller
               name="NSFWVC"
@@ -441,7 +455,7 @@ export default function Checkboxes({ control, setKinks }) {
           label="NSFW Video Chat"
         />
         <FormControlLabel
-          sx={{ flex: "1 1 auto" }}
+          sx={{ flex: '1 1 auto' }}
           control={
             <Controller
               name="ERP"
@@ -454,7 +468,7 @@ export default function Checkboxes({ control, setKinks }) {
           label="ERP"
         />
         <FormControlLabel
-          sx={{ flex: "1 1 auto" }}
+          sx={{ flex: '1 1 auto' }}
           control={
             <Controller
               name="IRL"
@@ -474,7 +488,7 @@ export default function Checkboxes({ control, setKinks }) {
             control={control}
             defaultValue=""
             render={({ field: { onChange, value } }) => (
-              <FormControl sx={{ width: "100%", marginTop: 2 }}>
+              <FormControl sx={{ width: '100%', marginTop: 2 }}>
                 <TextField
                   value={value}
                   onChange={onChange}
@@ -494,7 +508,7 @@ export default function Checkboxes({ control, setKinks }) {
           control={control}
           defaultValue=""
           render={({ field: { onChange, value } }) => (
-            <FormControl sx={{ width: "100%", marginTop: 2 }}>
+            <FormControl sx={{ width: '100%', marginTop: 2 }}>
               <TextField
                 value={value}
                 onChange={onChange}
@@ -512,7 +526,7 @@ export default function Checkboxes({ control, setKinks }) {
           control={control}
           defaultValue=""
           render={({ field: { onChange, value } }) => (
-            <FormControl sx={{ width: "100%", marginTop: 2 }}>
+            <FormControl sx={{ width: '100%', marginTop: 2 }}>
               <TextField
                 value={value}
                 onChange={onChange}
@@ -530,7 +544,7 @@ export default function Checkboxes({ control, setKinks }) {
           control={control}
           defaultValue=""
           render={({ field: { onChange, value } }) => (
-            <FormControl sx={{ width: "100%", marginTop: 2 }}>
+            <FormControl sx={{ width: '100%', marginTop: 2 }}>
               <TextField
                 value={value}
                 onChange={onChange}
@@ -547,7 +561,7 @@ export default function Checkboxes({ control, setKinks }) {
         control={control}
         defaultValue=""
         render={({ field: { onChange, value } }) => (
-          <FormControl sx={{ width: "100%", marginTop: 2 }}>
+          <FormControl sx={{ width: '100%', marginTop: 2 }}>
             <InputLabel id="demo-simple-select-label">
               When are you online?
             </InputLabel>
@@ -558,14 +572,18 @@ export default function Checkboxes({ control, setKinks }) {
               onChange={onChange}
               value={value}
             >
-              <MenuItem value={"Most of the day"}>Most of the day</MenuItem>
-              <MenuItem value={"In the morning"}>In the morning</MenuItem>
-              <MenuItem value={"Afternoon"}>Afternoon</MenuItem>
-              <MenuItem value={"Evening"}>Evening</MenuItem>
-              <MenuItem value={"A couple of times a week"}>
+              <MenuItem value={'Most of the day'}>
+                Most of the day
+              </MenuItem>
+              <MenuItem value={'In the morning'}>
+                In the morning
+              </MenuItem>
+              <MenuItem value={'Afternoon'}>Afternoon</MenuItem>
+              <MenuItem value={'Evening'}>Evening</MenuItem>
+              <MenuItem value={'A couple of times a week'}>
                 A couple of times a week
               </MenuItem>
-              <MenuItem value={"Rarely"}>Rarely</MenuItem>
+              <MenuItem value={'Rarely'}>Rarely</MenuItem>
             </Select>
           </FormControl>
         )}

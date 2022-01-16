@@ -1,10 +1,10 @@
 /* eslint-disable import/no-anonymous-default-export */
-import clientPromise from "../../lib/mongodb";
+import clientPromise from '../../lib/mongodb';
 
 export async function Count() {
   const client = await clientPromise;
-  const db = client.db("users");
-  const users = await db.collection("users").find({}).count();
+  const db = client.db('users');
+  const users = await db.collection('users').find({}).count();
   console.log(users);
   return users;
 }
