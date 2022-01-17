@@ -22,6 +22,7 @@ export default function PrivateInfo({ u }) {
           lStyle={{ fontWeight: 'bold', wordWrap: '' }}
           label="Red Flags"
           data={u.flags}
+          divStyle={{ alignItems: 'baseline', marginBottom: '2rem' }}
         />
       )}
     </div>

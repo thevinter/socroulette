@@ -2,7 +2,6 @@ import Datalabel from '../datalabel';
 import { SocialIcon } from 'react-social-icons';
 import styles from './general_info.module.css';
 
-
 const strTimezone = (timezone) => {
   let base = 'GMT';
   let time = timezone.toString();
@@ -21,7 +20,6 @@ export default function GeneralInfo({ u }) {
         <Datalabel
           icon={
             <SocialIcon
-              network="twitter"
               style={{
                 height: 18,
                 width: 18,
@@ -31,6 +29,7 @@ export default function GeneralInfo({ u }) {
             />
           }
           lStyle={{ fontWeight: 'bold' }}
+          divStyle={{ marginRight: '20px' }}
           label="KiK"
           data={u.contacts.kik}
         />
@@ -48,6 +47,7 @@ export default function GeneralInfo({ u }) {
               }}
             />
           }
+          divStyle={{ marginRight: '20px' }}
           lStyle={{ fontWeight: 'bold' }}
           label="Discord"
           data={u.contacts.discord}
@@ -66,6 +66,7 @@ export default function GeneralInfo({ u }) {
               }}
             />
           }
+          divStyle={{ marginRight: '20px' }}
           lStyle={{ fontWeight: 'bold' }}
           label="Telegram"
           data={u.contacts.telegram}
@@ -84,6 +85,7 @@ export default function GeneralInfo({ u }) {
               }}
             />
           }
+          divStyle={{ marginRight: '20px' }}
           lStyle={{ fontWeight: 'bold' }}
           label="Email"
           data={u.contacts.email}
@@ -139,11 +141,10 @@ export default function GeneralInfo({ u }) {
           </div>
         </div>
         <Datalabel lStyle={{ fontWeight: 'bold' }} label="Is looking for" data={u.lf.join(', ')} />
-        <div
-         className={styles.bio}
-        >
+        <div className={styles.bio}>
           <Datalabel
-            dStyle={{ }}
+            dStyle={{}}
+            divStyle={{ alignItems: 'baseline', marginBottom: '2rem' }}
             lStyle={{ fontWeight: 'bold' }}
             label="Bio"
             data={u.bio}

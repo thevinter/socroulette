@@ -5,14 +5,8 @@ const fetcher = (...args) =>
     mode: 'no-cors',
   }).then((res) => res.json());
 
-export default function Datalabel({
-  icon,
-  label,
-  data,
-  lStyle,
-  cName,
-  dStyle,
-}) {
+export default function Datalabel({ icon, label, data, lStyle, divStyle, cName, dStyle }) {
+  console.log(divStyle);
   return (
     <div
       className={cName}
@@ -21,6 +15,7 @@ export default function Datalabel({
         display: 'inline-flex',
         alignItems: 'center',
         flexWrap: 'wrap',
+        ...divStyle,
       }}
     >
       {icon}
