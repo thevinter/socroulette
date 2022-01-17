@@ -1,5 +1,7 @@
 import Datalabel from '../datalabel';
 import { SocialIcon } from 'react-social-icons';
+import styles from './general_info.module.css'
+
 
 const strTimezone = (timezone) => {
   let base = 'GMT';
@@ -138,21 +140,11 @@ export default function GeneralInfo({ u }) {
         </div>
         <Datalabel lStyle={{ fontWeight: 'bold' }} label="Is looking for" data={u.lf.join(', ')} />
         <div
-          style={{
-            border: '1px solid black',
-            marginTop: '30px',
-            boxSizing: 'border-box',
-            wordWrap: 'break-word',
-            overflowWrap: 'break-word',
-            wordBreak: 'break-word',
-            whiteSpace: 'normal',
-            boxShadow:
-              '-3px 3px 1px 1px rgb(0, 0, 0, 0.1), -8px 8px #ffe300, -8px 8px 0px 2px black',
-          }}
+         className={styles.bio}
         >
           <Datalabel
-            dStyle={{ margin: '40px' }}
-            lStyle={{ margin: '40px', fontWeight: 'bold' }}
+            dStyle={{ }}
+            lStyle={{ fontWeight: 'bold' }}
             label="Bio"
             data={u.bio}
           />

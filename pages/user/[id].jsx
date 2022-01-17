@@ -48,14 +48,9 @@ export default function Success() {
         />
       </Head>
       <div
-        style={{
-          boxSizing: 'border-box',
-          height: '100vh',
-          backgroundColor: '#F7F7F7',
-          padding: '80px',
-        }}
+        className="mainWrapper"
       >
-        <div style={{ marginBottom: '3px', marginTop: '-30px', fontSize: '30px' }}>
+        <div style={{ marginBottom: '3px', marginTop: '-30px', fontSize: '3vh' }}>
           <Link href="/">
             <a>homepage</a>
           </Link>
@@ -69,24 +64,14 @@ export default function Success() {
           </Link>
         </div>
         <div
-          style={{
-            height: '100%',
-            zIndex: '100',
-          }}
+          className="mainBox"
+
         >
           <div
-            style={{
-              display: 'flex',
-              height: '100%',
-              boxShadow:
-                '-3px 3px 1px 1px rgb(0,0,0,0.1), -8px 8px #FFE300, -8px 8px 0px 2px black ',
-              zIndex: '100',
-              flexDirection: 'row',
-              border: '1px solid black',
-            }}
+            className={styles.content}
           >
-            <div style={{ width: '25%', height: '100%', backgroundColor: '#ffbc97' }}>
-              <div style={{ display: 'flex', height: '100%', flexDirection: 'column' }}>
+            <div className={styles.menuWrapper}>
+              <div className={styles.menu}>
                 <p
                   className={styles.name}
                   style={{
@@ -101,10 +86,10 @@ export default function Success() {
                   style={
                     selected == 'general'
                       ? {
-                          width: '50%',
-                          alignSelf: 'flex-end',
-                          backgroundColor: 'white',
-                        }
+                        width: '50%',
+                        alignSelf: 'flex-end',
+                        backgroundColor: 'white',
+                      }
                       : {}
                   }
                 >
@@ -114,10 +99,10 @@ export default function Success() {
                   style={
                     selected == 'interests'
                       ? {
-                          width: '60%',
-                          alignSelf: 'flex-end',
-                          backgroundColor: 'white',
-                        }
+                        width: '60%',
+                        alignSelf: 'flex-end',
+                        backgroundColor: 'white',
+                      }
                       : {}
                   }
                 >
@@ -127,10 +112,10 @@ export default function Success() {
                   style={
                     selected == 'private'
                       ? {
-                          width: '60%',
-                          alignSelf: 'flex-end',
-                          backgroundColor: 'white',
-                        }
+                        width: '60%',
+                        alignSelf: 'flex-end',
+                        backgroundColor: 'white',
+                      }
                       : {}
                   }
                 >
@@ -140,10 +125,10 @@ export default function Success() {
                   style={
                     selected == 'appearance'
                       ? {
-                          width: '68%',
-                          alignSelf: 'flex-end',
-                          backgroundColor: 'white',
-                        }
+                        width: '68%',
+                        alignSelf: 'flex-end',
+                        backgroundColor: 'white',
+                      }
                       : {}
                   }
                 >
@@ -165,8 +150,36 @@ export default function Success() {
                 </div>
               </div>
             </div>
+            <div class={styles.mobileMenu}>
+              <div style={{ display: "flex", justifyContent:"space-evenly", flexDirection: "row" }}>
+                <p
+                  style={{ textAlign: 'right', fontSize: '1em', color: (selected == 'general' ? "red" : "black"), margin:"7px", borderBottom: '1px solid black' }}
+                  onClick={() => setSelected("general")}
+                >
+                  General
+                </p>
+                <p
+                  style={{ textAlign: 'right', fontSize: '1em', color: (selected == 'interests' ? "red" : "black"), margin:"7px", borderBottom: '1px solid black' }}
+                  onClick={() => setSelected("interests")}
+                >
+                  Interests
+                </p>
+                <p
+                  style={{ textAlign: 'right', fontSize: '1em', color: (selected == 'private' ? "red" : "black"), margin:"7px", borderBottom: '1px solid black' }}
+                  onClick={() => setSelected("private")}
+                >
+                  Private
+                </p>
+                <p
+                  style={{ textAlign: 'right', fontSize: '1em', color: (selected == 'appearance' ? "red" : "black"), margin:"7px", borderBottom: '1px solid black' }}
+                  onClick={() => setSelected("appearance")}
+                >
+                  Appearance
+                </p>
+              </div>
+            </div>
             <div style={{ flex: '1', backgroundColor: 'white' }}>
-              <div style={{ margin: '66px', alignSelf: 'flex-end' }}>
+              <div className={styles.contentWrapper}>
                 {data && data.length > 0 ? (
                   selectedSection
                 ) : (

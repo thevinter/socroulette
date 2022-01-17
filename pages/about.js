@@ -4,14 +4,9 @@ import Link from 'next/link';
 export default function About() {
   return (
     <div
-      style={{
-        backgroundColor: '#F7F7F7',
-        boxSizing: 'border-box',
-        height: '100vh',
-        padding: '80px',
-      }}
+    className="mainWrapper"
     >
-      <div style={{ marginBottom: '3px', marginTop: '-30px', fontSize: '30px' }}>
+      <div style={{ marginBottom: '3px', marginTop: '-30px', fontSize: '3vh' }}>
         <Link href="/">
           <a>homepage</a>
         </Link>
@@ -33,6 +28,7 @@ export default function About() {
         }}
       >
         <div
+          className="mainBox"
           style={{
             display: 'flex',
             flexDirection: 'column',

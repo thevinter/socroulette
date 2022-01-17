@@ -15,8 +15,40 @@
   border-radius: 4px;
 }
 
+.menu {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+}
+
+.content {
+    display: flex;
+    height: 100%;
+    box-shadow: -3px 3px 1px 1px rgb(0,0,0,0.1), -8px 8px #FFE300, -8px 8px 0px 2px black;
+    z-index: 100;
+    flex-direction: row;
+    border: 1px solid black;
+}
+
 .name {
   font-family: 'Cabin', sans-serif;
+}
+
+
+.menuWrapper {
+  width: 25%;
+  height: 100%;
+  background-color: #ffbc97;
+}
+
+.contentWrapper{
+  margin: 66px;
+  align-self: flex-end;
+}
+
+.mobileMenu {
+  display: none;
+  background-color: white;
 }
 
 .shadow {
@@ -26,6 +58,23 @@
 @media screen and (max-width: 800px) {
   .autoFit {
     width: 100%;
+  }
+  .mobileMenu {
+    display: block;
+  }
+  .contentWrapper{
+    margin: 30px;
+  }
+  .menu {
+    display: none;
+  }
+
+  .menuWrapper {
+    display: none;
+  }
+
+  .content {
+    flex-direction: column;
   }
 
   .removeTop {

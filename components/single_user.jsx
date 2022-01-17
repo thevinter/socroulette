@@ -39,7 +39,7 @@ export default function SingleUser({ user }) {
     <Link passHref href={`/user/${user._id}`}>
       <div className={styles.userBox}>
         <div className={styles.firstInfo}>
-          <Datalabel lStyle={{ fontWeight: 'bold' }} label="Age" data={user.age} />
+          <Datalabel cName={styles.dataLabel} lStyle={{ fontWeight: 'bold' }} label="Age" data={user.age} />
           <Datalabel lStyle={{ fontWeight: 'bold' }} label="Sex" data={user.sex} />{' '}
           <Datalabel lStyle={{ fontWeight: 'bold' }} label="Location" data={user.location} />
         </div>
@@ -49,17 +49,20 @@ export default function SingleUser({ user }) {
               flex: '1',
             }}
           >
-            <div style={{ fontWeight: 'bold' }}>Bio:</div>
+            <div style={{         fontSize: '2vh',
+fontWeight: 'bold' }}>Bio:</div>
             <div
               style={{
                 fontSize: '15px',
                 textOverflow: 'ellipsis',
                 overflow: 'hidden',
-                maxHeight: '60px',
+                lineHeight: "1.5em",
+                maxHeight: '4.5em',
                 overflowWrap: 'break-word',
                 wordWrap: 'break-word',
                 wordBreak: 'break-word',
-                whiteSpace: 'normal',
+                whiteSpace: 'normal', 
+                marginBottom: '0.5em',
               }}
             >
               {user.bio ? truncateBio(user.bio) : 'No bio'}

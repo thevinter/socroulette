@@ -10,22 +10,22 @@ export default function Datalabel({
   label,
   data,
   lStyle,
+  cName,
   dStyle,
 }) {
   return (
-    <div>
-      <div
-        style={{
-          fontSize: '20px',
-          display: 'inline-flex',
-          alignItems: 'center',
-          flexWrap: 'wrap',
-        }}
-      >
-        {icon}
-        <span style={lStyle}>{`${label}:`}&nbsp;</span>
-        <span style={dStyle}>{data}</span>
-      </div>
+    <div
+      className={cName}
+      style={{
+        fontSize: '2vh',
+        display: 'inline-flex',
+        alignItems: 'center',
+        flexWrap: 'wrap',
+      }}
+    >
+      {icon}
+      <span style={lStyle}>{`${label}:`}&nbsp;</span>
+      <span style={dStyle}>{data}</span>
     </div>
   );
 }

@@ -25,8 +25,14 @@
   margin: 25px;
 }
 
+.dataEntry {
+  font-weight: bold;
+  font-size: 20px;
+}
+
 .firstInfo {
   display: flex;
+  font-size: 10px;
   flex-direction: column;
   box-sizing: 'border-box';
   overflow: hidden;
@@ -42,4 +48,18 @@
   background-color: #ffbc97;
   flex: 7;
   flex-basis: 70%;
+}
+
+@media screen and (max-width: 800px) {
+
+  .secondInfo{
+    text-align: justify;
+  }
+  .firstInfo {
+    margin-bottom: 0;
+  }
+  
+  .userBox{
+    flex-direction: column;
+  }
 }
