@@ -1,0 +1,28 @@
+.bio {
+  border: 1px solid black;
+  margin-top: 30px;
+  box-sizing: border-box;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  padding: 30px;
+
+  white-space: normal;
+  box-shadow: -3px 3px 1px 1px rgb(0, 0, 0, 0.1), -8px 8px #ffe300, -8px 8px 0px 2px black;
+}
+
+.appearance {
+  display: block;
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 800px) {
+  .bio {
+    padding: 30px;
+  }
+  .appearance {
+    display: flex;
+    flex-direction: column;
+  }
+}

@@ -17,18 +17,22 @@
   display: flex;
 
   flex-direction: row;
-  align-items: flex-end;
   border: 1px solid black;
   box-shadow: -3px 3px 1px 1px rgb(0, 0, 0, 0.1), -12px 12px #ffe300, -12px 12px 0px 2px black;
-  justify-content: space-evenly;
 }
 
 .entry {
   margin: 25px;
 }
 
+.dataEntry {
+  font-weight: bold;
+  font-size: 20px;
+}
+
 .firstInfo {
   display: flex;
+  font-size: 10px;
   flex-direction: column;
   box-sizing: 'border-box';
   overflow: hidden;
@@ -37,7 +41,6 @@
 }
 
 .secondInfo {
-  overflow: hidden;
   align-self: stretch;
   display: flex;
   flex-direction: column;
@@ -45,4 +48,18 @@
   background-color: #ffbc97;
   flex: 7;
   flex-basis: 70%;
+}
+
+@media screen and (max-width: 800px) {
+
+  .secondInfo{
+    text-align: justify;
+  }
+  .firstInfo {
+    margin-bottom: 0;
+  }
+  
+  .userBox{
+    flex-direction: column;
+  }
 }
