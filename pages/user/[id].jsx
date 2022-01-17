@@ -150,7 +150,7 @@ export default function Success() {
                 </div>
               </div>
             </div>
-            <div class={styles.mobileMenu}>
+            <div className={styles.mobileMenu}>
               <div style={{ display: "flex", justifyContent:"space-evenly", flexDirection: "row" }}>
                 <p
                   style={{ textAlign: 'right', fontSize: '1em', color: (selected == 'general' ? "red" : "black"), margin:"7px", borderBottom: '1px solid black' }}

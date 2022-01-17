@@ -1,6 +1,6 @@
 import Datalabel from '../datalabel';
 import { SocialIcon } from 'react-social-icons';
-import styles from './general_info.module.css'
+import styles from './general_info.module.css';
 
 
 const strTimezone = (timezone) => {

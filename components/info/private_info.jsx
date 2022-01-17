@@ -1,5 +1,5 @@
 import Datalabel from '../datalabel';
-import styles from './general_info.module.css'
+import styles from './general_info.module.css';
 
 export default function PrivateInfo({ u }) {
   return (
