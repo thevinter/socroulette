@@ -1,19 +1,9 @@
 import Datalabel from '../datalabel';
-
-const strTimezone = (timezone) => {
-  let base = 'GMT';
-  let time = timezone.toString();
-  let [int, dec] = time.split('.');
-  if (timezone > 0) base += '+';
-  if (timezone === 0) base += '±';
-  int = int.padStart(2, '0');
-  dec = dec ? dec.padEnd(2, '0') : '00';
-  return `${base}${int}:${dec}`;
-};
+import styles from './general_info.module.css';
 
 export default function PrivateInfo({ u }) {
   return (
-    <div>
+    <div className={styles.appearance}>
       <Datalabel lStyle={{ fontWeight: 'bold' }} label="Kinks" data={u.kinks.join(', ')} />
       {u.extraKinks.length > 0 && (
         <Datalabel
@@ -31,7 +21,8 @@ export default function PrivateInfo({ u }) {
         <Datalabel
           lStyle={{ fontWeight: 'bold', wordWrap: '' }}
           label="Red Flags"
-          data={u.flags.join(', ')}
+          data={u.flags}
+          divStyle={{ alignItems: 'baseline', marginBottom: '2rem' }}
         />
       )}
     </div>

@@ -3,6 +3,7 @@ import SingleUser from '../components/single_user';
 import { useState } from 'react';
 import UserList from '../components/userlist';
 import Link from 'next/link';
+import styles from './users.module.css';
 
 export default function Users() {
   const [filters, setFilters] = useState({
@@ -14,14 +15,9 @@ export default function Users() {
   });
   return (
     <div
-      style={{
-        backgroundColor: '#F7F7F7',
-        boxSizing: 'border-box',
-        height: '100vh',
-        padding: '80px',
-      }}
+    className="mainWrapper"
     >
-      <div style={{ marginBottom: '3px', marginTop: '-30px', fontSize: '30px' }}>
+      <div style={{ marginBottom: '3px', marginTop: '-30px', fontSize: '3vh'  }}>
         <Link href="/">
           <a>homepage</a>
         </Link>
@@ -35,17 +31,12 @@ export default function Users() {
         </Link>
       </div>
       <div
-        style={{
-          boxShadow: '-3px 3px 1px 1px rgb(0,0,0,0.1), -8px 8px #FFE300, -8px 8px 0px 2px black ',
-          display: 'flex',
-          height: '100%',
-          border: '1px solid black',
-        }}
+        className={styles.mainContainer}
       >
-        <div style={{ backgroundColor: '#F7F7F7', width: '25%' }}>
+        <div className={styles.filters}>
           <Filters setFilters={setFilters} />
         </div>
-        <div style={{ backgroundColor: '#F7F7F7', flex: '1', overflow: 'scroll' }}>
+        <div className={styles.users}>
           <UserList filters={filters} />
         </div>
       </div>

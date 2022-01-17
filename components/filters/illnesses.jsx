@@ -10,7 +10,7 @@ import { useState, useEffect } from 'react';
 
 export default function Illnesses({ setFilters }) {
   const [disorders, setDisorders] = useState({
-    Schizofrenia: 0,
+    Schizophrenia: 0,
     'Bipolar Disorder': 0,
     Depression: 0,
     ADHD: 0,
@@ -63,7 +63,7 @@ export default function Illnesses({ setFilters }) {
   );
 
   const illnesses = [
-    <TriCheckbox key="Schizofrenia" change={changeDisorder} name="Schizofrenia" />,
+    <TriCheckbox key="Schizophrenia" change={changeDisorder} name="Schizophrenia" />,
     <TriCheckbox key="Bipolar Disorder" change={changeDisorder} name="Bipolar DisorderBPD" />,
     <TriCheckbox key="Depression" change={changeDisorder} name="Depression" />,
     <TriCheckbox key="ADHD" change={changeDisorder} name="ADHD" />,

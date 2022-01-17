@@ -35,14 +35,14 @@ export default function Checkboxes({ control, setKinks }) {
           sx={{ flex: '1 1 auto' }}
           control={
             <Controller
-              name="Schizofrenia"
+              name="Schizophrenia"
               control={control}
               render={({ field: { onChange, value } }) => (
                 <Checkbox checked={value} onChange={onChange} />
               )}
             />
           }
-          label="Schizofrenia"
+          label="Schizophrenia"
         />
         <FormControlLabel
           sx={{ flex: '1 1 auto' }}

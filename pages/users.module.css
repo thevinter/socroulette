@@ -1,0 +1,36 @@
+.mainContainer {
+	box-shadow: -3px 3px 1px 1px rgb(0,0,0,0.1), -8px 8px #FFE300, -8px 8px 0px 2px black;
+	display: flex;
+	height: 89vh;
+	flex-direction: row;
+	border: 1px solid black;
+}
+
+.filters {
+	background-color: #F7F7F7;
+	width: 25%;
+}
+
+.users{
+	background-color: #F7F7F7;
+	flex:1;
+	overflow-y: scroll;
+
+}
+
+
+@media screen and (max-width: 800px) {
+	.mainContainer {
+		flex-direction: column;
+		overflow-y: scroll;
+
+	}
+
+	.users{
+		overflow-y: visible;
+	}
+
+	.filters {
+		width: 100%;
+	}
+}

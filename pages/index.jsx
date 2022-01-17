@@ -24,14 +24,9 @@ export default function Index() {
   const { data, error } = useSWR('/api/count-accounts', fetcher);
   return (
     <div
-      style={{
-        backgroundColor: '#F7F7F7',
-        boxSizing: 'border-box',
-        height: '100vh',
-        padding: '80px',
-      }}
+      className="mainWrapper"
     >
-      <div style={{ marginBottom: '3px', marginTop: '-30px', fontSize: '30px' }}>
+      <div style={{ marginBottom: '3px', marginTop: '-30px', fontSize: '3vh' }}>
         <Link href="/">
           <a>homepage</a>
         </Link>
@@ -45,28 +40,15 @@ export default function Index() {
         </Link>
       </div>
       <div
-        style={{
-          boxShadow: '-3px 3px 1px 1px rgb(0,0,0,0.1), -8px 8px #FFE300, -8px 8px 0px 2px black ',
-          height: '100%',
-          border: '1px solid black',
-        }}
+        className="mainBox"
       >
         <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'flex-start',
-            justifyItems: 'center',
-          }}
+          className={styles.mainColumn}
         >
           <div className={styles.mainTitle}>socroulette</div>
           <p className={styles.sub}>a /soc/ account aggregator</p>
           <div
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              width: '100%',
-            }}
+            className={styles.buttonRow}
           >
             <div style={{ flex: '1', textAlign: 'justify' }}>
               <div

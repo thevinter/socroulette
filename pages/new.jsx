@@ -34,7 +34,7 @@ export default function Home() {
 
   function getIllnesses(data) {
     let eth = [];
-    if (data.Schizofrenia) eth.push('Schizofrenia');
+    if (data.Schizophrenia) eth.push('Schizophrenia');
     if (data.BPD) eth.push('Bipolar Disorder');
     if (data.Depression) eth.push('Depression');
     if (data.ADHD) eth.push('ADHD');

@@ -34,14 +34,9 @@ export default function Renew() {
 
   return (
     <div
-      style={{
-        backgroundColor: '#F7F7F7',
-        boxSizing: 'border-box',
-        height: '100vh',
-        padding: '80px',
-      }}
+      className="mainWrapper"
     >
-      <div style={{ marginBottom: '3px', marginTop: '-30px', fontSize: '30px' }}>
+      <div style={{ marginBottom: '3px', marginTop: '-30px', fontSize: '3vh' }}>
         <Link href="/">
           <a>homepage</a>
         </Link>
@@ -55,26 +50,21 @@ export default function Renew() {
         </Link>
       </div>
       <div
-        style={{
-          boxShadow: '-3px 3px 1px 1px rgb(0,0,0,0.1), -8px 8px #FFE300, -8px 8px 0px 2px black ',
-          height: '100%',
-          width: '100%',
-          border: '1px solid black',
-        }}
+        className="mainBox"
       >
         <div
           style={{
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'cnter',
+            alignItems: 'center',
             justifyItems: 'center',
             height: '100%',
             justifyContent: 'space-evenly',
             width: '100%',
           }}
         >
-          <div style={{ fontSize: '40px', fontWeight: 'bold' }}>enter your user id</div>
-          <div style={{ fontSize: '20px', width: '60%', textAlign: 'justify' }}>
+          <div style={{ fontSize: '4vh', fontWeight: 'bold', textAlign: 'center'}}>enter your user id</div>
+          <div style={{ fontSize: '2vh', width: '60%', textAlign: 'justify' }}>
             By entering the user id you received during registration you can either renew your
             account for 7 more days or delete it completely. Please be aware that you will not be
             able to recover your account once deleted.
