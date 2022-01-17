@@ -6,6 +6,6 @@ hooks="pre-commit"
 
 for hook in $hooks; do
 	# the link is relative so it will work even if the repo root is moved
-	ln -s "../../${this_dir}/${hook}" "${repo_root}/.git/hooks/${hook}"
+	ln -s "../../${this_dir}/${hook}" "${repo_root}/.git/hooks/${hook}" || true # don't fail
 done
 
