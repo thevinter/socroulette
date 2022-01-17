@@ -27,6 +27,14 @@ export default function SingleUser({ user }) {
     return 'SFW + NSFW';
   }
 
+  //truncate bio if too long 
+  function truncateBio(bio) {
+    if (bio.length > 200) {
+      return bio.substring(0, 200) + '...';
+    }
+    return bio;
+  }
+
   return (
     <Link passHref href={`/user/${user._id}`}>
       <div className={styles.userBox}>
@@ -54,7 +62,7 @@ export default function SingleUser({ user }) {
                 whiteSpace: 'normal',
               }}
             >
-              {user.bio ? user.bio : 'No bio'}
+              {user.bio ? truncateBio(user.bio) : 'No bio'}
             </div>
           </div>
           <Datalabel

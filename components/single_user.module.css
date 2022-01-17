@@ -17,10 +17,8 @@
   display: flex;
 
   flex-direction: row;
-  align-items: flex-end;
   border: 1px solid black;
   box-shadow: -3px 3px 1px 1px rgb(0, 0, 0, 0.1), -12px 12px #ffe300, -12px 12px 0px 2px black;
-  justify-content: space-evenly;
 }
 
 .entry {
@@ -37,7 +35,6 @@
 }
 
 .secondInfo {
-  overflow: hidden;
   align-self: stretch;
   display: flex;
   flex-direction: column;
