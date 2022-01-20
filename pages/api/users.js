@@ -5,6 +5,8 @@ export async function GetUsers(query) {
   const parse = (str) => {
     console.log(`parsing "${str}"`);
     if (str === '') return {};
+    if (str === undefined) return {};
+
     let parsed = {};
     for (const section of str.split(',')) {
       const [name, list] = section.split('=');
@@ -34,6 +36,7 @@ export async function GetUsers(query) {
   const client = await clientPromise;
   const db = client.db('users');
   const users = await db.collection('users').find(db_query).limit(20).toArray();
+  users.forEach((user) => (user.uuid = null));
   return users;
 }
 
