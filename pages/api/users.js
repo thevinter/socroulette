@@ -1,6 +1,23 @@
 /* eslint-disable import/no-anonymous-default-export */
 import clientPromise from '../../lib/mongodb';
 
+function shuffle(array) {
+  let currentIndex = array.length,
+    randomIndex;
+
+  // While there remain elements to shuffle...
+  while (currentIndex != 0) {
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+  }
+
+  return array;
+}
+
 export async function GetUsers(query) {
   const parse = (str) => {
     console.log(`parsing "${str}"`);
@@ -37,7 +54,7 @@ export async function GetUsers(query) {
   const db = client.db('users');
   const users = await db.collection('users').find(db_query).limit(20).toArray();
   users.forEach((user) => (user.uuid = null));
-  return users;
+  return shuffle(users);
 }
 
 export default async function handler(req, res) {
