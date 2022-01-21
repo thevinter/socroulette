@@ -2,14 +2,15 @@
 import clientPromise from '../../lib/mongodb';
 const { ObjectId } = require('mongodb'); // or ObjectID
 
-export async function GetUsers(id) {
+export async function GetUser(id) {
   const client = await clientPromise;
   const db = client.db('users');
-  const users = await db
+  const user = await db
     .collection('users')
     .find({ _id: ObjectId(id), active: true })
     .toArray();
-  return users;
+  user.uuid = null;
+  return user;
 }
 
 export async function DeleteUser(id) {
@@ -29,7 +30,7 @@ export default async function handler(req, res) {
     console.log(r);
     res.status(200).json(r);
   } else {
-    const jsonData = await GetUsers(req.query.id);
+    const jsonData = await GetUser(req.query.id);
     res.status(200).json(jsonData);
   }
 }

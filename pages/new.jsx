@@ -1,7 +1,9 @@
 import styles from '../styles/Home.module.css';
 import Contacts from '../components/contacts';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useForm, Controller } from 'react-hook-form';
+import Script from 'next/script';
+import ReCAPTCHA from 'react-google-recaptcha';
 import Sex from '../components/sex';
 import Sexuality from '../components/sexuality';
 import Generalities from '../components/generalities';
@@ -13,6 +15,7 @@ import { useRouter } from 'next/router';
 
 export default function Home() {
   const router = useRouter();
+  const recaptchaRef = useRef(null);
   const {
     setFocus,
     handleSubmit,
@@ -91,7 +94,9 @@ export default function Home() {
     }
   }, [errors, setFocus]);
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
+    const captchaToken = await recaptchaRef.current.executeAsync();
+    recaptchaRef.current.reset();
     const user = {
       contacts: {
         kik: data.Kik,
@@ -128,7 +133,7 @@ export default function Home() {
       nowrite: data.No,
       bio: data.Bio,
     };
-    axios.post('/api/add-user', user).then((res) => {
+    axios.post('/api/add-user', { user, captchaToken }).then((res) => {
       router.push(`/success/${res.data}`);
     });
     console.log(data);
@@ -182,6 +187,11 @@ export default function Home() {
           <legend>Miscellaneous:</legend>
           <Checkboxes setKinks={setKinks} control={control} errors={errors} />
         </fieldset>
+        <ReCAPTCHA
+          ref={recaptchaRef}
+          sitekey="6Le4DigeAAAAAB79sahatOjmbP6Geopx8R31QGQE"
+          size="invisible"
+        />
         <div className={styles.buttonWrapper}>
           <button className={styles.btn} type="submit">
             <span>SUBMIT</span>
