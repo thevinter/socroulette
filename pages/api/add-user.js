@@ -24,8 +24,8 @@ export default async function handler(req, res) {
     console.log(cap.data);
     if (cap.data.success) { */
     const id = await AddUser(req.body.user);
-    /*   res.status(200).json(id);
-    } else {
+    res.status(200).json(id);
+    /*} else {
       res.status(400).json({ error: 'Captcha failed' });
     } */
   }
