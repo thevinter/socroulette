@@ -1,13 +1,7 @@
 import { Controller } from 'react-hook-form';
-import {
-  InputLabel,
-  FormControl,
-  TextField,
-  MenuItem,
-  Select,
-} from '@mui/material';
+import { InputLabel, FormControl, TextField, MenuItem, Select } from '@mui/material';
 
-export default function Status({ control, errors}) {
+export default function Status({ control, errors }) {
   return (
     <>
       <div>
@@ -90,7 +84,7 @@ export default function Status({ control, errors}) {
                 <MenuItem value={'Conservative'}>Conservative</MenuItem>
                 <MenuItem value={'Centrist'}>Centrist</MenuItem>
                 <MenuItem value={'Fascist'}>Fascist</MenuItem>
-                <MenuItem value={'Comunist'}>Comunist</MenuItem>
+                <MenuItem value={'Communist'}>Communist</MenuItem>
                 <MenuItem value={'Other'}>Other</MenuItem>
                 <MenuItem value={"I don't care"}>I dont care</MenuItem>
               </Select>

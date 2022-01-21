@@ -44,7 +44,7 @@ export default function Miscellaneous({ setFilters }) {
     Leftist: 0,
     Centrist: 0,
     Fascist: 0,
-    Comunist: 0,
+    Communist: 0,
     Other: 0,
     "I don't care": 0,
     Conservative: 0,
@@ -120,10 +120,7 @@ export default function Miscellaneous({ setFilters }) {
         backgroundColor: accordionColor,
       }}
     >
-      <AccordionSummary
-        aria-controls="panel1a-content"
-        id="panel1a-header"
-      >
+      <AccordionSummary aria-controls="panel1a-content" id="panel1a-header">
         <Typography>Miscellaneous</Typography>
       </AccordionSummary>
       <AccordionDetails>
@@ -133,10 +130,7 @@ export default function Miscellaneous({ setFilters }) {
         <TriCheckbox change={changeEmploy} name="Full time worker" />
         <TriCheckbox change={changeEmploy} name="Business owner" />
         <TriCheckbox change={changeEmploy} name="Self-Employed" />
-        <TriCheckbox
-          change={changeEmploy}
-          name="Unemployed but looking"
-        />
+        <TriCheckbox change={changeEmploy} name="Unemployed but looking" />
         <TriCheckbox change={changeEmploy} name="Neet" />
 
         <FormLabel component="legend">Religion</FormLabel>
@@ -152,7 +146,7 @@ export default function Miscellaneous({ setFilters }) {
         <TriCheckbox change={changePolitic} name="Centrist" />
         <TriCheckbox change={changePolitic} name="Conservative" />
         <TriCheckbox change={changePolitic} name="Fascist" />
-        <TriCheckbox change={changePolitic} name="Comunist" />
+        <TriCheckbox change={changePolitic} name="Communist" />
         <TriCheckbox change={changePolitic} name="Other" />
         <TriCheckbox change={changePolitic} name="I don't care" />
 
@@ -161,10 +155,7 @@ export default function Miscellaneous({ setFilters }) {
         <TriCheckbox change={changeOnline} name="In the morning" />
         <TriCheckbox change={changeOnline} name="Afternoon" />
         <TriCheckbox change={changeOnline} name="Evening" />
-        <TriCheckbox
-          change={changeOnline}
-          name="A couple of times a week"
-        />
+        <TriCheckbox change={changeOnline} name="A couple of times a week" />
         <TriCheckbox change={changeOnline} name="Rarely" />
       </AccordionDetails>
     </Accordion>
