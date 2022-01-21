@@ -18,7 +18,7 @@ export default function Generalities({ control, errors }) {
         name="Age"
         control={control}
         defaultValue=""
-        rules={{ required: true }}
+        rules={{ min: 18, max: 100, required: true }}
         render={({ field: { onChange, ref, value } }) => (
           <TextField
             sx={{ width: '100%' }}
@@ -37,9 +37,7 @@ export default function Generalities({ control, errors }) {
       {errors.Age && <div className="error">This field is required</div>}
 
       <div className={styles.input}>
-        <InputLabel id="demo-simple-select-label">
-          Your ethnicity
-        </InputLabel>
+        <InputLabel id="demo-simple-select-label">Your ethnicity</InputLabel>
         <FormGroup>
           <FormControlLabel
             control={
@@ -162,7 +160,7 @@ export default function Generalities({ control, errors }) {
           name="Height"
           control={control}
           defaultValue=""
-          rules={{ required: true }}
+          rules={{ min: 100, max: 250, required: true }}
           render={({ field: { onChange, ref, value } }) => (
             <TextField
               inputRef={ref}
