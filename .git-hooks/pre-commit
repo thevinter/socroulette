@@ -25,15 +25,7 @@ echo "running fixers..."
 js_fixer="npx -- prettier --write"
 git diff --cached --name-only --diff-filter=ACM | while read fname; do
 	case "$fname" in
-		*.ts|*.tsx)
-				current="${repo_root}/${fname}"
-				if ! $js_fixer --parser typescript "$current"; then
-					die "Autofixer (${js_fixer}) error, somehow you broke it??"
-				else
-					git add "$current"
-				fi
-			;;
-		*.js|*.jsx)
+		*.ts|*.tsx|*.js|*.jsx)
 				current="${repo_root}/${fname}"
 				if ! $js_fixer "$current"; then
 					die "Autofixer (${js_fixer}) error, somehow you broke it??"
@@ -73,8 +65,8 @@ echo "running linters..."
 
 # run linter/format-checker/whatever
 if ! (
-	npx -- eslint --ext .js,.jsx --ignore-pattern 'node_modules' --ignore-pattern '.next' --cache --cache-location "${repo_root}/.eslintcache" "$repo_root" &&
-	npx -- tsc -noEmit --project "$repo_root"
+	npx -- eslint --ext .js,.jsx,.ts,.tsx --ignore-pattern 'node_modules' --ignore-pattern '.next' --cache --cache-location "${repo_root}/.eslintcache" "$repo_root" &&
+	npx -- tsc --noEmit --project "$repo_root"
 	); then
 	die "Error: the linter doesn't like what you just did"
 fi
