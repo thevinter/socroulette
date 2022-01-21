@@ -1,9 +1,4 @@
-import {
-  InputLabel,
-  FormControl,
-  MenuItem,
-  Select,
-} from '@mui/material';
+import { InputLabel, FormControl, MenuItem, Select } from '@mui/material';
 import { Controller } from 'react-hook-form';
 import styles from './sexuality.module.css';
 
@@ -84,8 +79,8 @@ export default function Sexuality({ control, errors }) {
                 <MenuItem value={'Widowed'}>Widowed</MenuItem>
                 <MenuItem value={'Divorced'}>Divorced</MenuItem>
                 <MenuItem value={'Single Parent'}>Single Parent</MenuItem>
-                <MenuItem value={'Single Parent'}>Married</MenuItem>
-                <MenuItem value={'Single Parent'}>Engaged</MenuItem>
+                <MenuItem value={'Married'}>Married</MenuItem>
+                <MenuItem value={'Engaged'}>Engaged</MenuItem>
               </Select>
             </FormControl>
           )}
