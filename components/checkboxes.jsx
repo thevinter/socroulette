@@ -21,9 +21,7 @@ export default function Checkboxes({ control, setKinks }) {
   console.log(gamer);
   return (
     <>
-      <FormLabel component="legend">
-        Your mental illnesses (ignore if none apply)
-      </FormLabel>
+      <FormLabel component="legend">Your mental illnesses (ignore if none apply)</FormLabel>
       <FormGroup
         sx={{
           display: 'flex',
@@ -323,14 +321,10 @@ export default function Checkboxes({ control, setKinks }) {
         />
       </FormGroup>
       <div style={{ marginTop: '1rem', marginBottom: '1rem' }}>
-        <FormLabel component="legend">
-          Additional kinks? (separated by comma)
-        </FormLabel>
+        <FormLabel component="legend">Additional kinks? (separated by comma)</FormLabel>
         <TagSelect setKinks={setKinks} />
       </div>
-      <FormLabel component="legend">
-        What are you looking for?
-      </FormLabel>
+      <FormLabel component="legend">What are you looking for?</FormLabel>
       <FormGroup
         sx={{
           display: 'flex',
@@ -474,6 +468,19 @@ export default function Checkboxes({ control, setKinks }) {
           }
           label="Meeting IRL"
         />
+        <FormControlLabel
+          sx={{ flex: '1 1 auto' }}
+          control={
+            <Controller
+              name="LTR"
+              control={control}
+              render={({ field: { onChange, value } }) => (
+                <Checkbox checked={value} onChange={onChange} />
+              )}
+            />
+          }
+          label="Long Term Relationship"
+        />
       </FormGroup>
       {!gamer && (
         <div>
@@ -555,11 +562,9 @@ export default function Checkboxes({ control, setKinks }) {
         control={control}
         rules={{ required: true }}
         defaultValue=""
-        render={({ field: { onChange, ref,value } }) => (
+        render={({ field: { onChange, ref, value } }) => (
           <FormControl sx={{ width: '100%', marginTop: 2 }}>
-            <InputLabel id="demo-simple-select-label">
-              When are you online?
-            </InputLabel>
+            <InputLabel id="demo-simple-select-label">When are you online?</InputLabel>
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
