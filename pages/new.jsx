@@ -16,6 +16,7 @@ import { useRouter } from 'next/router';
 export default function Home() {
   const router = useRouter();
   const recaptchaRef = useRef(null);
+  const [change, onChange] = useState(false);
   const {
     setFocus,
     handleSubmit,
@@ -23,6 +24,7 @@ export default function Home() {
     getValues,
     formState: { errors },
   } = useForm({ shouldFocusError: true });
+
   function getEthnicity(data) {
     let eth = [];
     if (data.White) eth.push('White');
@@ -83,8 +85,6 @@ export default function Home() {
 
   const [kinks, setKinks] = useState([]);
 
-  console.log(errors);
-
   useEffect(() => {
     const firstError = Object.keys(errors).reduce((field, a) => {
       return errors[field] ? field : a;
@@ -94,8 +94,10 @@ export default function Home() {
     }
   }, [errors, setFocus]);
 
-  const onSubmit = async (data) => {
-    const captchaToken = await recaptchaRef.current.executeAsync();
+  const onSubmit = (data) => {
+    console.log(recaptchaRef);
+    const captchaToken = recaptchaRef.current.getValue();
+    console.log(`token`, captchaToken);
     recaptchaRef.current.reset();
     const user = {
       contacts: {
@@ -140,14 +142,6 @@ export default function Home() {
     console.log(user);
   };
 
-  console.log(
-    getValues('Kik') != '' ||
-      getValues('Telegram') != '' ||
-      getValues('Discord') != '' ||
-      getValues('Snapchat') != '' ||
-      getValues('Email') != ''
-  );
-
   return (
     <div>
       <form
@@ -190,7 +184,7 @@ export default function Home() {
         <ReCAPTCHA
           ref={recaptchaRef}
           sitekey="6Le4DigeAAAAAB79sahatOjmbP6Geopx8R31QGQE"
-          size="invisible"
+          onChange={onChange}
         />
         <div className={styles.buttonWrapper}>
           <button className={styles.btn} type="submit">
