@@ -14,7 +14,6 @@
 
 .userBox:hover {
   color: black;
-  display: flex;
 
   flex-direction: row;
   border: 1px solid black;
@@ -51,15 +50,18 @@
 }
 
 @media screen and (max-width: 800px) {
-
-  .secondInfo{
+  .secondInfo {
     text-align: justify;
   }
   .firstInfo {
     margin-bottom: 0;
   }
-  
-  .userBox{
+
+  .userBox {
+    flex-direction: column;
+  }
+
+  .userBox:hover {
     flex-direction: column;
   }
 }
