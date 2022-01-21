@@ -131,7 +131,7 @@ export default function Home() {
       nowrite: data.No,
       bio: data.Bio,
     };
-    axios.post('/api/add-user', { user }).then((res) => {
+    axios.post('/api/add-user', user).then((res) => {
       router.push(`/success/${res.data}`);
     });
     console.log(data);
