@@ -18,15 +18,15 @@ export async function AddUser(userData) {
 export default async function handler(req, res) {
   if (req.method === 'POST') {
     const captchaToken = req.body.captchaToken;
-    const cap = await axios.post(
+    /*  const cap = await axios.post(
       `https://www.google.com/recaptcha/api/siteverify?secret=6Le4DigeAAAAANMeL-TDN1VuYXgN1KPk9tS5Bm_8&response=${captchaToken}`
     );
     console.log(cap.data);
-    if (cap.data.success) {
-      const id = await AddUser(req.body.user);
-      res.status(200).json(id);
+    if (cap.data.success) { */
+    const id = await AddUser(req.body.user);
+    /*   res.status(200).json(id);
     } else {
       res.status(400).json({ error: 'Captcha failed' });
-    }
+    } */
   }
 }

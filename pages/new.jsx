@@ -94,11 +94,7 @@ export default function Home() {
     }
   }, [errors, setFocus]);
 
-  const onSubmit = (data) => {
-    console.log(recaptchaRef);
-    const captchaToken = recaptchaRef.current.getValue();
-    console.log(`token`, captchaToken);
-    recaptchaRef.current.reset();
+  const onSubmit = async (data) => {
     const user = {
       contacts: {
         kik: data.Kik,
@@ -135,7 +131,7 @@ export default function Home() {
       nowrite: data.No,
       bio: data.Bio,
     };
-    axios.post('/api/add-user', { user, captchaToken }).then((res) => {
+    axios.post('/api/add-user', { user }).then((res) => {
       router.push(`/success/${res.data}`);
     });
     console.log(data);
@@ -181,11 +177,7 @@ export default function Home() {
           <legend>Miscellaneous:</legend>
           <Checkboxes setKinks={setKinks} control={control} errors={errors} />
         </fieldset>
-        <ReCAPTCHA
-          ref={recaptchaRef}
-          sitekey="6Le4DigeAAAAAB79sahatOjmbP6Geopx8R31QGQE"
-          onChange={onChange}
-        />
+
         <div className={styles.buttonWrapper}>
           <button className={styles.btn} type="submit">
             <span>SUBMIT</span>
