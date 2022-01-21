@@ -79,6 +79,7 @@ export default function Home() {
     if (data.Penpals) eth.push('Pen pals');
     if (data.NSFWVC) eth.push('NSFW Video Chat');
     if (data.ERP) eth.push('ERP');
+    if (data.LTR) eth.push('Long Term Relationship');
     if (data.IRL) eth.push('Meeting IRL');
     return eth;
   }
@@ -94,7 +95,7 @@ export default function Home() {
     }
   }, [errors, setFocus]);
 
-  const onSubmit = async (data) => {
+  const onSubmit = (data) => {
     const user = {
       contacts: {
         kik: data.Kik,
