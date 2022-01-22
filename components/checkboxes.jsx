@@ -10,15 +10,96 @@ import {
   Select,
   FormControl,
 } from '@mui/material';
+import RSelect from 'react-select';
 import MultiSelector from './multi-select';
 import CreatableSelect from 'react-select/creatable';
 import TagSelect from './tag-select';
 import CreatableSingle from './example';
 import { useState } from 'react';
 
+const boardList = [
+  '/3/',
+  '/a/',
+  '/aco/',
+  '/adv/',
+  '/an/',
+  '/asp/',
+  '/b/',
+  '/bant/',
+  '/biz/',
+  '/c/',
+  '/cgl/',
+  '/ck/',
+  '/cm/',
+  '/co/',
+  '/d/',
+  '/diy/',
+  '/e/',
+  '/fa/',
+  '/fit/',
+  '/g/',
+  '/gd/',
+  '/gif/',
+  '/h/',
+  '/hc/',
+  '/hm/',
+  '/hr/',
+  '/i/',
+  '/ic/',
+  '/his/',
+  '/int/',
+  '/jp/',
+  '/k/',
+  '/lit/',
+  '/lgbt/',
+  '/m/',
+  '/mlp/',
+  '/mu/',
+  '/news/',
+  '/n/',
+  '/o/',
+  '/out/',
+  '/p/',
+  '/po/',
+  '/pol/',
+  '/pw/',
+  '/qst/',
+  '/r/',
+  '/r9k/',
+  '/s4s/',
+  '/s/',
+  '/sci/',
+  '/soc/',
+  '/sp/',
+  '/t/',
+  '/tg/',
+  '/toy/',
+  '/trash/',
+  '/trv/',
+  '/tv/',
+  '/u/',
+  '/v/',
+  '/vg/',
+  '/vm/',
+  '/vmg/',
+  '/vip/',
+  '/vp/',
+  '/vr/',
+  '/vrpg/',
+  '/vst/',
+  '/vt/',
+  '/w/',
+  '/wg/',
+  '/wsg/',
+  '/wsr/',
+  '/x/',
+  '/xs/',
+  '/y/',
+];
+
 export default function Checkboxes({ control, setKinks }) {
   const [gamer, setGamer] = useState(true);
-  console.log(gamer);
+  const boards = boardList.map((board) => ({ value: board, label: board }));
   return (
     <>
       <FormLabel component="legend">Your mental illnesses (ignore if none apply)</FormLabel>
@@ -482,6 +563,33 @@ export default function Checkboxes({ control, setKinks }) {
           label="Long Term Relationship"
         />
       </FormGroup>
+      <Controller
+        name="Online"
+        control={control}
+        rules={{ required: true }}
+        defaultValue=""
+        render={({ field: { onChange, ref, value } }) => (
+          <FormControl sx={{ width: '100%', marginTop: 2 }}>
+            <InputLabel id="demo-simple-select-label">When are you online?</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              label="Online"
+              inputRef={ref}
+              onChange={onChange}
+              value={value}
+            >
+              <MenuItem value={'Most of the day'}>Most of the day</MenuItem>
+              <MenuItem value={'In the morning'}>In the morning</MenuItem>
+              <MenuItem value={'Afternoon'}>Afternoon</MenuItem>
+              <MenuItem value={'Evening'}>Evening</MenuItem>
+              <MenuItem value={'A couple of times a week'}>A couple of times a week</MenuItem>
+              <MenuItem value={'Rarely'}>Rarely</MenuItem>
+            </Select>
+          </FormControl>
+        )}
+      />
+      <p>Optional fields about you:</p>
       {!gamer && (
         <div>
           <Controller
@@ -557,32 +665,79 @@ export default function Checkboxes({ control, setKinks }) {
           )}
         />
       </div>
-      <Controller
-        name="Online"
-        control={control}
-        rules={{ required: true }}
-        defaultValue=""
-        render={({ field: { onChange, ref, value } }) => (
-          <FormControl sx={{ width: '100%', marginTop: 2 }}>
-            <InputLabel id="demo-simple-select-label">When are you online?</InputLabel>
-            <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              label="Online"
+      <div>
+        <Controller
+          name="Music"
+          control={control}
+          defaultValue=""
+          render={({ field: { onChange, value } }) => (
+            <FormControl sx={{ width: '100%', marginTop: 2 }}>
+              <TextField
+                value={value}
+                onChange={onChange}
+                placeholder="Music that I like"
+                multiline
+                maxRows={7}
+              />
+            </FormControl>
+          )}
+        />
+      </div>
+      <div>
+        <Controller
+          name="Movies"
+          control={control}
+          defaultValue=""
+          render={({ field: { onChange, value } }) => (
+            <FormControl sx={{ width: '100%', marginTop: 2 }}>
+              <TextField
+                value={value}
+                onChange={onChange}
+                placeholder="Movies that I like"
+                multiline
+                maxRows={7}
+              />
+            </FormControl>
+          )}
+        />
+      </div>
+      <div>
+        <Controller
+          name="Books"
+          control={control}
+          defaultValue=""
+          render={({ field: { onChange, value } }) => (
+            <FormControl sx={{ width: '100%', marginTop: 2 }}>
+              <TextField
+                value={value}
+                onChange={onChange}
+                placeholder="Books that I like"
+                multiline
+                maxRows={7}
+              />
+            </FormControl>
+          )}
+        />
+      </div>
+      <p>Boards that I follow:</p>
+      <div>
+        <Controller
+          name="Boards"
+          control={control}
+          defaultValue={[]}
+          render={({ field: { ref, onChange, value } }) => (
+            <RSelect
+              isMulti
+              menuPortalTarget={typeof window === 'undefined' ? null : document.body}
+              styles={{ menuPortal: (base) => ({ ...base, zIndex: 9999 }) }}
               inputRef={ref}
-              onChange={onChange}
-              value={value}
-            >
-              <MenuItem value={'Most of the day'}>Most of the day</MenuItem>
-              <MenuItem value={'In the morning'}>In the morning</MenuItem>
-              <MenuItem value={'Afternoon'}>Afternoon</MenuItem>
-              <MenuItem value={'Evening'}>Evening</MenuItem>
-              <MenuItem value={'A couple of times a week'}>A couple of times a week</MenuItem>
-              <MenuItem value={'Rarely'}>Rarely</MenuItem>
-            </Select>
-          </FormControl>
-        )}
-      />
+              options={boards}
+              value={boards.filter((c) => value.includes(c.value))}
+              onChange={(val) => onChange(val.map((c) => c.value))}
+            />
+          )}
+        />
+      </div>
     </>
   );
 }

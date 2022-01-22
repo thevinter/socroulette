@@ -24,7 +24,7 @@
 
 .btn:after {
   position: absolute;
-  content: "";
+  content: '';
   top: 0;
   left: 0;
   width: 0;

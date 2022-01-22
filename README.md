@@ -1,32 +1,24 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# >socroulette is a 4chan account aggregator
 
-## Getting Started
+This is a **beta** version of a website which goal is to aggregate user accounts and to allow for easy searching and filtering.
+Please be aware that the website has been written in a couple of days, I'm not a designer, and my HTML/CSS knowledge is awful.
+The website isn't really production ready and has a lot of arbitrary decisions made just for saving time in the short run. If you wish to contribute on refactoring you're more than welcome to.
 
-```bash
+### Tech Stack
+
+The website uses NextJS and MongoDB
+
+### Contributing
+
+Contributions are welcome. The repo operates on a staging/master pipeline. Everything that gets merged into master is automatically deployed online; this means that **EVERY PR TO MASTER WILL BE DECLINED**.
+
+To contribute please open a pull request on the **staging** branch explaining the reasons for the PR and commenting relevant parts of code
+
+### Running
+
+```
+npm i
 npm run dev
-# or
-yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Please note that you will need a remote MongoDB instance to use as a database. Open one and then add the connection string as a variable called MONGODB_URI in the `.env` file.
