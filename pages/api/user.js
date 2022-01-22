@@ -1,6 +1,7 @@
 /* eslint-disable import/no-anonymous-default-export */
 import clientPromise from '../../lib/mongodb';
 const { ObjectId } = require('mongodb'); // or ObjectID
+import crypto from 'crypto';
 
 export async function GetUser(id) {
   const client = await clientPromise;
