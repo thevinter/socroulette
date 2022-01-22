@@ -12,9 +12,92 @@ import {
   CardContent,
 } from '@mui/material';
 import { useEffect, useState } from 'react';
+import RSelect from 'react-select';
 import TriCheckbox from '../tricheckbox';
 
+const boardList = [
+  '/3/',
+  '/a/',
+  '/aco/',
+  '/adv/',
+  '/an/',
+  '/asp/',
+  '/b/',
+  '/bant/',
+  '/biz/',
+  '/c/',
+  '/cgl/',
+  '/ck/',
+  '/cm/',
+  '/co/',
+  '/d/',
+  '/diy/',
+  '/e/',
+  '/fa/',
+  '/fit/',
+  '/g/',
+  '/gd/',
+  '/gif/',
+  '/h/',
+  '/hc/',
+  '/hm/',
+  '/hr/',
+  '/i/',
+  '/ic/',
+  '/his/',
+  '/int/',
+  '/jp/',
+  '/k/',
+  '/lit/',
+  '/lgbt/',
+  '/m/',
+  '/mlp/',
+  '/mu/',
+  '/news/',
+  '/n/',
+  '/o/',
+  '/out/',
+  '/p/',
+  '/po/',
+  '/pol/',
+  '/pw/',
+  '/qst/',
+  '/r/',
+  '/r9k/',
+  '/s4s/',
+  '/s/',
+  '/sci/',
+  '/soc/',
+  '/sp/',
+  '/t/',
+  '/tg/',
+  '/toy/',
+  '/trash/',
+  '/trv/',
+  '/tv/',
+  '/u/',
+  '/v/',
+  '/vg/',
+  '/vm/',
+  '/vmg/',
+  '/vip/',
+  '/vp/',
+  '/vr/',
+  '/vrpg/',
+  '/vst/',
+  '/vt/',
+  '/w/',
+  '/wg/',
+  '/wsg/',
+  '/wsr/',
+  '/x/',
+  '/xs/',
+  '/y/',
+];
+
 export default function Miscellaneous({ setFilters }) {
+  const boards = boardList.map((board) => ({ value: board, label: board }));
+  const [selectedBoards, setSelectedBoards] = useState([]);
   const [religion, setReligion] = useState({
     Christian: 0,
     Muslim: 0,
@@ -66,7 +149,7 @@ export default function Miscellaneous({ setFilters }) {
   };
 
   const returnSelected = (obj) => {
-    let selected = [];
+    const selected = [];
     for (let key in obj) {
       if (obj[key] === 1) {
         selected.push(key);
@@ -76,7 +159,7 @@ export default function Miscellaneous({ setFilters }) {
   };
 
   const returnExcluded = (obj) => {
-    let excluded = [];
+    const excluded = [];
     for (let key in obj) {
       if (obj[key] === 2) {
         excluded.push(key);
@@ -98,6 +181,7 @@ export default function Miscellaneous({ setFilters }) {
           employment: returnSelected(employ),
           politic: returnSelected(politic),
           online: returnSelected(online),
+          boards: selectedBoards.map((board) => board.label),
         },
         excluded: {
           ...old.excluded,
@@ -107,7 +191,7 @@ export default function Miscellaneous({ setFilters }) {
           online: returnExcluded(online),
         },
       })),
-    [religion, employ, politic, online, setFilters]
+    [religion, employ, politic, online, setFilters, selectedBoards]
   );
 
   return (
@@ -157,6 +241,15 @@ export default function Miscellaneous({ setFilters }) {
         <TriCheckbox change={changeOnline} name="Evening" />
         <TriCheckbox change={changeOnline} name="A couple of times a week" />
         <TriCheckbox change={changeOnline} name="Rarely" />
+
+        <RSelect
+          isMulti
+          menuPortalTarget={typeof window === 'undefined' ? null : document.body}
+          styles={{ menuPortal: (base) => ({ ...base, zIndex: 9999 }) }}
+          options={boards}
+          value={selectedBoards}
+          onChange={setSelectedBoards}
+        />
       </AccordionDetails>
     </Accordion>
   );
