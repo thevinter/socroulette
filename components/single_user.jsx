@@ -40,6 +40,7 @@ export default function SingleUser({ user }) {
               data={user.age}
             />
             <Datalabel lStyle={{ fontWeight: 'bold' }} label="Sex" data={user.sex} />{' '}
+            <Datalabel lStyle={{ fontWeight: 'bold' }} label="Gender" data={user.gender} />{' '}
             <Datalabel lStyle={{ fontWeight: 'bold' }} label="Location" data={user.location} />
           </div>
           <div className={styles.secondInfo}>
