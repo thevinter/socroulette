@@ -36,6 +36,7 @@
   box-sizing: 'border-box';
   overflow: hidden;
   margin: 30px;
+  flex-basis: 20%;
   background-color: #ffbc97;
 }
 

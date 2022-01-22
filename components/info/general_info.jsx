@@ -141,18 +141,20 @@ export default function GeneralInfo({ u }) {
           </div>
         </div>
         <Datalabel lStyle={{ fontWeight: 'bold' }} label="Is looking for" data={u.lf.join(', ')} />
-        <Datalabel
-          lStyle={{ fontWeight: 'bold' }}
-          label="Don't write to me if: "
-          data={u.nowrite}
-        />
+        {u.nowrite && (
+          <Datalabel
+            lStyle={{ fontWeight: 'bold' }}
+            label="Don't write to me if"
+            data={u.nowrite}
+          />
+        )}
         <div className={styles.bio}>
           <Datalabel
             dStyle={{}}
             divStyle={{ alignItems: 'baseline', marginBottom: '2rem' }}
             lStyle={{ fontWeight: 'bold' }}
             label="Bio"
-            data={u.bio}
+            data={u.bio !== '' ? u.bio : 'None'}
           />
         </div>
       </div>

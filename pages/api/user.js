@@ -13,6 +13,18 @@ export async function GetUser(id) {
   return user;
 }
 
+export async function AddUser(userData) {
+  const id = crypto.randomBytes(16).toString('hex');
+  const client = await clientPromise;
+  const db = client.db('users');
+  userData.createdAt = new Date();
+  userData.active = true;
+  userData.uuid = id;
+  db.collection('users').insertOne(userData);
+  console.log('User added');
+  return id;
+}
+
 export async function DeleteUser(id) {
   const client = await clientPromise;
   const db = client.db('users');
@@ -29,6 +41,9 @@ export default async function handler(req, res) {
     const r = await DeleteUser(req.query.id);
     console.log(r);
     res.status(200).json(r);
+  } else if (req.method === 'POST') {
+    const id = await AddUser(req.body);
+    res.status(200).json(id);
   } else {
     const jsonData = await GetUser(req.query.id);
     res.status(200).json(jsonData);

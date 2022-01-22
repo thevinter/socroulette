@@ -1,6 +1,5 @@
 /* eslint-disable import/no-anonymous-default-export */
 import clientPromise from '../../lib/mongodb';
-
 function shuffle(array) {
   let currentIndex = array.length,
     randomIndex;
@@ -49,6 +48,12 @@ export async function GetUsers(query) {
   }
   db_query['active'] = {};
   db_query['active'].$eq = true;
+
+  const date = new Date();
+  date.setDate(date.getDate() - 7);
+  db_query['createdAt'] = {};
+  db_query['createdAt'].$gte = date;
+
   console.log(db_query);
   const client = await clientPromise;
   const db = client.db('users');

@@ -130,9 +130,10 @@ export default function Home() {
       games: data.Games,
       flags: data.Flags,
       nowrite: data.No,
+      boards: data.Boards,
       bio: data.Bio,
     };
-    axios.post('/api/add-user', user).then((res) => {
+    axios.post('/api/user', user).then((res) => {
       router.push(`/success/${res.data}`);
     });
     console.log(data);
