@@ -1,20 +1,18 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import useSWR from 'swr';
 import SingleUser from './single_user';
 
 export default function UserList({ filters }) {
+  const [data, setData] = useState([]);
+
   useEffect(() => {
     console.log(filters);
     console.log(filter_query(filters));
+    fetch(`/api/users?${filter_query(filters)}`).then((res) =>
+      res.json().then((data) => setData(data))
+    );
   }, [filters]);
 
-  const fetcher = (url) => fetch(url).then((res) => res.json());
-  const { data, error } = useSWR(`/api/users?${filter_query(filters)}`, fetcher);
-
-  if (error) {
-    console.log(error);
-    return <div>failed to load</div>;
-  }
   if (!data)
     return (
       <div
