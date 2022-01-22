@@ -14,7 +14,6 @@ import RSelect from 'react-select';
 import MultiSelector from './multi-select';
 import CreatableSelect from 'react-select/creatable';
 import TagSelect from './tag-select';
-import CreatableSingle from './example';
 import { useState } from 'react';
 
 const boardList = [
