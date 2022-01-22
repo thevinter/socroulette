@@ -6,6 +6,9 @@ export default function InterestsInfo({ u }) {
   return (
     <div className={styles.appearance}>
       <Datalabel lStyle={{ fontWeight: 'bold' }} label="Religion" data={u.religion} />
+      {u.boards && (
+        <Datalabel lStyle={{ fontWeight: 'bold' }} label="Boards" data={u.boards.join(', ')} />
+      )}
       {u.interests && (
         <Datalabel
           lStyle={{ fontWeight: 'bold' }}
@@ -22,6 +25,33 @@ export default function InterestsInfo({ u }) {
           divStyle={{ alignItems: 'baseline', marginBottom: '2rem' }}
           label="Games"
           data={u.games}
+        />
+      )}
+      {u.games && (
+        <Datalabel
+          lStyle={{ fontWeight: 'bold' }}
+          dStyle={{ whiteSpace: 'pre-wrap' }}
+          divStyle={{ alignItems: 'baseline', marginBottom: '2rem' }}
+          label="Music"
+          data={u.music}
+        />
+      )}
+      {u.games && (
+        <Datalabel
+          lStyle={{ fontWeight: 'bold' }}
+          dStyle={{ whiteSpace: 'pre-wrap' }}
+          divStyle={{ alignItems: 'baseline', marginBottom: '2rem' }}
+          label="Movies"
+          data={u.movies}
+        />
+      )}
+      {u.games && (
+        <Datalabel
+          lStyle={{ fontWeight: 'bold' }}
+          dStyle={{ whiteSpace: 'pre-wrap' }}
+          divStyle={{ alignItems: 'baseline', marginBottom: '2rem' }}
+          label="Books"
+          data={u.books}
         />
       )}
       <Datalabel lStyle={{ fontWeight: 'bold' }} label="Employment" data={u.employment} />
