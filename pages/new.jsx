@@ -2,8 +2,7 @@ import styles from '../styles/Home.module.css';
 import Contacts from '../components/contacts';
 import { useState, useEffect, useRef } from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import Script from 'next/script';
-import ReCAPTCHA from 'react-google-recaptcha';
+import { FormControlLabel, Checkbox } from '@mui/material';
 import Sex from '../components/sex';
 import Sexuality from '../components/sexuality';
 import Generalities from '../components/generalities';
@@ -11,12 +10,11 @@ import Status from '../components/status';
 import Geography from '../components/geography';
 import Checkboxes from '../components/checkboxes';
 import axios from 'axios';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 export default function Home() {
   const router = useRouter();
-  const recaptchaRef = useRef(null);
-  const [change, onChange] = useState(false);
   const {
     setFocus,
     handleSubmit,
@@ -179,7 +177,28 @@ export default function Home() {
           <legend>Miscellaneous:</legend>
           <Checkboxes setKinks={setKinks} control={control} errors={errors} />
         </fieldset>
-
+        <Link href="/privacy">
+          <a>
+            <p style={{ textDecoration: 'underline' }}>Do you agree with the Privacy Policy?</p>
+          </a>
+        </Link>
+        <FormControlLabel
+          sx={{ flex: '1 1 auto' }}
+          control={
+            <Controller
+              name="Privacy"
+              control={control}
+              rules={{ required: true }}
+              render={({ field: { onChange, ref, value } }) => (
+                <Checkbox inputRef={ref} checked={value} onChange={onChange} />
+              )}
+            />
+          }
+          label="I Agree"
+        />
+        {errors.Privacy && (
+          <div className="error">You must agree with the Privacy Policy to proceed</div>
+        )}
         <div className={styles.buttonWrapper}>
           <button className={styles.btn} type="submit">
             <span>SUBMIT</span>
