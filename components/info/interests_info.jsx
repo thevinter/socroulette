@@ -1,17 +1,6 @@
 import Datalabel from '../datalabel';
 import styles from './general_info.module.css';
 
-const strTimezone = (timezone) => {
-  let base = 'GMT';
-  let time = timezone.toString();
-  let [int, dec] = time.split('.');
-  if (timezone > 0) base += '+';
-  if (timezone === 0) base += '±';
-  int = int.padStart(2, '0');
-  dec = dec ? dec.padEnd(2, '0') : '00';
-  return `${base}${int}:${dec}`;
-};
-
 export default function InterestsInfo({ u }) {
   console.log(u);
   return (
@@ -30,6 +19,7 @@ export default function InterestsInfo({ u }) {
         <Datalabel
           lStyle={{ fontWeight: 'bold' }}
           dStyle={{ whiteSpace: 'pre-wrap' }}
+          divStyle={{ alignItems: 'baseline', marginBottom: '2rem' }}
           label="Games"
           data={u.games}
         />
