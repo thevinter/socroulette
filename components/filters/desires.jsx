@@ -20,7 +20,7 @@ export default function Desires({ setFilters }) {
     'NSFW Video Chat': 0,
     ERP: 0,
     'Meeting IRL': 0,
-    'Lont Term Relationship': 0,
+    'Long Term Relationship': 0,
   });
 
   const changeDesire = (idx, value) => {
@@ -75,9 +75,9 @@ export default function Desires({ setFilters }) {
     <TriCheckbox key="ERP" change={changeDesire} name="ERP" />,
     <TriCheckbox key="Meeting IRL" change={changeDesire} name="Meeting IRL" />,
     <TriCheckbox
-      key="Lont Term Relationship"
+      key="Long Term Relationship"
       change={changeDesire}
-      name="Lont Term Relationship"
+      name="Long Term Relationship"
     />,
   ];
   const [open, setOpen] = useState(false);
