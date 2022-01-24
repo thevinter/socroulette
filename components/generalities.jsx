@@ -185,7 +185,7 @@ export default function Generalities({ control, errors }) {
           rules={{ required: true }}
           render={({ field: { onChange, ref, value } }) => (
             <FormControl sx={{ width: '100%', marginTop: 2 }}>
-              <InputLabel id="demo-simple-select-label">Hair Color</InputLabel>
+              <InputLabel id="demo-simple-select-label">Hair color</InputLabel>
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"

@@ -166,7 +166,7 @@ export default function Physical({ setFilters }) {
         <TriCheckbox change={changeBody} name="Obese" />
 
         <FormLabel sx={{ marginTop: '30px' }} component="legend">
-          Hair Color
+          Hair color
         </FormLabel>
         <TriCheckbox change={changeHair} name="Blonde" />
         <TriCheckbox change={changeHair} name="Brown" />

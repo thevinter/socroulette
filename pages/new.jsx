@@ -128,6 +128,9 @@ export default function Home() {
       games: data.Games,
       flags: data.Flags,
       nowrite: data.No,
+      music: data.Music,
+      movies: data.Movies,
+      books: data.Books,
       boards: data.Boards,
       bio: data.Bio,
     };
