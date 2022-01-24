@@ -106,7 +106,7 @@ export default function Home() {
       gender: data.Gender,
       sexuality: data.Sexuality,
       orientation: data.Orientation,
-      relstatus: data.Relationship,
+      relstatus: data['Relationship Status'],
       age: parseInt(data.Age),
       ethnicity: getEthnicity(data),
       btype: data.BodyType,
@@ -115,7 +115,7 @@ export default function Home() {
       skin: data.Skin,
       employment: data.Employment,
       religion: data.Religion,
-      politic: data.Political,
+      politic: data['Political Beliefs'],
       location: data.Location,
       timezone: data.Timezone,
       mental: getIllnesses(data),
@@ -128,15 +128,12 @@ export default function Home() {
       games: data.Games,
       flags: data.Flags,
       nowrite: data.No,
-      music: data.Music,
-      movies: data.Movies,
-      books: data.Books,
       boards: data.Boards,
       bio: data.Bio,
     };
-    axios.post('/api/user', user).then((res) => {
+    /* axios.post('/api/user', user).then((res) => {
       router.push(`/success/${res.data}`);
-    });
+    }); */
     console.log(data);
     console.log(user);
   };
