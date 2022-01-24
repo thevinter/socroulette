@@ -423,7 +423,7 @@ export default function Checkboxes({ control, setKinks }) {
               )}
             />
           }
-          label="Safe for work chat"
+          label="SFW chat"
         />
         <FormControlLabel
           sx={{ flex: '1 1 auto' }}

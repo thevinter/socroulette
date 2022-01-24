@@ -27,7 +27,7 @@ export default function InterestsInfo({ u }) {
           data={u.games}
         />
       )}
-      {u.games && (
+      {u.music && (
         <Datalabel
           lStyle={{ fontWeight: 'bold' }}
           dStyle={{ whiteSpace: 'pre-wrap' }}
@@ -36,7 +36,7 @@ export default function InterestsInfo({ u }) {
           data={u.music}
         />
       )}
-      {u.games && (
+      {u.movies && (
         <Datalabel
           lStyle={{ fontWeight: 'bold' }}
           dStyle={{ whiteSpace: 'pre-wrap' }}
@@ -45,7 +45,7 @@ export default function InterestsInfo({ u }) {
           data={u.movies}
         />
       )}
-      {u.games && (
+      {u.books && (
         <Datalabel
           lStyle={{ fontWeight: 'bold' }}
           dStyle={{ whiteSpace: 'pre-wrap' }}

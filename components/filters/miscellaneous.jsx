@@ -242,6 +242,7 @@ export default function Miscellaneous({ setFilters }) {
         <TriCheckbox change={changeOnline} name="A couple of times a week" />
         <TriCheckbox change={changeOnline} name="Rarely" />
 
+        <p>4chan boards to include</p>
         <RSelect
           isMulti
           menuPortalTarget={typeof window === 'undefined' ? null : document.body}
