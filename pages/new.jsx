@@ -131,9 +131,9 @@ export default function Home() {
       boards: data.Boards,
       bio: data.Bio,
     };
-    /* axios.post('/api/user', user).then((res) => {
+    axios.post('/api/user', user).then((res) => {
       router.push(`/success/${res.data}`);
-    }); */
+    });
     console.log(data);
     console.log(user);
   };
