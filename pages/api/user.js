@@ -26,6 +26,18 @@ export async function AddUser(userData) {
   return id;
 }
 
+export async function UpdateUser(userData) {
+  console.log(userData);
+  const client = await clientPromise;
+  const db = client.db('users');
+  const query = { uuid: { $eq: userData.uuid } };
+  userData.active = true;
+  userData.createdAt = new Date();
+  db.collection('users').replaceOne(query, userData);
+  console.log('User added');
+  return true;
+}
+
 export async function DeleteUser(id) {
   const client = await clientPromise;
   const db = client.db('users');
@@ -45,6 +57,9 @@ export default async function handler(req, res) {
   } else if (req.method === 'POST') {
     const id = await AddUser(req.body);
     res.status(200).json(id);
+  } else if (req.method === 'PATCH') {
+    const data = await UpdateUser(req.body);
+    res.status(200).json(data);
   } else {
     const jsonData = await GetUser(req.query.id);
     res.status(200).json(jsonData);

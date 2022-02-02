@@ -1,14 +1,14 @@
 import { Controller } from 'react-hook-form';
 import { InputLabel, FormControl, TextField, MenuItem, Select } from '@mui/material';
 
-export default function Status({ control, errors }) {
+export default function Status({ user, control, errors }) {
   return (
     <>
       <div>
         <Controller
           name="Employment"
           control={control}
-          defaultValue=""
+          defaultValue={user ? user.employment : ''}
           rules={{ required: true }}
           render={({ field: { onChange, ref, value } }) => (
             <FormControl sx={{ width: '100%', marginTop: 2 }}>
@@ -39,7 +39,7 @@ export default function Status({ control, errors }) {
           name="Religion"
           control={control}
           rules={{ required: true }}
-          defaultValue=""
+          defaultValue={user ? user.religion : ''}
           render={({ field: { onChange, value, ref } }) => (
             <FormControl sx={{ width: '100%', marginTop: 2 }}>
               <InputLabel id="demo-simple-select-label">Religion</InputLabel>
@@ -68,7 +68,7 @@ export default function Status({ control, errors }) {
           name="Political Beliefs"
           control={control}
           rules={{ required: true }}
-          defaultValue=""
+          defaultValue={user ? user.politic : ''}
           render={({ field: { onChange, ref, value } }) => (
             <FormControl sx={{ width: '100%', marginTop: 2 }}>
               <InputLabel id="demo-simple-select-label">Political Beliefs</InputLabel>
@@ -97,7 +97,7 @@ export default function Status({ control, errors }) {
         <Controller
           name="Bio"
           control={control}
-          defaultValue=""
+          defaultValue={user ? user.bio : ''}
           render={({ field: { onChange, value } }) => (
             <FormControl sx={{ width: '100%', marginTop: 2 }}>
               <TextField
