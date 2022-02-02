@@ -11,13 +11,13 @@ import {
 } from '@mui/material';
 import styles from './generalities.module.css';
 
-export default function Generalities({ control, errors }) {
+export default function Generalities({ user, control, errors }) {
   return (
     <>
       <Controller
         name="Age"
         control={control}
-        defaultValue=""
+        defaultValue={user ? user.age : ''}
         rules={{ min: 18, max: 100, required: true }}
         render={({ field: { onChange, ref, value } }) => (
           <TextField
@@ -43,6 +43,7 @@ export default function Generalities({ control, errors }) {
             control={
               <Controller
                 name="White"
+                defaultValue={user ? user.ethnicity.includes('White') : false}
                 control={control}
                 render={({ field: { onChange, value } }) => (
                   <Checkbox checked={value} onChange={onChange} />
@@ -55,6 +56,7 @@ export default function Generalities({ control, errors }) {
             control={
               <Controller
                 name="Hispanic"
+                defaultValue={user ? user.ethnicity.includes('Hispanic') : false}
                 control={control}
                 render={({ field: { onChange, value } }) => (
                   <Checkbox checked={value} onChange={onChange} />
@@ -67,6 +69,7 @@ export default function Generalities({ control, errors }) {
             control={
               <Controller
                 name="WAsian"
+                defaultValue={user ? user.ethnicity.includes('West Asian') : false}
                 control={control}
                 render={({ field: { onChange, value } }) => (
                   <Checkbox checked={value} onChange={onChange} />
@@ -79,6 +82,7 @@ export default function Generalities({ control, errors }) {
             control={
               <Controller
                 name="EAsian"
+                defaultValue={user ? user.ethnicity.includes('East Asian') : false}
                 control={control}
                 render={({ field: { onChange, value } }) => (
                   <Checkbox checked={value} onChange={onChange} />
@@ -91,6 +95,11 @@ export default function Generalities({ control, errors }) {
             control={
               <Controller
                 name="Hawaiian"
+                defaultValue={
+                  user
+                    ? user.ethnicity.includes('Native Hawaiian or Other Pacific Islander')
+                    : false
+                }
                 control={control}
                 render={({ field: { onChange, value } }) => (
                   <Checkbox checked={value} onChange={onChange} />
@@ -103,6 +112,7 @@ export default function Generalities({ control, errors }) {
             control={
               <Controller
                 name="Black"
+                defaultValue={user ? user.ethnicity.includes('Black or African American') : false}
                 control={control}
                 render={({ field: { onChange, value } }) => (
                   <Checkbox checked={value} onChange={onChange} />
@@ -115,6 +125,9 @@ export default function Generalities({ control, errors }) {
             control={
               <Controller
                 name="Indian"
+                defaultValue={
+                  user ? user.ethnicity.includes('American Indian or Alaska Native') : false
+                }
                 control={control}
                 render={({ field: { onChange, value } }) => (
                   <Checkbox checked={value} onChange={onChange} />
@@ -129,7 +142,7 @@ export default function Generalities({ control, errors }) {
         <Controller
           name="BodyType"
           control={control}
-          defaultValue=""
+          defaultValue={user ? user.btype : ''}
           rules={{ required: true }}
           render={({ field: { onChange, ref, value } }) => (
             <FormControl sx={{ width: '100%', marginTop: 2 }}>
@@ -159,7 +172,7 @@ export default function Generalities({ control, errors }) {
         <Controller
           name="Height"
           control={control}
-          defaultValue=""
+          defaultValue={user ? user.height : ''}
           rules={{ min: 100, max: 250, required: true }}
           render={({ field: { onChange, ref, value } }) => (
             <TextField
@@ -181,7 +194,7 @@ export default function Generalities({ control, errors }) {
         <Controller
           name="Hair"
           control={control}
-          defaultValue=""
+          defaultValue={user ? user.hair : ''}
           rules={{ required: true }}
           render={({ field: { onChange, ref, value } }) => (
             <FormControl sx={{ width: '100%', marginTop: 2 }}>
@@ -210,7 +223,7 @@ export default function Generalities({ control, errors }) {
         <Controller
           name="Skin"
           control={control}
-          defaultValue=""
+          defaultValue={user ? user.skin : ''}
           rules={{ required: true }}
           render={({ field: { onChange, ref, value } }) => (
             <FormControl sx={{ width: '100%', marginTop: 2 }}>

@@ -1,20 +1,14 @@
-import {
-  InputLabel,
-  FormControl,
-  MenuItem,
-  Select,
-  TextField,
-} from '@mui/material';
+import { InputLabel, FormControl, MenuItem, Select, TextField } from '@mui/material';
 import { Controller } from 'react-hook-form';
 
-export default function Geography({ control }) {
+export default function Geography({ user, control }) {
   return (
     <>
       <div>
         <Controller
           name="Location"
           control={control}
-          defaultValue=""
+          defaultValue={user ? user.location : ''}
           render={({ field: { onChange, ref, value } }) => (
             <FormControl sx={{ width: '100%', marginTop: 2 }}>
               <InputLabel id="demo-simple-select-label">Current location</InputLabel>
@@ -44,7 +38,7 @@ export default function Geography({ control }) {
           name="Timezone"
           control={control}
           rules={{ required: true }}
-          defaultValue=""
+          defaultValue={user ? user.timezone : ''}
           render={({ field: { onChange, ref, value } }) => (
             <FormControl sx={{ width: '100%', marginTop: 2 }}>
               <InputLabel id="demo-simple-select-label">Timezone</InputLabel>
@@ -102,7 +96,7 @@ export default function Geography({ control }) {
         <Controller
           name="Country"
           control={control}
-          defaultValue=""
+          defaultValue={user ? user.country : ''}
           render={({ field: { onChange, value } }) => (
             <>
               <TextField

@@ -1,20 +1,24 @@
-import styles from '../styles/Home.module.css';
-import Contacts from '../components/contacts';
+import styles from '../../styles/Home.module.css';
+import Contacts from '../../components/contacts';
 import { useState, useEffect, useRef } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { FormControlLabel, Checkbox } from '@mui/material';
-import Sex from '../components/sex';
-import Sexuality from '../components/sexuality';
-import Generalities from '../components/generalities';
-import Status from '../components/status';
-import Geography from '../components/geography';
-import Checkboxes from '../components/checkboxes';
+import Sex from '../../components/sex';
+import Sexuality from '../../components/sexuality';
+import Generalities from '../../components/generalities';
+import Status from '../../components/status';
+import Geography from '../../components/geography';
+import Checkboxes from '../../components/checkboxes';
 import axios from 'axios';
+import useSWR from 'swr';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
+const fetcher = (url) => fetch(url).then((r) => r.json());
+
 export default function Home() {
   const router = useRouter();
+  const { data } = useSWR(`/api/private-user?id=${router.query.id}`, fetcher);
   const {
     setFocus,
     handleSubmit,
@@ -54,6 +58,7 @@ export default function Home() {
     let eth = [];
     if (data.BDSM) eth.push('BDSM');
     if (data.Ropeplay) eth.push('Ropeplay');
+    if (data.Roleplay) eth.push('Roleplay');
     if (data.Bestiality) eth.push('Bestiality');
     if (data.Voyeurism) eth.push('Voyeurism');
     if (data.Exhibitionism) eth.push('Exhibitionism');
@@ -92,6 +97,20 @@ export default function Home() {
       setFocus(firstError);
     }
   }, [errors, setFocus]);
+  if (!data)
+    return (
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          flexDirection: 'row',
+          marginTop: 50,
+        }}
+      >
+        <h1>Loading or User not found</h1>
+      </div>
+    );
 
   const onSubmit = (data) => {
     const user = {
@@ -129,13 +148,14 @@ export default function Home() {
       flags: data.Flags,
       nowrite: data.No,
       music: data.Music,
-      movies: data.Movies,
       books: data.Books,
+      movies: data.Movies,
       boards: data.Boards,
+      uuid: router.query.id,
       bio: data.Bio,
     };
-    axios.post('/api/user', user).then((res) => {
-      router.push(`/success/${res.data}`);
+    axios.patch('/api/user', user).then(() => {
+      router.push(`/modified`);
     });
     console.log(data);
     console.log(user);
@@ -156,55 +176,33 @@ export default function Home() {
         </div>
         <fieldset style={{ marginTop: '3rem', width: '70%' }}>
           <legend>Contacts:</legend>
-          <Contacts control={control} getValues={getValues} />
+          <Contacts control={control} user={data} getValues={getValues} />
           {errors.Kik && <div className="error">Please enter at least a value</div>}
         </fieldset>
         <fieldset style={{ marginTop: '3rem', width: '70%' }}>
           <legend>Sexuality:</legend>
-          <Sex control={control} errors={errors} />
-          <Sexuality control={control} errors={errors} />
+          <Sex control={control} user={data} errors={errors} />
+          <Sexuality control={control} user={data} errors={errors} />
         </fieldset>
         <fieldset style={{ marginTop: '3rem', width: '70%' }}>
           <legend>Physical info:</legend>
-          <Generalities control={control} errors={errors} />
+          <Generalities control={control} user={data} errors={errors} />
         </fieldset>
         <fieldset style={{ marginTop: '3rem', width: '70%' }}>
           <legend>Social info:</legend>
-          <Status control={control} errors={errors} />
+          <Status control={control} user={data} errors={errors} />
         </fieldset>
         <fieldset style={{ marginTop: '3rem', width: '70%' }}>
           <legend>Location info:</legend>
-          <Geography control={control} errors={errors} />
+          <Geography control={control} user={data} errors={errors} />
         </fieldset>
         <fieldset style={{ marginTop: '3rem', width: '70%' }}>
           <legend>Miscellaneous:</legend>
-          <Checkboxes setKinks={setKinks} control={control} errors={errors} />
+          <Checkboxes setKinks={setKinks} user={data} control={control} errors={errors} />
         </fieldset>
-        <Link href="/privacy">
-          <a>
-            <p style={{ textDecoration: 'underline' }}>Do you agree with the Privacy Policy?</p>
-          </a>
-        </Link>
-        <FormControlLabel
-          sx={{ flex: '1 1 auto' }}
-          control={
-            <Controller
-              name="Privacy"
-              control={control}
-              rules={{ required: true }}
-              render={({ field: { onChange, ref, value } }) => (
-                <Checkbox inputRef={ref} checked={value} onChange={onChange} />
-              )}
-            />
-          }
-          label="I Agree"
-        />
-        {errors.Privacy && (
-          <div className="error">You must agree with the Privacy Policy to proceed</div>
-        )}
         <div className={styles.buttonWrapper}>
           <button className={styles.btn} type="submit">
-            <span>SUBMIT</span>
+            <span>CONFIRM</span>
           </button>
         </div>
       </form>

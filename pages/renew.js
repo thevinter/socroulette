@@ -3,10 +3,12 @@ import Link from 'next/link';
 import { TextField } from '@mui/material';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useRouter } from 'next/router';
 
 export default function Renew() {
   const [userId, setUserId] = useState('');
   const [result, setResult] = useState('');
+  const router = useRouter();
 
   const renew = () => {
     axios.post('/api/renew', { id: userId }).then((res) => {
@@ -21,6 +23,10 @@ export default function Renew() {
     });
   };
 
+  const edit = () => {
+    router.push(`/edit/${userId}`);
+  };
+
   const del = () => {
     axios.delete(`/api/user?id=${userId}`).then((res) => {
       setResult(
@@ -33,9 +39,7 @@ export default function Renew() {
   };
 
   return (
-    <div
-      className="mainWrapper"
-    >
+    <div className="mainWrapper">
       <div style={{ marginBottom: '3px', marginTop: '-30px', fontSize: '3vh' }}>
         <Link href="/">
           <a>homepage</a>
@@ -49,9 +53,7 @@ export default function Renew() {
           <a>about</a>
         </Link>
       </div>
-      <div
-        className="mainBox"
-      >
+      <div className="mainBox">
         <div
           style={{
             display: 'flex',
@@ -63,11 +65,13 @@ export default function Renew() {
             width: '100%',
           }}
         >
-          <div style={{ fontSize: '4vh', fontWeight: 'bold', textAlign: 'center'}}>enter your user id</div>
+          <div style={{ fontSize: '4vh', fontWeight: 'bold', textAlign: 'center' }}>
+            enter your user id
+          </div>
           <div style={{ fontSize: '2vh', width: '60%', textAlign: 'justify' }}>
             By entering the user id you received during registration you can either renew your
-            account for 7 more days or delete it completely. Please be aware that you will not be
-            able to recover your account once deleted.
+            account for 7 more days, edit it or delete it completely. Please be aware that you will
+            not be able to recover your account once deleted.
           </div>
           <TextField
             sx={{ width: '60%' }}
@@ -90,6 +94,11 @@ export default function Renew() {
             <div onClick={() => renew()} style={{ width: '30%', boxSizing: 'border-box' }}>
               <a style={{ width: '100%' }} className={styles.upload}>
                 <span>RENEW</span>
+              </a>
+            </div>
+            <div onClick={() => edit()} style={{ width: '30%', boxSizing: 'border-box' }}>
+              <a style={{ width: '100%' }} className={styles.upload}>
+                <span>EDIT</span>
               </a>
             </div>
             <div
