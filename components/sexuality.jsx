@@ -2,7 +2,7 @@ import { InputLabel, FormControl, MenuItem, Select } from '@mui/material';
 import { Controller } from 'react-hook-form';
 import styles from './sexuality.module.css';
 
-export default function Sexuality({ control, errors }) {
+export default function Sexuality({ user, control, errors }) {
   return (
     <div className={styles.inputList}>
       <div className={styles.input}>
@@ -10,7 +10,7 @@ export default function Sexuality({ control, errors }) {
           name="Sexuality"
           control={control}
           rules={{ required: true }}
-          defaultValue="Heterosexual"
+          defaultValue={user ? user.sexuality : 'Heterosexual'}
           render={({ field: { onChange, value, ref } }) => (
             <FormControl sx={{ width: '100%' }}>
               <InputLabel id="demo-simple-select-label">Sexuality</InputLabel>
@@ -38,7 +38,7 @@ export default function Sexuality({ control, errors }) {
           name="Orientation"
           rules={{ required: true }}
           control={control}
-          defaultValue="Monogamous"
+          defaultValue={user ? user.orientation : 'Monogamous'}
           render={({ field: { onChange, ref, value } }) => (
             <FormControl sx={{ width: '100%' }}>
               <InputLabel id="demo-simple-select-label">Orientation</InputLabel>
@@ -63,7 +63,7 @@ export default function Sexuality({ control, errors }) {
           name="Relationship Status"
           control={control}
           rules={{ required: true }}
-          defaultValue="Single"
+          defaultValue={user ? user.relstatus : 'Single'}
           render={({ field: { onChange, ref, value } }) => (
             <FormControl sx={{ width: '100%' }}>
               <InputLabel id="demo-simple-select-label">Relationship Status</InputLabel>

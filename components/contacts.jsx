@@ -2,14 +2,15 @@ import { TextField } from '@mui/material';
 import { Controller } from 'react-hook-form';
 import styles from './contacts.module.css';
 
-export default function Contacts({ control, getValues, errors }) {
+export default function Contacts({ user, control, getValues, errors }) {
+  console.log(user);
   return (
     <div className={styles.inputList}>
       <div className={styles.input}>
         <Controller
           name="Kik"
           control={control}
-          defaultValue=""
+          defaultValue={user ? user.contacts.kik : ''}
           rules={{
             validate: (value) =>
               getValues('Kik') != '' ||
@@ -34,7 +35,7 @@ export default function Contacts({ control, getValues, errors }) {
         <Controller
           name="Discord"
           control={control}
-          defaultValue=""
+          defaultValue={user ? user.contacts.discord : ''}
           rules={{
             validate: () =>
               getValues('Kik') != '' ||
@@ -59,7 +60,7 @@ export default function Contacts({ control, getValues, errors }) {
         <Controller
           name="Telegram"
           control={control}
-          defaultValue=""
+          defaultValue={user ? user.contacts.telegram : ''}
           rules={{
             validate: () =>
               getValues('Kik') != '' ||
@@ -83,7 +84,7 @@ export default function Contacts({ control, getValues, errors }) {
         <Controller
           name="Snapchat"
           control={control}
-          defaultValue=""
+          defaultValue={user ? user.contacts.snapchat : ''}
           rules={{
             validate: () =>
               getValues('Kik') != '' ||
@@ -107,7 +108,7 @@ export default function Contacts({ control, getValues, errors }) {
         <Controller
           name="Email"
           control={control}
-          defaultValue=""
+          defaultValue={user ? user.contacts.email : ''}
           rules={{
             validate: () =>
               getValues('Kik') != '' ||

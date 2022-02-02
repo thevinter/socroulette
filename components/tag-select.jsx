@@ -2,8 +2,10 @@
 import { useEffect, useState } from 'react';
 import CreatableSelect from 'react-select/creatable';
 
-export default function TagSelect({ setKinks }) {
-  const [value, setValue] = useState([]);
+export default function TagSelect({ user, setKinks }) {
+  const [value, setValue] = useState(
+    user ? (user.extraKinks ? user.extraKinks.map((k) => ({ value: k, label: k })) : []) : []
+  );
   const [input, setInput] = useState('');
 
   const createOption = (label) => ({
