@@ -1,64 +1,104 @@
 import { Accordion, AccordionSummary, AccordionDetails, Typography } from '@mui/material';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import CheckboxGroup from './checkboxgroup';
 import RangeSlider from './range';
-import { useRange, useTristate, returnSelected, returnExcluded, Pair } from './utils';
+import {
+  nullObj,
+  useRange,
+  useTristate,
+  returnSelected,
+  returnExcluded,
+  Pair,
+  FilterData,
+  ObjSetterCallback,
+  NestedObjSetterCallback,
+} from './utils';
 
-function useBinaryPropertiesSection(section: Record<string, string[]>) {
-  const sectionItems = Object.entries(section).map(([groupName, elements]) => {
-    // this useTristate is in practice deterministically called
-    // as long as this hook is, and the provided data/property is always the same
-    // so it's ok to do this i think
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [state, items] = useTristate(elements);
-    return {
-      state: state,
-      name: groupName,
-      items: items,
-    };
+type SectionProps = {
+  setFilters: any;
+  data: FilterData;
+  name: string;
+};
+
+type SectionState = {
+  ranges: Record<string, Pair<number>>;
+  binaryProps: Record<string, Record<string, number>>;
+};
+
+function updateFilters(old, sectionName: string, sectionState: SectionState) {
+  const updated = { ...old };
+  Object.entries(sectionState.ranges).forEach(([name, range]) => {
+    updated[name] = range;
   });
-  return sectionItems;
+  Object.entries(sectionState.binaryProps).forEach(([name, values]) => {
+    updated.excluded[name] = returnExcluded(values);
+    updated.selected[name] = returnSelected(values);
+  });
+  return updated;
 }
 
-function useRanges(ranges: Record<string, Pair<number>>) {
-  const rangeItems = Object.entries(ranges).map(([name, range]) => {
-    // this useRange is in practice deterministically called
-    // as long as this hook is, and the provided data/property is always the same
-    // so it's ok to do this i think
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [state, setter] = useRange(range);
-    return {
-      name: name,
-      state: state,
-      range: range,
-      setter: setter,
-    };
-  });
-  return rangeItems;
-}
-
-export default function FilterSection({ setFilters, data, name }) {
-  const rangeItems = useRanges(data.ranges);
-  const binpropItems = useBinaryPropertiesSection(data.binaryProps);
-
-  useEffect(
-    () =>
-      setFilters((old) => {
-        const updated = { ...old };
-        rangeItems.forEach((i) => {
-          updated[i.name] = i.state;
-        });
-        binpropItems.forEach((i) => {
-          updated.selected[i.name] = returnSelected(i.state);
-          updated.excluded[i.name] = returnExcluded(i.state);
-        });
-        return updated;
-      }),
-    [setFilters, ...rangeItems.map((i) => i.state), ...binpropItems.map((i) => i.state)]
+function useSection(
+  data: FilterData
+): [SectionState, ObjSetterCallback<Pair<number>>, NestedObjSetterCallback<number>] {
+  const stateGen: () => SectionState = () => {
+    const propentries = Object.entries(data.binaryProps).map(([property, values]) => [
+      property,
+      nullObj(values),
+    ]);
+    return { ranges: data.ranges, binaryProps: Object.fromEntries(propentries) };
+  };
+  const [sectionState, setState] = useState(stateGen);
+  const setRange = useCallback(
+    (name, value) =>
+      setState((state) => ({
+        binaryProps: state.binaryProps,
+        ranges: { ...state.ranges, [name]: value },
+      })),
+    [setState]
   );
+  const setBinprop = useCallback(
+    (prop, name, value) =>
+      setState((state) => ({
+        ranges: state.ranges,
+        binaryProps: {
+          ...state.binaryProps,
+          [prop]: { ...state.binaryProps[prop], [name]: value },
+        },
+      })),
+    [setState]
+  );
+  return [sectionState, setRange, setBinprop];
+}
 
+export default function FilterSection({ setFilters, data, name }: SectionProps) {
   const [open, setOpen] = useState(false);
   const accordionColor = open ? '#FFF' : '#FFF';
+
+  const [sectionState, setRange, setBinprop] = useSection(data);
+
+  const ranges = Object.entries(data.ranges).map(([name, range]) => (
+    <RangeSlider
+      key={name}
+      id={name}
+      label={name}
+      range={range}
+      value={sectionState.ranges[name]}
+      onChange={setRange}
+    />
+  ));
+
+  const binprops = Object.entries(data.binaryProps).map(([name, elements]) => {
+    const items = elements.map((e) => ({
+      name: e,
+      value: sectionState.binaryProps[name][e],
+    }));
+    return <CheckboxGroup key={name} id={name} legend={name} onChange={setBinprop} items={items} />;
+  });
+
+  useEffect(
+    () => setFilters((old) => updateFilters(old, name, sectionState)),
+    [setFilters, sectionState, name]
+  );
 
   return (
     <Accordion
@@ -74,18 +114,8 @@ export default function FilterSection({ setFilters, data, name }) {
         <Typography>{name}</Typography>
       </AccordionSummary>
       <AccordionDetails>
-        {rangeItems.map((item) => (
-          <RangeSlider
-            key={item.name}
-            label={item.name}
-            range={item.range}
-            value={item.state}
-            onChange={item.setter}
-          />
-        ))}
-        {binpropItems.map((item) => (
-          <CheckboxGroup key={item.name} legend={item.name} items={item.items} />
-        ))}
+        {ranges}
+        {binprops}
       </AccordionDetails>
     </Accordion>
   );

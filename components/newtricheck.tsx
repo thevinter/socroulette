@@ -1,17 +1,23 @@
 import { FormControlLabel, Checkbox } from '@mui/material';
 import { green, red, grey } from '@mui/material/colors';
-import { useEffect, useState } from 'react';
-import { TristateItem } from './filters/utils';
+import { useEffect, useState, useCallback } from 'react';
 
-export function TriCheckbox({ onChange, name }: TristateItem) {
-  const [checked, setChecked] = useState(0);
-  const handleChange = () => {
+export type TristateProps = {
+  onChange: (id: string, value: number) => void;
+  name: string;
+  id: string;
+  state: number;
+};
+
+export function TriCheckbox({ onChange, name, id, state }: TristateProps) {
+  const [checked, setChecked] = useState(state % 3);
+  const handleChange = useCallback(() => {
     setChecked((state) => (state + 1) % 3);
-  };
+  }, [setChecked]);
 
   useEffect(() => {
-    onChange(checked);
-  }, [checked, onChange]);
+    onChange(id, checked);
+  }, [checked, onChange, id]);
 
   return (
     <div>

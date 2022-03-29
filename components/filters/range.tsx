@@ -10,16 +10,25 @@ import { useState, useEffect, useCallback, Dispatch, SetStateAction } from 'reac
 import TriCheckbox from '../tricheckbox';
 import CheckboxGroup from './checkboxgroup';
 
-type RangeProp = {
+type RangeProps = {
   label: string;
+  id: string;
   value: [number, number];
   range: [number, number];
-  onChange: (value: [number, number]) => void;
+  onChange: (id: string, value: [number, number]) => void;
 };
 
-export default function RangeSlider({ label, range, value, onChange }: RangeProp) {
+export default function RangeSlider({ label, id, range, value, onChange }: RangeProps) {
   const [state, setState] = useState(value as number[]);
   const [min, max] = range;
+  const handleChange = useCallback(
+    (_, newval) => {
+      console.log('slider onChangeCommitted triggered');
+      onChange(id, newval as [number, number]);
+    },
+    [id, onChange]
+  );
+
   return (
     <div>
       <FormLabel component="legend">{label}</FormLabel>
@@ -28,8 +37,11 @@ export default function RangeSlider({ label, range, value, onChange }: RangeProp
         min={min}
         max={max}
         value={state}
-        onChange={(_, newval) => setState(newval as number[])}
-        onChangeCommitted={(_, newval) => onChange(newval as [number, number])}
+        onChange={(_, newval) => {
+          console.log('slider onChange triggered');
+          setState(newval as number[]);
+        }}
+        onChangeCommitted={handleChange}
         valueLabelDisplay="auto"
       />
     </div>

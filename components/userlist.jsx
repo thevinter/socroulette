@@ -6,8 +6,6 @@ export default function UserList({ filters }) {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    console.log(filters);
-    console.log(filter_query(filters));
     fetch(`/api/users?${filter_query(filters)}`).then((res) =>
       res.json().then((data) => setData(data))
     );

@@ -69,7 +69,7 @@ export default function Physical({ setFilters }) {
   };
 
   const returnSelected = (obj) => {
-    console.log(obj);
+    // console.log(obj);
     let selected = [];
     for (let key in obj) {
       if (obj[key] === 1) {
@@ -125,10 +125,7 @@ export default function Physical({ setFilters }) {
         backgroundColor: accordionColor,
       }}
     >
-      <AccordionSummary
-        aria-controls="panel1a-content"
-        id="panel1a-header"
-      >
+      <AccordionSummary aria-controls="panel1a-content" id="panel1a-header">
         <Typography>Physical</Typography>
       </AccordionSummary>
       <AccordionDetails>
@@ -181,14 +178,8 @@ export default function Physical({ setFilters }) {
         </FormLabel>
         <TriCheckbox change={changeSkin} name="Light, Pale White" />
         <TriCheckbox change={changeSkin} name="White" />
-        <TriCheckbox
-          change={changeSkin}
-          name="Medium, White to Olive"
-        />
-        <TriCheckbox
-          change={changeSkin}
-          name="Olive, Moderate Brown"
-        />
+        <TriCheckbox change={changeSkin} name="Medium, White to Olive" />
+        <TriCheckbox change={changeSkin} name="Olive, Moderate Brown" />
         <TriCheckbox change={changeSkin} name="Brown, Dark Brown" />
         <TriCheckbox change={changeSkin} name="Black, Very Dark" />
       </AccordionDetails>

@@ -1,15 +1,26 @@
 import { FormLabel } from '@mui/material';
-import TriCheckbox from '../newtricheck';
-import { TristateItem } from './utils';
+import { TriCheckbox, TristateProps } from '../newtricheck';
+import { NestedObjSetterCallback } from './utils';
+import { useState, useEffect, useCallback } from 'react';
 
 export type CheckboxGroupProps = {
   legend: string;
-  items: Array<TristateItem>;
+  id: string;
+  onChange: NestedObjSetterCallback<number>;
+  items: { name: string; value: number }[];
 };
 
-export function CheckboxGroup({ legend, items }: CheckboxGroupProps): JSX.Element {
+export function CheckboxGroup({ onChange, id, legend, items }: CheckboxGroupProps): JSX.Element {
+  const handleChange = useCallback((itemid, value) => onChange(id, itemid, value), [onChange, id]);
+
   const checkboxes = items.map((item) => (
-    <TriCheckbox onChange={item.onChange} name={item.name} key={item.name} />
+    <TriCheckbox
+      onChange={handleChange}
+      name={item.name}
+      key={item.name}
+      id={item.name}
+      state={item.value}
+    />
   ));
   return (
     <div>
