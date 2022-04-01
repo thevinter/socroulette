@@ -6,7 +6,7 @@ import { data as geographyData } from './filters/geography';
 import { data as kinksData } from './filters/kinks';
 import { data as miscData } from './filters/miscellaneous';
 import { data as desiresData } from './filters/desires';
-import FilterSection from './filters/FilterSection';
+import FilterSection from './filters/filter_section';
 
 export default function Filter({ setFilters }) {
   return (

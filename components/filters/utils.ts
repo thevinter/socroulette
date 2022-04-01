@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, Dispatch, SetStateAction, useMemo } from 'react';
-import { TristateProps, TriCheckbox } from './../newtricheck';
+import { TristateProps, TriCheckbox } from '../tricheckbox';
 
 export type Pair<T> = [T, T];
 export type SetStateDispatch<T> = Dispatch<SetStateAction<T>>;

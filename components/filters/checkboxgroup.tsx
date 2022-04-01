@@ -1,5 +1,5 @@
 import { FormLabel } from '@mui/material';
-import { TriCheckbox, TristateProps } from '../newtricheck';
+import { TriCheckbox, TristateProps } from '../tricheckbox';
 import { NestedObjSetterCallback } from './utils';
 import { useState, useEffect, useCallback } from 'react';
 import FilterLabel from './label';
