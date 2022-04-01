@@ -13,6 +13,41 @@ import {
 } from '@mui/material';
 import { useState, useEffect } from 'react';
 import TriCheckbox from '../tricheckbox';
+import { FilterData } from './utils';
+
+export const data: FilterData = {
+  ranges: { height: [100, 250] },
+  binaryProps: {
+    race: [
+      'White',
+      'Hispanic',
+      'West Asian',
+      'East Asian',
+      'Native Hawaiian or Other Pacific Islander',
+      'Black or African American',
+      'American Indian or Alaska Native',
+    ],
+    hair: ['Blonde', 'Brown', 'Black', 'Red/Ginger', 'White/Gray', 'Shaved', 'Other'],
+    body: [
+      'Skinny/underweight',
+      'Average',
+      'Hourglass',
+      'Lean/fit',
+      'Buff/muscular',
+      'Chubby',
+      'Fat',
+      'Obese',
+    ],
+    skin: [
+      'Light, Pale White',
+      'White',
+      'Medium, White to Olive',
+      'Olive, Moderate Brown',
+      'Brown, Dark Brown',
+      'Black, Very Dark',
+    ],
+  },
+};
 
 export default function Physical({ setFilters }) {
   const [height, setHeight] = useState([100, 250]);

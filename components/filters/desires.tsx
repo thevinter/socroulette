@@ -1,12 +1,27 @@
-import {
-  ExpandMoreIcon,
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
-  Typography,
-} from '@mui/material';
+import { Accordion, AccordionSummary, AccordionDetails, Typography } from '@mui/material';
 import TriCheckbox from '../tricheckbox';
 import { useState, useEffect } from 'react';
+
+import { FilterData } from './utils';
+
+export const data: FilterData = {
+  ranges: {},
+  binaryProps: {
+    desires: [
+      'Safe for work chat',
+      'Gaming',
+      'Voice Chat',
+      'SFW Video Chat',
+      'Pic exchange',
+      'Sexting',
+      'Pen pals',
+      'NSFW Video Chat',
+      'ERP',
+      'Meeting IRL',
+      'Long Term Relationship',
+    ],
+  },
+};
 
 export default function Desires({ setFilters }) {
   const [desires, setDesires] = useState({

@@ -13,8 +13,9 @@ import {
 } from '@mui/material';
 import { useState, useEffect } from 'react';
 import TriCheckbox from '../tricheckbox';
+import { FilterData } from './utils';
 
-const data = {
+export const data: FilterData = {
   ranges: {
     age: [18, 100],
   },
@@ -22,21 +23,8 @@ const data = {
     sex: ['Male', 'Female', 'Other'],
     gender: ['Male', 'Female', 'Other'],
     orientation: ['Polygamous', 'Monogamous'],
-    status: [
-      'Single',
-      'Widowed',
-      'Divorced',
-      'Married',
-      'Single parent',
-      'Engaged',
-    ],
-    sexuality: [
-      'Heterosexual',
-      'Homosexual',
-      'Bisexual',
-      'Asexual',
-      'Other',
-    ],
+    status: ['Single', 'Widowed', 'Divorced', 'Married', 'Single parent', 'Engaged'],
+    sexuality: ['Heterosexual', 'Homosexual', 'Bisexual', 'Asexual', 'Other'],
   },
 };
 
@@ -60,8 +48,7 @@ export default function General({ setFilters }) {
   const [age, setAge] = useRangeOf('age');
   const [sex, changeSex] = useTristateOf('sex');
   const [gender, changeGender] = useTristateOf('gender');
-  const [orientation, changeOrientation] =
-    useTristateOf('orientation');
+  const [orientation, changeOrientation] = useTristateOf('orientation');
   const [status, changeStatus] = useTristateOf('status');
   const [sexuality, changeSexuality] = useTristateOf('sexuality');
 
@@ -124,10 +111,7 @@ export default function General({ setFilters }) {
         backgroundColor: accordionColor,
       }}
     >
-      <AccordionSummary
-        aria-controls="panel1a-content"
-        id="panel1a-header"
-      >
+      <AccordionSummary aria-controls="panel1a-content" id="panel1a-header">
         <Typography>General</Typography>
       </AccordionSummary>
       <AccordionDetails>
@@ -150,9 +134,7 @@ export default function General({ setFilters }) {
         </div>
 
         <div>
-          <FormLabel component="legend">
-            Gender they identify with
-          </FormLabel>
+          <FormLabel component="legend">Gender they identify with</FormLabel>
           <TriCheckbox change={changeGender} name="Male" />
           <TriCheckbox change={changeGender} name="Female" />
           <TriCheckbox change={changeGender} name="Other" />

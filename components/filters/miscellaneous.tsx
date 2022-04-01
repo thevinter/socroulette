@@ -15,6 +15,8 @@ import { useEffect, useState } from 'react';
 import RSelect from 'react-select';
 import TriCheckbox from '../tricheckbox';
 
+import { FilterData } from './utils';
+
 const boardList = [
   '/3/',
   '/a/',
@@ -94,6 +96,40 @@ const boardList = [
   '/xs/',
   '/y/',
 ];
+
+export const data: FilterData = {
+  ranges: {},
+  lists: { boards: boardList },
+  binaryProps: {
+    religion: ['Christian', 'Muslim', 'Jewish', 'Atheist', 'Hindu', 'Other'],
+    employment: [
+      'Student',
+      'Part time worker',
+      'Full time worker',
+      'Business owner',
+      'Self-Employed',
+      'Unemployed but looking',
+      'Neet',
+    ],
+    politic: [
+      'Leftist',
+      'Centrist',
+      'Fascist',
+      'Communist',
+      'Other',
+      "I don't care",
+      'Conservative',
+    ],
+    online: [
+      'Most of the day',
+      'In the morning',
+      'Afternoon',
+      'Evening',
+      'A couple of times a week',
+      'Rarely',
+    ],
+  },
+};
 
 export default function Miscellaneous({ setFilters }) {
   const boards = boardList.map((board) => ({ value: board, label: board }));

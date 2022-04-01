@@ -13,6 +13,25 @@ import {
 } from '@mui/material';
 import { useState, useEffect } from 'react';
 import TriCheckbox from '../tricheckbox';
+import { FilterData } from './utils';
+
+export const data: FilterData = {
+  ranges: {
+    timezone: [-12, 14],
+  },
+  binaryProps: {
+    location: [
+      'Eastern Europe',
+      'Western Europe',
+      'East Asia',
+      'West Asia',
+      'Australia/NZ/Oceania',
+      'North America',
+      'South America',
+      'Africa',
+    ],
+  },
+};
 
 export default function Geography({ setFilters }) {
   const [location, setLocation] = useState({
@@ -86,10 +105,7 @@ export default function Geography({ setFilters }) {
         backgroundColor: accordionColor,
       }}
     >
-      <AccordionSummary
-        aria-controls="panel1a-content"
-        id="panel1a-header"
-      >
+      <AccordionSummary aria-controls="panel1a-content" id="panel1a-header">
         <Typography>Geography</Typography>
       </AccordionSummary>
       <AccordionDetails>
@@ -110,10 +126,7 @@ export default function Geography({ setFilters }) {
         <TriCheckbox change={changeLocation} name="Western Europe" />
         <TriCheckbox change={changeLocation} name="East Asia" />
         <TriCheckbox change={changeLocation} name="West Asia" />
-        <TriCheckbox
-          change={changeLocation}
-          name="Australia/NZ/Oceania"
-        />
+        <TriCheckbox change={changeLocation} name="Australia/NZ/Oceania" />
         <TriCheckbox change={changeLocation} name="North America" />
         <TriCheckbox change={changeLocation} name="South America" />
         <TriCheckbox change={changeLocation} name="Africa" />

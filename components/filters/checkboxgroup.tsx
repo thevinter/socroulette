@@ -24,7 +24,9 @@ export function CheckboxGroup({ onChange, id, legend, items }: CheckboxGroupProp
   ));
   return (
     <div>
-      <FormLabel component="legend">{legend}</FormLabel>
+      <FormLabel sx={{ marginTop: '30px' }} component="legend">
+        {legend}
+      </FormLabel>
       {checkboxes}
     </div>
   );

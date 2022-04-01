@@ -7,6 +7,27 @@ import {
 } from '@mui/material';
 import TriCheckbox from '../tricheckbox';
 import { useState, useEffect } from 'react';
+import { FilterData } from './utils';
+
+export const data: FilterData = {
+  ranges: {},
+  binaryProps: {
+    kinks: [
+      'BDSM',
+      'Ropeplay',
+      'Bestiality',
+      'Voyeurism',
+      'Exhibitionism',
+      'Roleplay',
+      'Watersports',
+      'Humiliation',
+      'Cuckolding',
+      'Femdom',
+      'CNC',
+      'Scat',
+    ],
+  },
+};
 
 export default function Kinks({ setFilters }) {
   const [kinks, setKinks] = useState({
@@ -92,10 +113,7 @@ export default function Kinks({ setFilters }) {
           backgroundColor: accordionColor,
         }}
       >
-        <AccordionSummary
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
+        <AccordionSummary aria-controls="panel1a-content" id="panel1a-header">
           <Typography>Kinks</Typography>
         </AccordionSummary>
         <AccordionDetails>

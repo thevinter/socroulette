@@ -8,6 +8,26 @@ import {
 import TriCheckbox from '../tricheckbox';
 import { useState, useEffect } from 'react';
 
+import { FilterData } from './utils';
+
+export const data: FilterData = {
+  ranges: {},
+  binaryProps: {
+    '': [
+      'Schizofrenia',
+      'Bipolar Disorder',
+      'Depression',
+      'ADHD',
+      'PTSD',
+      'Anxiety',
+      'Eating Disorders',
+      'Insomnia',
+      'Borderline Personality Disorder',
+      'Addiction / Substance Abuse',
+    ],
+  },
+};
+
 export default function Illnesses({ setFilters }) {
   const [disorders, setDisorders] = useState({
     Schizophrenia: 0,
@@ -96,10 +116,7 @@ export default function Illnesses({ setFilters }) {
           backgroundColor: accordionColor,
         }}
       >
-        <AccordionSummary
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
+        <AccordionSummary aria-controls="panel1a-content" id="panel1a-header">
           <Typography>Illnesses</Typography>
         </AccordionSummary>
         <AccordionDetails>
