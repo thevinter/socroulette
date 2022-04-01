@@ -7,19 +7,22 @@ import { FilterData } from './utils';
 export const data: FilterData = {
   ranges: {},
   binaryProps: {
-    desires: [
-      'Safe for work chat',
-      'Gaming',
-      'Voice Chat',
-      'SFW Video Chat',
-      'Pic exchange',
-      'Sexting',
-      'Pen pals',
-      'NSFW Video Chat',
-      'ERP',
-      'Meeting IRL',
-      'Long Term Relationship',
-    ],
+    desires: {
+      displayLabel: null,
+      value: [
+        'Safe for work chat',
+        'Gaming',
+        'Voice Chat',
+        'SFW Video Chat',
+        'Pic exchange',
+        'Sexting',
+        'Pen pals',
+        'NSFW Video Chat',
+        'ERP',
+        'Meeting IRL',
+        'Long Term Relationship',
+      ],
+    },
   },
 };
 

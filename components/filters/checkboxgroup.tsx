@@ -2,6 +2,7 @@ import { FormLabel } from '@mui/material';
 import { TriCheckbox, TristateProps } from '../newtricheck';
 import { NestedObjSetterCallback } from './utils';
 import { useState, useEffect, useCallback } from 'react';
+import FilterLabel from './label';
 
 export type CheckboxGroupProps = {
   legend: string;
@@ -24,9 +25,7 @@ export function CheckboxGroup({ onChange, id, legend, items }: CheckboxGroupProp
   ));
   return (
     <div>
-      <FormLabel sx={{ marginTop: '30px' }} component="legend">
-        {legend}
-      </FormLabel>
+      <FilterLabel label={legend} />
       {checkboxes}
     </div>
   );

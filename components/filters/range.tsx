@@ -9,6 +9,7 @@ import {
 import { useState, useEffect, useCallback, Dispatch, SetStateAction } from 'react';
 import TriCheckbox from '../tricheckbox';
 import CheckboxGroup from './checkboxgroup';
+import FilterLabel from './label';
 
 type RangeProps = {
   label: string;
@@ -31,7 +32,7 @@ export default function RangeSlider({ label, id, range, value, onChange }: Range
 
   return (
     <div>
-      <FormLabel component="legend">{label}</FormLabel>
+      <FilterLabel label={label} />
       <Slider
         getAriaLabel={() => 'Desired range'}
         min={min}

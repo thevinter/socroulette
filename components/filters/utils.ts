@@ -5,9 +5,15 @@ export type Pair<T> = [T, T];
 export type SetStateDispatch<T> = Dispatch<SetStateAction<T>>;
 export type ObjSetterCallback<T> = (idx: string, val: T) => void;
 export type NestedObjSetterCallback<T> = (group: string, idx: string, val: T) => void;
+export type FilterItem<T> = {
+  displayLabel: string | null;
+  value: T;
+};
+export type FilterGroup<T> = Record<string, FilterItem<T>>;
 export type FilterData = {
-  ranges: Record<string, Pair<number>>;
-  binaryProps: Record<string, string[]>;
+  lists?: FilterGroup<string[]>;
+  ranges: FilterGroup<Pair<number>>;
+  binaryProps: FilterGroup<string[]>;
 };
 
 export function nullObj(keys: string[]): Record<string, number> {

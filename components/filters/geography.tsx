@@ -17,19 +17,22 @@ import { FilterData } from './utils';
 
 export const data: FilterData = {
   ranges: {
-    timezone: [-12, 14],
+    timezone: { displayLabel: 'Timezome', value: [-12, 14] },
   },
   binaryProps: {
-    location: [
-      'Eastern Europe',
-      'Western Europe',
-      'East Asia',
-      'West Asia',
-      'Australia/NZ/Oceania',
-      'North America',
-      'South America',
-      'Africa',
-    ],
+    location: {
+      displayLabel: 'Zone of residence',
+      value: [
+        'Eastern Europe',
+        'Western Europe',
+        'East Asia',
+        'West Asia',
+        'Australia/NZ/Oceania',
+        'North America',
+        'South America',
+        'Africa',
+      ],
+    },
   },
 };
 

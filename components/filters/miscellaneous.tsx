@@ -99,35 +99,47 @@ const boardList = [
 
 export const data: FilterData = {
   ranges: {},
-  lists: { boards: boardList },
+  lists: { boards: { displayLabel: '4chan boards to include', value: boardList } },
   binaryProps: {
-    religion: ['Christian', 'Muslim', 'Jewish', 'Atheist', 'Hindu', 'Other'],
-    employment: [
-      'Student',
-      'Part time worker',
-      'Full time worker',
-      'Business owner',
-      'Self-Employed',
-      'Unemployed but looking',
-      'Neet',
-    ],
-    politic: [
-      'Leftist',
-      'Centrist',
-      'Fascist',
-      'Communist',
-      'Other',
-      "I don't care",
-      'Conservative',
-    ],
-    online: [
-      'Most of the day',
-      'In the morning',
-      'Afternoon',
-      'Evening',
-      'A couple of times a week',
-      'Rarely',
-    ],
+    employment: {
+      displayLabel: 'Employment status',
+      value: [
+        'Student',
+        'Part time worker',
+        'Full time worker',
+        'Business owner',
+        'Self-Employed',
+        'Unemployed but looking',
+        'Neet',
+      ],
+    },
+    religion: {
+      displayLabel: 'Religion',
+      value: ['Christian', 'Muslim', 'Jewish', 'Atheist', 'Hindu', 'Other'],
+    },
+    politic: {
+      displayLabel: 'Political Beliefs',
+      value: [
+        'Leftist',
+        'Centrist',
+        'Fascist',
+        'Communist',
+        'Other',
+        "I don't care",
+        'Conservative',
+      ],
+    },
+    online: {
+      displayLabel: 'Online schedule',
+      value: [
+        'Most of the day',
+        'In the morning',
+        'Afternoon',
+        'Evening',
+        'A couple of times a week',
+        'Rarely',
+      ],
+    },
   },
 };
 

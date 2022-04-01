@@ -41,11 +41,12 @@ function useSection(
   data: FilterData
 ): [SectionState, ObjSetterCallback<Pair<number>>, NestedObjSetterCallback<number>] {
   const stateGen: () => SectionState = () => {
-    const propentries = Object.entries(data.binaryProps).map(([property, values]) => [
-      property,
-      nullObj(values),
+    const propentries = Object.entries(data.binaryProps).map(([name, group]) => [
+      name,
+      nullObj(group.value),
     ]);
-    return { ranges: data.ranges, binaryProps: Object.fromEntries(propentries) };
+    const ranges = Object.entries(data.ranges).map(([name, range]) => [name, range.value]);
+    return { ranges: Object.fromEntries(ranges), binaryProps: Object.fromEntries(propentries) };
   };
   const [sectionState, setState] = useState(stateGen);
   const setRange = useCallback(
@@ -80,19 +81,27 @@ export default function FilterSection({ setFilters, data, name }: SectionProps) 
     <RangeSlider
       key={name}
       id={name}
-      label={name}
-      range={range}
+      label={range.displayLabel}
+      range={range.value}
       value={sectionState.ranges[name]}
       onChange={setRange}
     />
   ));
 
-  const binprops = Object.entries(data.binaryProps).map(([name, elements]) => {
-    const items = elements.map((e) => ({
+  const binprops = Object.entries(data.binaryProps).map(([name, group]) => {
+    const items = group.value.map((e) => ({
       name: e,
       value: sectionState.binaryProps[name][e],
     }));
-    return <CheckboxGroup key={name} id={name} legend={name} onChange={setBinprop} items={items} />;
+    return (
+      <CheckboxGroup
+        key={name}
+        id={name}
+        legend={group.displayLabel}
+        onChange={setBinprop}
+        items={items}
+      />
+    );
   });
 
   useEffect(

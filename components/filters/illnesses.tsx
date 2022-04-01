@@ -1,10 +1,4 @@
-import {
-  ExpandMoreIcon,
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
-  Typography,
-} from '@mui/material';
+import { Accordion, AccordionSummary, AccordionDetails, Typography } from '@mui/material';
 import TriCheckbox from '../tricheckbox';
 import { useState, useEffect } from 'react';
 
@@ -13,18 +7,21 @@ import { FilterData } from './utils';
 export const data: FilterData = {
   ranges: {},
   binaryProps: {
-    '': [
-      'Schizofrenia',
-      'Bipolar Disorder',
-      'Depression',
-      'ADHD',
-      'PTSD',
-      'Anxiety',
-      'Eating Disorders',
-      'Insomnia',
-      'Borderline Personality Disorder',
-      'Addiction / Substance Abuse',
-    ],
+    disorders: {
+      displayLabel: null,
+      value: [
+        'Schizofrenia',
+        'Bipolar Disorder',
+        'Depression',
+        'ADHD',
+        'PTSD',
+        'Anxiety',
+        'Eating Disorders',
+        'Insomnia',
+        'Borderline Personality Disorder',
+        'Addiction / Substance Abuse',
+      ],
+    },
   },
 };
 
