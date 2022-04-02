@@ -8,11 +8,11 @@ import {
 } from '@mui/material';
 
 export default function FilterLabel({ label }) {
-  if (label === null) {
-    return <></>;
+  if (label === undefined) {
+    return null;
   } else {
     return (
-      <FormLabel sx={{ marginTop: '5px', marginBottom: '5px' }} component="legend">
+      <FormLabel sx={{ marginTop: '10px', marginBottom: '5px' }} component="legend">
         {label}
       </FormLabel>
     );

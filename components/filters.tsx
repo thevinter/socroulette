@@ -24,7 +24,7 @@ export default function Filter({ setFilters }) {
       <FilterSection name="Miscellaneous" setFilters={setFilters} data={miscData} />
       <FilterSection name="Illnesses" setFilters={setFilters} data={ilnessesData} />
       <FilterSection name="Kinks" setFilters={setFilters} data={kinksData} />
-      <FilterSection name="Desires" setFilters={setFilters} data={desiresData} />
+      <FilterSection name="What are you looking for?" setFilters={setFilters} data={desiresData} />
     </div>
   );
 }

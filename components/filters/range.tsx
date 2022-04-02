@@ -19,31 +19,33 @@ type RangeProps = {
   onChange: (id: string, value: [number, number]) => void;
 };
 
-export default function RangeSlider({ label, id, range, value, onChange }: RangeProps) {
+export default function RangeSlider({
+  label,
+  id,
+  range,
+  value,
+  onChange,
+  ...extraProps
+}: RangeProps) {
   const [state, setState] = useState(value as number[]);
   const [min, max] = range;
   const handleChange = useCallback(
-    (_, newval) => {
-      console.log('slider onChangeCommitted triggered');
-      onChange(id, newval as [number, number]);
-    },
+    (_, newval) => onChange(id, newval as [number, number]),
     [id, onChange]
   );
 
   return (
-    <div>
+    <div style={{ marginBottom: '20px' }}>
       <FilterLabel label={label} />
       <Slider
         getAriaLabel={() => 'Desired range'}
         min={min}
         max={max}
         value={state}
-        onChange={(_, newval) => {
-          console.log('slider onChange triggered');
-          setState(newval as number[]);
-        }}
+        onChange={(_, newval) => setState(newval as number[])}
         onChangeCommitted={handleChange}
         valueLabelDisplay="auto"
+        {...extraProps}
       />
     </div>
   );

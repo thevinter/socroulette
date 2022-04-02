@@ -6,8 +6,9 @@ export type SetStateDispatch<T> = Dispatch<SetStateAction<T>>;
 export type ObjSetterCallback<T> = (idx: string, val: T) => void;
 export type NestedObjSetterCallback<T> = (group: string, idx: string, val: T) => void;
 export type FilterItem<T> = {
-  displayLabel: string | null;
+  displayLabel?: string;
   value: T;
+  extraProps?: Record<string, any>;
 };
 export type FilterGroup<T> = Record<string, FilterItem<T>>;
 export type FilterData = {

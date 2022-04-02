@@ -2,6 +2,7 @@ import { Accordion, AccordionSummary, AccordionDetails, Typography } from '@mui/
 import { useState, useEffect, useCallback } from 'react';
 import CheckboxGroup from './checkboxgroup';
 import RangeSlider from './range';
+import LongList from './list';
 import {
   nullObj,
   useRange,
@@ -23,6 +24,7 @@ type SectionProps = {
 type SectionState = {
   ranges: Record<string, Pair<number>>;
   binaryProps: Record<string, Record<string, number>>;
+  lists: Record<string, string[]>;
 };
 
 function updateFilters(old, sectionName: string, sectionState: SectionState) {
@@ -34,25 +36,39 @@ function updateFilters(old, sectionName: string, sectionState: SectionState) {
     updated.excluded[name] = returnExcluded(values);
     updated.selected[name] = returnSelected(values);
   });
+  Object.entries(sectionState.lists).forEach(([name, items]) => {
+    updated.selected[name] = items;
+  });
   return updated;
 }
 
 function useSection(
   data: FilterData
-): [SectionState, ObjSetterCallback<Pair<number>>, NestedObjSetterCallback<number>] {
+): [
+  SectionState,
+  ObjSetterCallback<Pair<number>>,
+  NestedObjSetterCallback<number>,
+  ObjSetterCallback<string[]>
+] {
   const stateGen: () => SectionState = () => {
     const propentries = Object.entries(data.binaryProps).map(([name, group]) => [
       name,
       nullObj(group.value),
     ]);
     const ranges = Object.entries(data.ranges).map(([name, range]) => [name, range.value]);
-    return { ranges: Object.fromEntries(ranges), binaryProps: Object.fromEntries(propentries) };
+    const lists = Object.keys(data.lists || {}).map((name) => [name, []]);
+    return {
+      ranges: Object.fromEntries(ranges),
+      binaryProps: Object.fromEntries(propentries),
+      lists: Object.fromEntries(lists),
+    };
   };
   const [sectionState, setState] = useState(stateGen);
   const setRange = useCallback(
     (name, value) =>
       setState((state) => ({
         binaryProps: state.binaryProps,
+        lists: state.lists,
         ranges: { ...state.ranges, [name]: value },
       })),
     [setState]
@@ -61,6 +77,7 @@ function useSection(
     (prop, name, value) =>
       setState((state) => ({
         ranges: state.ranges,
+        lists: state.lists,
         binaryProps: {
           ...state.binaryProps,
           [prop]: { ...state.binaryProps[prop], [name]: value },
@@ -68,14 +85,23 @@ function useSection(
       })),
     [setState]
   );
-  return [sectionState, setRange, setBinprop];
+  const setLists = useCallback(
+    (name, value) =>
+      setState((state) => ({
+        binaryProps: state.binaryProps,
+        ranges: state.ranges,
+        lists: { ...state.lists, [name]: value },
+      })),
+    [setState]
+  );
+  return [sectionState, setRange, setBinprop, setLists];
 }
 
 export default function FilterSection({ setFilters, data, name }: SectionProps) {
   const [open, setOpen] = useState(false);
   const accordionColor = open ? '#FFF' : '#FFF';
 
-  const [sectionState, setRange, setBinprop] = useSection(data);
+  const [sectionState, setRange, setBinprop, setLists] = useSection(data);
 
   const ranges = Object.entries(data.ranges).map(([name, range]) => (
     <RangeSlider
@@ -85,6 +111,7 @@ export default function FilterSection({ setFilters, data, name }: SectionProps) 
       range={range.value}
       value={sectionState.ranges[name]}
       onChange={setRange}
+      {...range.extraProps}
     />
   ));
 
@@ -103,6 +130,16 @@ export default function FilterSection({ setFilters, data, name }: SectionProps) 
       />
     );
   });
+
+  const lists = Object.entries(data.lists || {}).map(([name, group]) => (
+    <LongList
+      key={name}
+      id={name}
+      label={group.displayLabel}
+      itemList={group.value}
+      onChange={setLists}
+    />
+  ));
 
   useEffect(
     () => setFilters((old) => updateFilters(old, name, sectionState)),
@@ -125,6 +162,7 @@ export default function FilterSection({ setFilters, data, name }: SectionProps) 
       <AccordionDetails>
         {ranges}
         {binprops}
+        {lists}
       </AccordionDetails>
     </Accordion>
   );

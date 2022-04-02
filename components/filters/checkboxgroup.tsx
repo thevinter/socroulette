@@ -24,7 +24,7 @@ export function CheckboxGroup({ onChange, id, legend, items }: CheckboxGroupProp
     />
   ));
   return (
-    <div>
+    <div style={{ marginBottom: '20px' }}>
       <FilterLabel label={legend} />
       {checkboxes}
     </div>

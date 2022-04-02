@@ -1,18 +1,3 @@
-import {
-  RadioGroup,
-  FormLabel,
-  FormControlLabel,
-  Radio,
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
-  Typography,
-  Slider,
-  Card,
-  CardContent,
-} from '@mui/material';
-import { useState, useEffect } from 'react';
-import TriCheckbox from '../tricheckbox';
 import { FilterData } from './utils';
 
 export const data: FilterData = {
