@@ -70,7 +70,7 @@ export default function Renew() {
           </div>
           <div style={{ fontSize: '2vh', width: '60%', textAlign: 'justify' }}>
             By entering the user id you received during registration you can either renew your
-            account for 7 more days, edit it or delete it completely. Please be aware that you will
+            account for 14 more days, edit it or delete it completely. Please be aware that you will
             not be able to recover your account once deleted.
           </div>
           <TextField

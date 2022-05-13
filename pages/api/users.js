@@ -50,7 +50,7 @@ export async function GetUsers(query) {
   db_query['active'].$eq = true;
 
   const date = new Date();
-  date.setDate(date.getDate() - 7);
+  date.setDate(date.getDate() - 14);
   db_query['createdAt'] = {};
   db_query['createdAt'].$gte = date;
 

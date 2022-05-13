@@ -16,7 +16,7 @@ export default function Index() {
         perfect match. The site is free, actively improved, and ad-free.
       </p>
       <p className={styles.aboutPar}>
-        No registration is needed and every account is stored for 7 days, after which it is made
+        No registration is needed and every account is stored for 14 days, after which it is made
         inactive but can be reactivated at a later date.
       </p>
     </div>
