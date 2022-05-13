@@ -4,7 +4,7 @@ import clientPromise from '../../lib/mongodb';
 export async function Count() {
   const client = await clientPromise;
   const db = client.db('users');
-  const users = await db.collection('users').find({}).count();
+  const users = await db.collection('users').find({active: true}).count();
   console.log(users);
   return users;
 }
